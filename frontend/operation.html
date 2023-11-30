@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Hospital Management Responsive  HTML5 Template</title>
+        <meta name="description" content="Hospital Management Responsive  HTML5 Template " />
+        <meta name="keywords" content="business,corporate, creative, woocommerach, design, gallery, minimal, modern, landing page, cv, designer, freelancer, html, one page, personal, portfolio, programmer, responsive, vcard, one page" />
+        <meta name="author" content="Hospital Management" />
+
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}">
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+        <!-- fonts file -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <!-- css file  -->
+        <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+        <script src="{% static 'assets/js/modernizr-3.11.2.min.js' %}"></script>
+    </head>
+
+    <body>
+        {% include 'base/navbar.html' %}
+
+                <div class="page-wrape">
+                    <div class="container-fluid">
+                        <div class="section-header">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="section-title">
+                                        <h2 class="title">Operation</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="primary-form">
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="PatientID">Patient ID</label>
+                                            <input type="text" class="form-control" id="PatientID" name="PatientID" placeholder="#A-122014" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="OperationDate">Operation Date</label>
+                                            <input type="text" class="form-control" id="OperationDate" name="OperationDate" placeholder="31 Jan 2021" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="OperationTime">Operation Time</label>
+                                            <input type="text" class="form-control" id="OperationTime" name="OperationTime" placeholder="12.00 AM" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="OperationType">Select Operation Type</label>
+                                            <select class="form-control wide" id="OperationType">
+                                              <option>Breast Surgery</option>
+                                              <option>Breast Surgery</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="OperationService">Select Operation Service</label>
+                                            <select class="form-control wide" id="OperationService">
+                                                <option>Breast Surgery</option>
+                                                <option>Breast Surgery</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="Price">Price</label>
+                                            <input type="text" class="form-control" id="Price" name="Price" placeholder="$5600" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="Discount">Discount</label>
+                                            <input type="text" class="form-control" id="Discount" name="Discount" placeholder="0%" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="GrandTotal">Grand Total</label>
+                                            <input type="text" class="form-control" id="GrandTotal" name="GrandTotal" placeholder="$5600" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label for="Remark">Remark</label>
+                                            <textarea class="form-control message" id="Remark" rows="3" placeholder="Write a Short Description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="PaidAmount">Paid Amount</label>
+                                            <input type="text" class="form-control" id="PaidAmount" name="PaidAmount" placeholder="$5600" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button type="submit" class="form-btn">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="body-overlay"></div>
+        
+        <script src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script>
+        <script src="{% static 'assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/js/plugins.js' %}"></script>
+        <script src="{% static 'assets/js/main.js' %}"></script>
+        
+    </body>
+</html>
