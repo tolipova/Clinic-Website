@@ -33,7 +33,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="section-title">
-                                        <h2 class="title">Add New Patient</h2>
+                                        <h2 class="title">Yangi bemor qo'shish</h2>
                                     </div>
                                 </div>
                             </div>
@@ -43,9 +43,6 @@
                                 <li class="nav-item" role="presentation">
                                   <a class="nav-link active" id="personal-information-tab" data-toggle="tab" href="#personal-information" role="tab" aria-controls="personal-information" aria-selected="true">Personal Information</a>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                  <a class="nav-link" id="guardian-information-tab" data-toggle="tab" href="#guardian-information" role="tab" aria-controls="guardian-information" aria-selected="false">Guardian Information</a>
-                                </li>
                             </ul>
                             <div class="tab-content" id="PatientContent">
                                 <div class="tab-pane fade show active" id="personal-information" role="tabpanel" aria-labelledby="personal-information-tab">
@@ -54,37 +51,37 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="user-image">
-                                                        <img src="assets/images/profile.png" alt="profile" />
-                                                        <a class="edit-btn" href="#"><span class="flaticon-pencil-1"></span></a>
+                                                        <img src="{% static 'assets/images/profile.png' %}" alt="profile" />
+                                                        <!-- <a class="edit-btn" href="#"><span class="flaticon-pencil-1"></span></a> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6">
                                                     <div class="form-group">
-                                                        <label for="panme">Patient Name</label>
-                                                        <input type="text" class="form-control" id="panme" name="panme" placeholder="Charlene Reed" />
+                                                        <label for="panme">Bemorning ismi</label>
+                                                        <input type="text" class="form-control" id="panme" name="panme" placeholder="Akbarali Fayziyev" />
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6">
                                                     <div class="form-group">
-                                                        <label for="pphonne">Phone Number</label>
+                                                        <label for="pphonne">Telefon raqam</label>
                                                         <input type="text" class="form-control" id="pphonne" name="pphonne" placeholder="1234 5874 25" />
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6">
                                                     <div class="form-group">
-                                                        <label for="paddress">Address</label>
-                                                        <input type="text" class="form-control" id="paddress" name="paddress" placeholder="San Joss, California, USA" />
+                                                        <label for="paddress">Manzil</label>
+                                                        <input type="text" class="form-control" id="paddress" name="paddress" placeholder="O'zbekiston Navoiy sh. Beshkent mFY" />
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6">
                                                     <div class="form-group">
-                                                        <label for="page">Age</label>
+                                                        <label for="page">Yoshi</label>
                                                         <input type="text" class="form-control" id="page" name="page" placeholder="59" />
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6">
                                                     <div class="form-group">
-                                                        <label for="pbloggroup">Blood Group</label>
+                                                        <label for="pbloggroup">Qon gruxi</label>
                                                         <select class="form-control wide" id="pbloggroup">
                                                           <option>A+</option>
                                                           <option>A-</option>
@@ -99,7 +96,7 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6">
                                                     <div class="form-group">
-                                                        <label for="Occupation">Occupation</label>
+                                                        <label for="Occupation">Qabul holati</label>
                                                         <select class="form-control wide" id="Occupation">
                                                           <option>Business</option>
                                                           <option>Farmar</option>
@@ -109,16 +106,7 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6">
                                                     <div class="form-group">
-                                                        <label for="religion">Religion</label>
-                                                        <select class="form-control wide" id="religion">
-                                                          <option>Islam</option>
-                                                          <option>Hindu</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="gender">Gender</label>
+                                                        <label for="gender">Jinsi</label>
                                                         <select class="form-control wide" id="gender">
                                                           <option>Male</option>
                                                           <option>Famale</option>
@@ -128,7 +116,16 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6">
                                                     <div class="form-group">
-                                                        <label for="marital">Marital Status</label>
+                                                        <label for="marital">Oilaviy holati</label>
+                                                        <select class="form-control wide" id="marital">
+                                                          <option>Married</option>
+                                                          <option>Unmarried</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="marital">Qabul qiluvchi shifokor</label>
                                                         <select class="form-control wide" id="marital">
                                                           <option>Married</option>
                                                           <option>Unmarried</option>
@@ -137,12 +134,9 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <label for="description">Description</label>
+                                                        <label for="description">Qo'shimcha</label>
                                                         <textarea class="form-control message" id="description" rows="3" placeholder="Write a short description"></textarea>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <button type="submit" class="form-btn">Next</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -204,9 +198,7 @@
                                                         <textarea class="form-control message" id="description2" rows="3" placeholder="Write a short description"></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <button type="submit" class="form-btn">Add Patient</button>
-                                                </div>
+                                                
                                             </div>
                                         </form>
                                     </div>
