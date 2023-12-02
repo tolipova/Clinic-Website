@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.utils import timezone
 # Create your models here.
 qon_guruxlari =(
     ("α va β", "birinchi (0)"),
@@ -34,6 +35,7 @@ doctor_skills = (
     ('Ginekolog','Ginekolog'),
     ('Audiolog','Audiolog')
 )
+
 class DoctorCreate(models.Model):
     doctor_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     doctor_fullname = models.CharField(verbose_name='Doctorning ism familiyasi', max_length=255)
@@ -50,7 +52,7 @@ class DoctorCreate(models.Model):
     
     
     def __str__(self):
-        return self.doctor_fullname
+        return self.doctor_fullname 
     
 class PatientCreate(models.Model):
     
@@ -69,3 +71,31 @@ class PatientCreate(models.Model):
     
     def __str__(self):
         return self.patient_fullname
+    
+class Rooms(models.Model):
+    room_number = models.IntegerField(verbose_name="xona raqami", null=False, blank=True)
+
+    
+class PatientList(models.Model):
+    patient_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi',on_delete=models.CASCADE )
+    check_in = models.DateTimeField(auto_now=False, verbose_name="Bemorning kirish sanasi")
+    doctor_assgined = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE, verbose_name="tayinlangan doktor")
+    disease_type = models.CharField(max_length=255, verbose_name="kasallik turi")
+    patient_status = models.CharField(max_length=255, choices=qabul_holati, verbose_name="bemor turi" )
+    room_number = models.ForeignKey(Rooms, on_delete=models.CASCADE, verbose_name="Bemorning xona raqami")
+
+    def __str__(self):
+        return self.patient_status
+
+class DoctorsList(models.Model):
+    doctor_fullname = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE,related_name="ism")
+    flaction_star = models.CharField(max_length=255, verbose_name="yulduzcha")
+    doctor_status = models.CharField(verbose_name='Shifokorning lavozimi', choices=doctor_lavozimi, max_length=255)
+    work_time = models.DateTimeField(default=timezone.now)
+    doctor_address = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE, related_name="address")
+    doctor_university = models.TextField(verbose_name="doctor tamomlagan university")
+
+
+
+    

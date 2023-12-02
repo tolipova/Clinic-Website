@@ -35,26 +35,26 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" href="#"><i class="flaticon-alarm"></i> Emergency</a>
+                        <a class="has-arrow" href="#"><i class="flaticon-alarm"></i> Favqulodda vaziyat</a>
                         <ul>
-                            <li><a href="{% url 'emergency_form' %}">Emergency Form</a></li>
-                            <li><a href="{% url 'emergency_list' %}">Emergency List</a></li>
+                            <li><a href="{% url 'emergency_form' %}">Favqulodda vaziyat shakli</a></li>
+                            <li><a href="{% url 'emergency_list' %}">Favqulodda vaziyatlar ro'yxati</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{% url 'operation' %}"><i class="flaticon-scissors"></i> Operation</a>
+                        <a href="{% url 'operation' %}"><i class="flaticon-scissors"></i>Operatsiya</a>
                     </li>
                     <li>
-                        <a href="{% url 'reports' %}"><i class="flaticon-financial"></i> Reports</a>
+                        <a href="{% url 'reports' %}"><i class="flaticon-financial"></i> Hisobotlar</a>
                     </li>
                     <li>
-                        <a href="{% url 'accounts' %}"><i class="flaticon-user"></i> Accounts</a>
+                        <a href="{% url 'accounts' %}"><i class="flaticon-user"></i> Accountlar</a>
                     </li>
                     <li>
-                        <a class="has-arrow" href="#"><i class="flaticon-medical"></i> Expense</a>
+                        <a class="has-arrow" href="#"><i class="flaticon-medical"></i> Xarajat</a>
                         <ul>
-                            <li><a href="{% url 'expense_list' %}">Expense List</a></li>
-                            <li><a href="{% url 'add_expense' %}">Add Expense</a></li>
+                            <li><a href="{% url 'expense_list' %}">Xarajatlar ro'yxati</a></li>
+                            <li><a href="{% url 'add_expense' %}">Xarajatlarni qo'shish</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -80,7 +80,7 @@
                     <ul class="header-right d-flex align-items-center justify-content-end">
                         <li><a class="Patient-btn" href="#">+  Add Patient</a></li>
                         <li class="notification"><a href="#"><span class="flaticon-bell"></span></a></li>
-                        <li class="user-area"><a href="#"><img src="assets/images/user-image.png" alt="user-image" /></a></li>
+                        <li class="user-area"><a href="#"><img src="{% static 'assets/images/user-image.png' %}" alt="user-image" /></a></li>
                     </ul>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="col-6">
                         <div class="page-title text-center">
-                            <h2 class="title">Welcome</h2>
+                            <h2 class="title">Xush Kelibsiz</h2>
                         </div>
                     </div>
                     <div class="col-3">

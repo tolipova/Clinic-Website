@@ -33,7 +33,7 @@
                         <div class="col-lg-7">
                             <div class="section-header">
                                 <div class="section-title">
-                                    <h2 class="title">Patient Profile</h2>
+                                    <h2 class="title">Bemor Profili</h2>
                                 </div>
                             </div>
                             <div class="section-wrapper">
@@ -41,7 +41,7 @@
                                     <div class="Profile-top">
                                         <div class="media align-items-center">
                                             <div class="Patient-image mr-3">
-                                                <img src="assets/images/Patient-profile.png" alt="Patient-profile.png" />
+                                                <img src="{% static 'assets/images/profile.png' %}" alt="Patient-profile.png" />
                                             </div>
                                             <div class="media-body">
                                               <h4 class="Patient-name">Eddy Cusuma</h4>
@@ -55,16 +55,16 @@
                                     <div class="primary-tab">
                                         <ul class="nav nav-tabs" id="PatientProfile" role="tablist">
                                             <li class="nav-item" role="presentation">
-                                              <a class="nav-link active" id="patient-information-tab" data-toggle="tab" href="#patient-information" role="tab" aria-controls="patient-information" aria-selected="true">Patient Information</a>
+                                              <a class="nav-link active" id="patient-information-tab" data-toggle="tab" href="#patient-information" role="tab" aria-controls="patient-information" aria-selected="true">Bemor malumoti</a>
                                             </li>
                                             <li class="nav-item" role="presentation">
-                                              <a class="nav-link" id="visits-tab" data-toggle="tab" href="#visits" role="tab" aria-controls="visits" aria-selected="false">Visits</a>
+                                              <a class="nav-link" id="visits-tab" data-toggle="tab" href="#visits" role="tab" aria-controls="visits" aria-selected="false">Tashriflar</a>
                                             </li>
                                             <li class="nav-item" role="presentation">
                                                 <a class="nav-link" id="lab-tab" data-toggle="tab" href="#lab" role="tab" aria-controls="lab" aria-selected="false">Lab</a>
                                             </li>
                                             <li class="nav-item" role="presentation">
-                                                <a class="nav-link" id="Prescriptions-tab" data-toggle="tab" href="#Prescriptions" role="tab" aria-controls="Prescriptions" aria-selected="false">Prescriptions</a>
+                                                <a class="nav-link" id="Prescriptions-tab" data-toggle="tab" href="#Prescriptions" role="tab" aria-controls="Prescriptions" aria-selected="false">Retseptlar</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content" id="PatientProfileContent">
@@ -73,60 +73,32 @@
                                                     <table class="table table-borderless">
                                                         <tbody>
                                                           <tr>
-                                                            <td>Date of Birth</td>
+                                                            <td>Tug'ilgan yili</td>
                                                             <td>30 Nov 1995</td>
                                                           </tr>
                                                           <tr>
-                                                            <td>Age</td>
+                                                            <td>Yoshi</td>
                                                             <td>25 years old</td>
                                                           </tr>
                                                           <tr>
-                                                            <td>Gender</td>
+                                                            <td>Jinsi</td>
                                                             <td>Male</td>
                                                           </tr>
                                                           <tr>
-                                                            <td>Religion</td>
-                                                            <td>Islam</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Occupation</td>
+                                                            <td>Kasb-hunar</td>
                                                             <td>Business</td>
                                                           </tr>
                                                           <tr>
-                                                            <td>Marital Status</td>
-                                                            <td>Married</td>
+                                                            <td>Oilaviy ahvol</td>
+                                                            <td>Turmush qurgan</td>
                                                           </tr>
                                                           <tr>
-                                                            <td>Address</td>
+                                                            <td>Manzil</td>
                                                             <td>San Joss, California, USA</td>
                                                           </tr>
                                                           <tr>
-                                                            <td>Phone Number</td>
+                                                            <td>Telifon raqam</td>
                                                             <td>1234 5874 25</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Name</td>
-                                                            <td>Robert Person</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Relationship</td>
-                                                            <td>Father</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Phone Number</td>
-                                                            <td>4569 245 36</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Name</td>
-                                                            <td>Robert Person</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Relationship</td>
-                                                            <td>Father</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Phone Number</td>
-                                                            <td>4569 245 36</td>
                                                           </tr>
                                                         </tbody>
                                                     </table>
@@ -333,7 +305,7 @@
                             <div class="heart-rate-area mb-30 md-mt-30">
                                 <div class="section-header">
                                     <div class="section-title">
-                                        <h2 class="title">Heart rate</h2>
+                                        <h2 class="title">Yurak urish tezligi</h2>
                                     </div>
                                 </div>
                                 <div class="section-wrapper py-0 pl-3">
@@ -343,7 +315,7 @@
                             <div class="blood-pressure mb-30">
                                 <div class="section-header">
                                     <div class="section-title">
-                                        <h2 class="title">Blood Pressure</h2>
+                                        <h2 class="title">Qon bosimi</h2>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -352,7 +324,7 @@
                                             <div class="single-blood-Pressure">
                                                 <div class="systolic">
                                                     <canvas id="systolic" height="95"></canvas>
-                                                    <h4>Systolic</h4>
+                                                    <h4>Sistolik</h4>
                                                     <h2>150 <sub>mmhz</sub></h2>
                                                 </div>
                                             </div>
@@ -363,7 +335,7 @@
                                             <div class="single-blood-Pressure">
                                                 <div class="diastolic">
                                                     <canvas id="diastolic" height="95"></canvas>
-                                                    <h4>Diastolic</h4>
+                                                    <h4>Diastolik</h4>
                                                     <h2>150 <sub>mmhz</sub></h2>
                                                 </div>
                                             </div>
@@ -374,7 +346,7 @@
                             <div class="blood-report">
                                 <div class="section-header">
                                     <div class="section-title">
-                                        <h2 class="title">Blood Report</h2>
+                                        <h2 class="title">Qon hisoboti</h2>
                                     </div>
                                 </div>
                                 <div class="section-wrapper p-0">
@@ -382,19 +354,19 @@
                                         <table class="table mb-0">
                                             <tbody>
                                               <tr>
-                                                <td>Down Cluster</td>
+                                                <td>Pastki klaster</td>
                                                 <td>90.9%</td>
                                               </tr>
                                               <tr>
-                                                <td>Down Fiber</td>
+                                                <td>Pastki tola</td>
                                                 <td>1.8%</td>
                                               </tr>
                                               <tr>
-                                                <td>Waterfowl Feathers</td>
+                                                <td>Suv qushlarining patlari</td>
                                                 <td>1.7%</td>
                                               </tr>
                                               <tr>
-                                                <td>Quill</td>
+                                                <td>Kvil</td>
                                                 <td>0.0%</td>
                                               </tr>
                                             </tbody>
