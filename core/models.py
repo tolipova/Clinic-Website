@@ -35,7 +35,26 @@ doctor_skills = (
     ('Ginekolog','Ginekolog'),
     ('Audiolog','Audiolog')
 )
+operatsion_type = (
+    ("Ko'krak jarrohligi" , "Ko'krak jarrohligi"),
+    ("Ko'z jarrohligi", "Ko'z jarrohligi")
 
+)
+operatsion_serves = (
+    ("Ko'krak jarrohligi" , "Ko'krak jarrohligi"),
+    ("Ko'z jarrohligi", "Ko'z jarrohligi")
+
+)
+select_category = (
+    ("Kommunal xizmatlar uchun to'lov","Kommunal xizmatlar uchun to'lov"),
+    ("Ta'mirlash uskunalari uchun to'lov","Ta'mirlash uskunalari uchun to'lov"),
+    ("Kerakli retseptlar uchun to'lov","Kerakli retseptlar uchun to'lov")
+)
+bank = (
+    ("NBU Bank","NBU Bank"),
+    ("Hamkor Bank","Hamkor Bank"),
+    ("Humo Xalq Banki","Humo Xalq Banki")
+)
 class DoctorCreate(models.Model):
     doctor_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     doctor_fullname = models.CharField(verbose_name='Doctorning ism familiyasi', max_length=255)
@@ -96,6 +115,26 @@ class DoctorsList(models.Model):
     doctor_address = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE, related_name="address")
     doctor_university = models.TextField(verbose_name="doctor tamomlagan university")
 
+class Operation(models.Model):
+    patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi',on_delete=models.CASCADE )
+    operatsion_date = models.DateField(auto_now=False)
+    operatsion_time = models.TimeField(auto_now=False)
+    select_operatsion_type = models.CharField(choices=operatsion_type, verbose_name="operatsiya turini tanlang",max_length=255)
+    select_operatsion_serves =  models.CharField(choices=operatsion_serves, verbose_name="operatsiya xizmat turini tanlang",max_length=255)
+    operatsion_price = models.IntegerField(verbose_name="operatsiya narxi")
+    operatsion_discount = models.IntegerField(verbose_name="chegirma summasi")
+    total_grand = models.IntegerField(verbose_name="umumiy grand narxi")
+    paid_amount = models.IntegerField(verbose_name="to'langan miqdor")
+    comment = models.TextField(verbose_name="Izoh qoldiring")
 
+class AddExpense(models.Model):
+    expense_head = models.CharField(max_length=255, verbose_name="harajat nomi")
+    select_category = models.CharField(choices=select_category, max_length=255)
+    amount = models.IntegerField(verbose_name="miqdori")
+    expense_date = models.DateTimeField(auto_now=False)
+    discreption = models.TextField(verbose_name="tavsilot kiriting")
+    card_number = models.IntegerField(verbose_name="**** **** **** 5648")
+    select_bank = models.CharField(max_length=255, verbose_name="kerakli bankni tanlang",choices=bank)
 
-    
+    def __str__(self):
+        return self.expense_head

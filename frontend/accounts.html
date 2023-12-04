@@ -33,7 +33,7 @@
                         <div class="container-fluid">
                             <div class="section-header">
                                 <div class="section-title">
-                                    <h2 class="title">Accounts</h2>
+                                    <h2 class="title">Hisoblar</h2>
                                 </div>
                             </div>
                             <div class="row">
@@ -42,10 +42,10 @@
                                         <div class="single-accounts">
                                             <div class="media align-items-center">
                                                 <div class="accounts-icon bg-one">
-                                                    <img src="assets/images/icons/profit.svg" alt="Patient" />
+                                                    <img src="{% static 'assets/images/icons/profit.svg' %}" alt="Patient" />
                                                 </div>
                                                 <div class="media-body">
-                                                  <p class="m-0">Profit in this Week</p>
+                                                  <p class="m-0">Ushbu haftada foyda</p>
                                                   <h3><span>$</span><span class="counter">25600</span></h3>
                                                 </div>
                                             </div>
@@ -53,10 +53,10 @@
                                         <div class="single-accounts">
                                             <div class="media align-items-center">
                                                 <div class="accounts-icon bg-two">
-                                                    <img src="assets/images/icons/expense.svg" alt="Patient" />
+                                                    <img src="{% static 'assets/images/icons/expense.svg' %}" alt="Patient" />
                                                 </div>
                                                 <div class="media-body">
-                                                  <p class="m-0">Expense in this Week</p>
+                                                  <p class="m-0">Ushbu haftadagi xarajatlar</p>
                                                   <h3><span>$</span><span class="counter">15800</span></h3>
                                                 </div>
                                             </div>
@@ -64,10 +64,10 @@
                                         <div class="single-accounts">
                                             <div class="media align-items-center">
                                                 <div class="accounts-icon bg-three">
-                                                    <img src="assets/images/icons/income.svg" alt="Patient" />
+                                                    <img src="{% static 'assets/images/icons/income.svg' %}" alt="Patient" />
                                                 </div>
                                                 <div class="media-body">
-                                                  <p class="m-0">Income in this Week</p>
+                                                  <p class="m-0">Ushbu haftadagi daromad</p>
                                                   <h3><span>$</span><span class="counter">10200</span></h3>
                                                 </div>
                                             </div>
@@ -84,7 +84,7 @@
                                     <div class="revenue-chart-area">
                                         <div class="section-header">
                                             <div class="section-title">
-                                                <h2 class="title">Visitors</h2>
+                                                <h2 class="title">Tashrif Buyuruvchilar</h2>
                                             </div>
                                         </div>
                                         <div class="section-wrapper">
@@ -96,7 +96,7 @@
                                     <div class="expense-chart-area md-mt-30">
                                         <div class="section-header">
                                             <div class="section-title">
-                                                <h2 class="title">Expense Statistics</h2>
+                                                <h2 class="title">Xarajatlar statistikasi</h2>
                                             </div>
                                         </div>
                                         <div class="section-wrapper">
@@ -114,17 +114,17 @@
                                     <div class="visitors-area">
                                         <div class="section-header">
                                             <div class="section-title">
-                                                <h2 class="title">Visitors</h2>
+                                                <h2 class="title">Tashrif Buyuruvchilar</h2>
                                             </div>
                                         </div>
                                         <div class="section-wrapper">
                                             <div class="visitors-chart">
                                                 <div class="visitors-top">
                                                     <select class="time-status" >
-                                                        <option>This Week</option>
-                                                        <option>This Month</option>
-                                                        <option>This Yearly</option>
-                                                        <option>Daly</option>
+                                                        <option>Haftalik</option>
+                                                        <option>Oylik</option>
+                                                        <option>Yillik</option>
+                                                        <option>Kunlik</option>
                                                     </select>
                                                 </div>
                                                 <canvas id="visitors" style="width: 100%; height: 200px;"></canvas>
@@ -136,7 +136,7 @@
                                     <div class="recent-review md-mt-30">
                                         <div class="section-header">
                                             <div class="section-title">
-                                                <h2 class="title">Recent Review</h2>
+                                                <h2 class="title">Oxirgi sharh</h2>
                                             </div>
                                         </div>
                                         <div class="review-list">
@@ -144,11 +144,11 @@
                                                 <div class="revier-info">
                                                     <div class="media align-items-center">
                                                         <div class="revier-images mr-3">
-                                                            <a href="#"><img src="assets/images/reviewer1.png" alt="reviewer1" /></a>
+                                                            <a href="#"><img src="{% static 'assets/images/reviewer1.png' %}" alt="reviewer1" /></a>
                                                         </div>
                                                         <div class="media-body">
                                                           <h3 class="revier-name mt-0"><a href="#">Benjamin </a></h3>
-                                                          <p class="revier-text m-0">“Excellent visit. This was for a second opinion and an attempt.”</p>
+                                                          <p class="revier-text m-0">“Ajoyib tashrif. Bu ikkinchi fikr va urinish uchun edi.”</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -167,11 +167,11 @@
                                                 <div class="revier-info">
                                                     <div class="media align-items-center">
                                                         <div class="revier-images mr-3">
-                                                            <a href="#"><img src="assets/images/reviewer2.png" alt="reviewer2" /></a>
+                                                            <a href="#"><img src="{% static 'assets/images/reviewer2.png' %}" alt="reviewer2" /></a>
                                                         </div>
                                                         <div class="media-body">
                                                           <h3 class="revier-name mt-0"><a href="#">Alexander</a></h3>
-                                                          <p class="revier-text m-0">“Excellent visit. This was for a second opinion and an attempt.”</p>
+                                                          <p class="revier-text m-0">“Ajoyib tashrif. Bu ikkinchi fikr va urinish uchun edi.”</p>
                                                         </div>
                                                     </div>
                                                 </div>
