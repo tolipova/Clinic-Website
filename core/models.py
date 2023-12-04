@@ -138,3 +138,4 @@ class AddExpense(models.Model):
 
     def __str__(self):
         return self.expense_head
+    

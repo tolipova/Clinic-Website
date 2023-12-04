@@ -1,14 +1,28 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect
+from .models import *
+from .forms import *
 # Create your views here.
 def home(request):
-    return render(request,'index.html' )
+    patient_add = PatientCreate.objects.all()
+    context = {
+        'patient_add':patient_add
+    }
+    return render(request,'index.html', context )
 def patient_list(request):
     return render(request,'patient/patient-list.html' )
 def patient_profile(request):
     return render(request,'patient/Patient-Profile.html' )
+
 def add_patient(request):
-    return render(request,'patient/add-new-patient.html' )
+    form = PatientCreateForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = PatientCreateForm()    
+    return render(request,'patient/add-new-patient.html',{'form':form} )
+
 def all_doctors(request):
     return render(request,'doctor/all-doctors.html' )
 def doctor_profile(request):
