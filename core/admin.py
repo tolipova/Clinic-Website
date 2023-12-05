@@ -4,6 +4,4 @@ from .models import *
 admin.site.register(PatientCreate)
 admin.site.register(DoctorCreate)
 admin.site.register(Rooms)
-admin.site.register(PatientList)
-admin.site.register(DoctorsList)
 admin.site.register(Operation)

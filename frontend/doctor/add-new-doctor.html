@@ -40,7 +40,9 @@
                             </div>
                         </div>
                         <div class="primary-form">
-                            <form action="#">
+                            <form action="#" method="post">
+                                {% csrf_token %}
+                                {% load widget_tweaks %}
                                 <div class="row">
                                     <div class="col-lg-4 col-md-5 col-sm-6">
                                         <div class="form-group">
@@ -50,7 +52,7 @@
                                                 <span class="drop-text">Suratingizni shu yerda qoldiring</span>
                                                 <span class="file-size">Maksimal surat hajmi 2 MB</span>
                                             </label>
-                                            <input type="file" class="form-file" id="dprofile-image" name="dprofile-image" />
+                                            {% render_field form.profile_image|add_class:"form-file" %}
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-6">
@@ -61,83 +63,81 @@
                                                 <span class="drop-text">Suratingizni shu yerda qoldiring</span>
                                                 <span class="file-size">Maksimal surat hajmi 2 MB</span>
                                             </label>
-                                            <input type="file" class="form-file" id="dcover-image" name="dcover-image" />
+                                            {% render_field form.muqova_image|add_class:"form-file" %}
+
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="danme">Doktorning ismi</label>
-                                            <input type="text" class="form-control" id="danme" name="danme" placeholder="Akbarali Fayziyev" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-group">
-                                            <label for="pphonne">Telifon raqami</label>
-                                            <input type="text" class="form-control" id="pphonne" name="pphonne" placeholder="1234 5874 25" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-group">
-                                            <label for="paddress">Manzil</label>
-                                            <input type="text" class="form-control" id="paddress" name="paddress" placeholder="Uzbekistan Navoiy.sh , Bekobod MFY" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-group">
-                                            <label for="page">Yoshi</label>
-                                            <input type="text" class="form-control" id="page" name="page" placeholder="59" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-group">
-                                            <label for="pbloggroup">Qon guruhi</label>
-                                            <select class="form-control wide" id="pbloggroup">
-                                              <option>α va β:birinchi (0)</option>
-                                              <option>A va β: ikkinchi (A)</option>
-                                              <option>α va B: uchinchi (B)</option>
-                                              <option>A va B: toʻrtinchi (AB)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-group">
-                                            <label for="Department">Shifokorning Lavozimi</label>
-                                            <select class="form-control wide" id="Department">
-                                              <option>Tibbiyot mutaxassisi</option>
-                                              <option>Ginekolog</option>
-                                              <option>Jismoniy terapiya</option>
-                                              <option>Audiologiya</option>
-                                              <option>Kordiolog</option>
-                                              <option>Hamshira</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-group">
-                                            <label for="demail">Email Address</label>
-                                            <input type="email" class="form-control" id="demail" name="demail" placeholder="saragraham101@gmail.com" />
+                                            {{form.doctor_fullname|add_class:"form-control"}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="dbarth">Tug'ilgan yili</label>
-                                            <input type="date" class="form-control" id="dbarth" name="dbarth"  />
+                                            {{form.doctor_birth|add_class:"form-control"}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="paddress">Manzil</label>
+                                            {{form.doctor_address|add_class:"form-control"}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="page">Yoshi</label>
+                                            {{form.doctor_age|add_class:"form-control"}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="page">Doktorning bitirgan Universitetlari</label>
+                                            {{form.doctor_university|add_class:"form-control"}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="page">Ish vaqti</label>
+                                            {{form.work_time|add_class:"form-control"}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="pbloggroup">Qon guruhi</label>
+                                            {% render_field form.doctor_blood|add_class:"form-control" %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="Department">Shifokorning Lavozimi</label>
+                                            {% render_field form.doctor_status|add_class:"form-control" %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="demail">Email Address</label>
+                                            {{form.email_address|add_class:"form-control"}}
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="pphonne">Telifon raqami</label>
+                                            {{form.doctor_phone|add_class:"form-control"}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="Skills">Qobiliyatlari</label>
-                                            <select class="form-control wide" id="Skills">
-                                              <option>Farmatsevt</option>
-                                              <option>Ginekolog</option>
-                                              <option>Audiologiya</option>
-                                            </select>
+                                            {% render_field form.doctor_skills|add_class:"form-control" %}
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="Biography">Biografiya</label>
-                                            <textarea class="form-control message" id="Biography" rows="3" placeholder="Qisqacha biografiya yozing"></textarea>
+                                            {{form.doctor_discription|add_class:"form-control"}}
                                         </div>
                                     </div>
                                     <div class="col-lg-12">

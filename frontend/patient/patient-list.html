@@ -45,199 +45,39 @@
                             <div class="patient-list">
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
-                                        <thead>
-                                            <tr>
-                                              <th scope="col"><input type="checkbox" /> Bemor ID</th>
-                                              <th scope="col">Bemor ismi</th>
-                                              <th scope="col">Kirish sanasi</th>
-                                              <th scope="col">tayinlangan Doktor</th>
-                                              <th scope="col">Kasallik</th>
-                                              <th scope="col">Xolati</th>
-                                              <th scope="col">Xona raqami</th>
-                                            </tr>
+                                          <thead>
+                                              <tr>
+                                                <th scope="col"><input type="checkbox" /> Bemor ID</th>
+                                                <th scope="col">Bemor ismi</th>
+                                                <th scope="col">Kirish sanasi</th>
+                                                <th scope="col">tayinlangan Doktor</th>
+                                                <th scope="col">Kasallik</th>
+                                                <th scope="col">Xolati</th>
+                                                <th scope="col">Xona raqami</th>
+                                              </tr>
                                           </thead>
                                           <tbody>
-                                            <tr>
-                                              <td><input type="checkbox" /> #A-122014</td>
-                                              <td>
-                                                <div class="media align-items-center">
-                                                    <div class="patient-imge">
-                                                        <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <p class="m-0">Eddy Cusuma</p>
-                                                    </div>
-                                                </div>
-                                              </td>
-                                              <td>26 Jan 2021</td>
-                                              <td>Charlotte</td>
-                                              <td>Cold & Flu</td>
-                                              <td><span class="patient-status new-patient">New Patient</span></td>
-                                              <td>D-105</td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> #A-122014</td>
-                                              <td>
-                                                <div class="media align-items-center">
-                                                    <div class="patient-imge">
-                                                        <img src="{% static 'assets/images/patient/2.png' %}" alt="patient" />
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <p class="m-0">Charlene Reed </p>
-                                                    </div>
-                                                </div>
-                                              </td>
-                                              <td>26 Jan 2021</td>
-                                              <td>Charlotte</td>
-                                              <td>Cold & Flu</td>
-                                              <td><span class="patient-status new-patient">New Patient</span></td>
-                                              <td>D-105</td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> #A-122014</td>
-                                              <td>
-                                                <div class="media align-items-center">
-                                                    <div class="patient-imge">
-                                                        <img src="{% static 'assets/images/patient/3.png' %}" alt="patient" />
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <p class="m-0">Victor Arnold</p>
-                                                    </div>
-                                                </div>
-                                              </td>
-                                              <td>26 Jan 2021</td>
-                                              <td>Charlotte</td>
-                                              <td>Cold & Flu</td>
-                                              <td><span class="patient-status new-patient">New Patient</span></td>
-                                              <td>D-105</td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> #A-122014</td>
-                                              <td>
-                                                <div class="media align-items-center">
-                                                    <div class="patient-imge">
-                                                        <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <p class="m-0">Sara Graham</p>
-                                                    </div>
-                                                </div>
-                                              </td>
-                                              <td>26 Jan 2021</td>
-                                              <td>Charlotte</td>
-                                              <td>Cold & Flu</td>
-                                              <td><span class="patient-status recovered-patient">New Patient</span></td>
-                                              <td>D-105</td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> #A-122014</td>
-                                              <td>
-                                                <div class="media align-items-center">
-                                                    <div class="patient-imge">
-                                                        <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <p class="m-0">Elmar Mcgee</p>
-                                                    </div>
-                                                </div>
-                                              </td>
-                                              <td>26 Jan 2021</td>
-                                              <td>Charlotte</td>
-                                              <td>Cold & Flu</td>
-                                              <td><span class="patient-status treatment-patient">New Patient</span></td>
-                                              <td>D-105</td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> #A-122014</td>
-                                              <td>
-                                                <div class="media align-items-center">
-                                                    <div class="patient-imge">
-                                                        <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <p class="m-0">Santiago</p>
-                                                    </div>
-                                                </div>
-                                              </td>
-                                              <td>26 Jan 2021</td>
-                                              <td>Charlotte</td>
-                                              <td>Cold & Flu</td>
-                                              <td><span class="patient-status treatment-patient">New Patient</span></td>
-                                              <td>D-105</td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> #A-122014</td>
-                                              <td>
-                                                <div class="media align-items-center">
-                                                    <div class="patient-imge">
-                                                        <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <p class="m-0">Robert Person</p>
-                                                    </div>
-                                                </div>
-                                              </td>
-                                              <td>26 Jan 2021</td>
-                                              <td>Charlotte</td>
-                                              <td>Cold & Flu</td>
-                                              <td><span class="patient-status treatment-patient">New Patient</span></td>
-                                              <td>D-105</td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> #A-122014</td>
-                                              <td>
-                                                <div class="media align-items-center">
-                                                    <div class="patient-imge">
-                                                        <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <p class="m-0">Marry Preston</p>
-                                                    </div>
-                                                </div>
-                                              </td>
-                                              <td>26 Jan 2021</td>
-                                              <td>Charlotte</td>
-                                              <td>Cold & Flu</td>
-                                              <td><span class="patient-status patient-status recovered-patient">New Patient</span></td>
-                                              <td>D-105</td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> #A-122014</td>
-                                              <td>
-                                                <div class="media align-items-center">
-                                                    <div class="patient-imge">
-                                                        <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <p class="m-0">Eddy Cusuma</p>
-                                                    </div>
-                                                </div>
-                                              </td>
-                                              <td>26 Jan 2021</td>
-                                              <td>Charlotte</td>
-                                              <td>Cold & Flu</td>
-                                              <td><span class="patient-status patient-status recovered-patient">New Patient</span></td>
-                                              <td>D-105</td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> #A-122014</td>
-                                              <td>
-                                                <div class="media align-items-center">
-                                                    <div class="patient-imge">
-                                                        <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <p class="m-0">Santiago</p>
-                                                    </div>
-                                                </div>
-                                              </td>
-                                              <td>26 Jan 2021</td>
-                                              <td>Charlotte</td>
-                                              <td>Cold & Flu</td>
-                                              <td><span class="patient-status patient-status recovered-patient">New Patient</span></td>
-                                              <td>D-105</td>
-                                            </tr>
-                                        </tbody>
+                                              {% for patient in page_obj %}
+                                              <tr>
+                                                <td><input type="checkbox" />{{patient.patient_id}}</td>
+                                                <td>
+                                                  <div class="media align-items-center">
+                                                      <!-- <div class="patient-imge">
+                                                          <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
+                                                      </div> -->
+                                                      <div class="media-body">
+                                                        <p class="m-0">{{patient.patient_fullname}}</p>
+                                                      </div>
+                                                  </div>
+                                                </td>
+                                                <td>{{patient.check_in_date}}</td>
+                                                <th>{{patient.patient_acceptance}}</th>
+                                                <td>{{patient.diseases}}</td>
+                                                <td><span class="patient-status new-patient">{{patient.patient_status}}</span></td>
+                                                <td>{{patient.patient_room}}</td>
+                                              </tr>
+                                            {% endfor %}
+                                          </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -247,14 +87,16 @@
                                         <p class="shoing-reselt m-0">256 ta maʼlumotlardan 10 tasi koʻrsatilmoqda</p>
                                     </div>
                                     <div class="col-sm-6 text-left text-sm-right">
+                                        {% if page_obj.has_previous %}
                                         <ul class="pagination-list">
-                                            <li class="Previous"><a href="#"><i class="flaticon-left-arrow"></i> Oldingi</a></li>
+                                            <li class="Previous"><a href="?page=1"><i class="flaticon-left-arrow"></i> Oldingi</a></li>
                                             <li class="page active"><a href="#">1</a></li>
                                             <li class="page"><a href="#">2</a></li>
                                             <li class="page"><a href="#">3</a></li>
                                             <li class="page"><a href="#">4</a></li>
-                                            <li class="next"><a href="#">Keyingi <i class="flaticon-next"></i></a></li>
+                                            <li class="next"><a href="?page={{ page_obj.previous_page_number }}">Keyingi <i class="flaticon-next"></i></a></li>
                                         </ul>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
