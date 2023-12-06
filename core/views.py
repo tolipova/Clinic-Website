@@ -46,7 +46,11 @@ def all_doctors(request):
     return render(request,'doctor/all-doctors.html',context )
 
 def doctor_profile(request):
-    return render(request,'doctor/doctor-Profile.html' )
+    doctors = DoctorCreate.objects.all()
+    context = {
+        'doctors':doctors
+    }
+    return render(request,'doctor/doctor-Profile.html', context )
 
 def add_doctor(request):
     form = DoctorCreateForm(request.POST)

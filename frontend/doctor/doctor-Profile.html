@@ -37,19 +37,20 @@
                                         <h2 class="title">Doctor Profile</h2>
                                     </div>
                                 </div>
+                                {% for post in doctors %}
                                 <div class="Profile-area">
                                     <div class="profile-cover">
-                                        <img src="assets/images/profile-cover.jpg" alt="profile-cover" />
+                                        <img src="{% static 'assets/images/profile-cover.jpg' %}" alt="profile-cover" />
                                     </div>
                                     <div class="profile-top">
                                         <div class="profile-info d-flex ">
                                             <div class="profile-image mr-5">
-                                                <img src="assets/images/doctor-profile-image.png" alt="profile" />
+                                                <img src="{{post.muqova_image.url}}" alt="profile" />
                                             </div>
                                             <div class="profile-content">
-                                                <h3>Dr. Sara Graham</h3>
-                                                <p>Medicine Specialist</p>
-                                                <p><i class="flaticon-clock"></i>04:00 PM - 09:00 PM</p>
+                                                <h3>{{post.doctor_fullname}}</h3>
+                                                <p>{{post.doctor_status}}</p>
+                                                <p><i class="flaticon-clock"></i>{{post.work_time}}</p>
                                             </div>
                                         </div>
                                         <div class="rating-area">
@@ -67,33 +68,13 @@
                                         <div class="primary-tab">
                                             <ul class="nav nav-tabs" id="Patient" role="tablist">
                                                 <li class="nav-item" role="presentation">
-                                                  <a class="nav-link active" id="biography-tab" data-toggle="tab" href="#biography" role="tab" aria-controls="biography" aria-selected="true">Biography</a>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                  <a class="nav-link" id="skills-tab" data-toggle="tab" href="#skills" role="tab" aria-controls="skills" aria-selected="false">Skills</a>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact Information</a>
+                                                  <a class="nav-link active" id="biography-tab" data-toggle="tab" href="#biography" role="tab" aria-controls="biography" aria-selected="true">Biografiya</a>
                                                 </li>
                                             </ul>
                                             <div class="tab-content" id="PatientContent">
                                                 <div class="tab-pane fade show active" id="biography" role="tabpanel" aria-labelledby="biography-tab">
                                                     <div class="profile-bottom-info">
-                                                        <p>George A. Sample, MD, FCCP, is a graduate of George Washington University Medical School. He trained in internal medicine at the University of Oregon Health Sciences (UOHS) and pulmonary critical care medicine at UOHS and the University of Southern California.
-                                                        </p>
-                                                        <p>Sample has been practicing since 1976, the last 12 years in Washington, D.C., at the Washington Hospital Center, selected as one of the top 100 hospitals in the United States. Sample's practice specializes in the care of critically.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="skills" role="tabpanel" aria-labelledby="skills-tab">
-                                                    <div class="profile-bottom-info">
-                                                        <p>George A. Sample, MD, FCCP, is a graduate of George Washington University Medical School. He trained in internal medicine at the University of Oregon Health Sciences (UOHS) and pulmonary critical care medicine at UOHS and the University of Southern California.
-                                                        </p>
-                                                        <p>Sample has been practicing since 1976, the last 12 years in Washington, D.C., at the Washington Hospital Center, selected as one of the top 100 hospitals in the United States. Sample's practice specializes in the care of critically.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                                    <div class="profile-bottom-info">
-                                                        <p>George A. Sample, MD, FCCP, is a graduate of George Washington University Medical School. He trained in internal medicine at the University of Oregon Health Sciences (UOHS) and pulmonary critical care medicine at UOHS and the University of Southern California.
+                                                        <p>{{post.doctor_discription}}
                                                         </p>
                                                         <p>Sample has been practicing since 1976, the last 12 years in Washington, D.C., at the Washington Hospital Center, selected as one of the top 100 hospitals in the United States. Sample's practice specializes in the care of critically.</p>
                                                     </div>
@@ -102,6 +83,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% endfor %}
                             </div>
                             <div class="col-lg-4">
                                 <div class="appointment-area md-mt-30">
