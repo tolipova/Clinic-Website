@@ -83,20 +83,26 @@
                             </div>
                             <div class="pagination-area mt-10">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <p class="shoing-reselt m-0">256 ta maʼlumotlardan 10 tasi koʻrsatilmoqda</p>
-                                    </div>
+                                    
                                     <div class="col-sm-6 text-left text-sm-right">
-                                        {% if page_obj.has_previous %}
+                                        
                                         <ul class="pagination-list">
-                                            <li class="Previous"><a href="?page=1"><i class="flaticon-left-arrow"></i> Oldingi</a></li>
-                                            <li class="page active"><a href="#">1</a></li>
+                                            {% if page_obj.has_previous %}
+                                                
+                                                <li class="page"><a href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+                                            {% endif %}
+                                            <li class="page"> <a href="?page=1">&laquo; first</a></li>
+                                            <!-- <li class="page active"><a href="#">1</a></li>
                                             <li class="page"><a href="#">2</a></li>
                                             <li class="page"><a href="#">3</a></li>
-                                            <li class="page"><a href="#">4</a></li>
-                                            <li class="next"><a href="?page={{ page_obj.previous_page_number }}">Keyingi <i class="flaticon-next"></i></a></li>
+                                            <li class="page"><a href="#">4</a></li> -->
+                                            
+                                            {% if page_obj.has_next %}
+                                                <li class="page"><a href="?page={{ page_obj.next_page_number }}">next</a></li>
+                                                <li class="page"><a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+                                            {% endif %}
                                         </ul>
-                                        {% endif %}
+                                        
                                     </div>
                                 </div>
                             </div>

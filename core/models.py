@@ -76,27 +76,27 @@ class DoctorCreate(models.Model):
         return self.doctor_fullname
      
 class Rooms(models.Model):
-    room_number = models.IntegerField(verbose_name="xona raqami", null=False, blank=True) 
+    room_number = models.IntegerField(verbose_name="xona raqami", null=True, blank=True) 
 
     def __str__(self):
         return str(self.room_number) 
       
 class PatientCreate(models.Model):
     
-    patient_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    patient_fullname = models.CharField(verbose_name='Bemorning ism familiyasi', max_length=255)
+    patient_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, )
+    patient_fullname = models.CharField(verbose_name='Bemorning ism familiyasi', max_length=255,null=True)
     patient_phone = models.IntegerField(verbose_name='Bemorning telefon raqami')
-    patient_address = models.CharField(verbose_name='Bemorning manzili', max_length=255)
-    patient_age = models.IntegerField(verbose_name='Bemorning yoshi')
-    patient_blood = models.CharField(verbose_name='Qon gruxi',choices=qon_guruxlari, max_length=255)
-    patient_status = models.CharField(choices=qabul_holati, verbose_name='Qabul holati', max_length=255)
-    patient_married = models.CharField(choices=turmush_holati, verbose_name='Turmush holati', max_length=255)
-    patient_gender = models.CharField(verbose_name='Jinsi', choices=jinsi, max_length=255)
-    patient_acceptance = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE)
-    patient_discription = models.TextField(verbose_name="Qo'shimcha ma'lumot")
-    check_in_date = models.DateTimeField(auto_now=False)
-    diseases = models.CharField(max_length=255, verbose_name="kasallik nommi")
-    patient_room = models.ForeignKey(Rooms, on_delete=models.CASCADE)
+    patient_address = models.CharField(verbose_name='Bemorning manzili', max_length=255,null=True)
+    patient_age = models.IntegerField(verbose_name='Bemorning yoshi',null=True)
+    patient_blood = models.CharField(verbose_name='Qon gruxi',choices=qon_guruxlari, max_length=255,null=True)
+    patient_status = models.CharField(choices=qabul_holati, verbose_name='Qabul holati', max_length=255,null=True)
+    patient_married = models.CharField(choices=turmush_holati, verbose_name='Turmush holati', max_length=255,null=True)
+    patient_gender = models.CharField(verbose_name='Jinsi', choices=jinsi, max_length=255,null=True)
+    patient_acceptance = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE, null=True)
+    patient_discription = models.TextField(verbose_name="Qo'shimcha ma'lumot", null=True)
+    check_in_date = models.DateTimeField(auto_now = True)
+    diseases = models.CharField(max_length=255, verbose_name="kasallik nommi", null=True)
+    patient_room = models.ForeignKey(Rooms, on_delete=models.CASCADE,null=True )
     
     def __str__(self):
         return self.patient_fullname

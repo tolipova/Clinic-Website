@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
 from django.core.paginator import Paginator
+from django.http import HttpResponse, Http404
 
 # Create your views here.
 def home(request):
@@ -15,7 +16,7 @@ def home(request):
 
 def patient_list(request):
     patient = PatientCreate.objects.all()
-    paginator = Paginator(patient, 10)  
+    paginator = Paginator(patient, 2)  
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -59,7 +60,7 @@ def add_doctor(request):
             form.save()
             return redirect('home')
     else:
-        form = DoctorCreateForm()    
+        form = print("Error") 
     return render(request,'doctor/add-new-doctor.html',{'form':form} )
 
 def appointment(request):
