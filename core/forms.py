@@ -10,20 +10,51 @@ class PatientCreateForm(forms.ModelForm):
             'patient_phone': forms.NumberInput(attrs={'class':'form-control'}),
             'patient_address':forms.TextInput(attrs={'class':'form-control'}),
             'patient_age':forms.NumberInput(attrs={'class':'form-control'}),
+            'patient_birth':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
             'patient_blood':forms.Select(attrs={'class':'form-control'}),
             'patient_status':forms.Select(attrs={'class':'form-control'}),
             'patient_married':forms.Select(attrs={'class':'form-control'}),
             'patient_gender':forms.Select(attrs={'class':'form-control'}),
             'patient_acceptance':forms.Select(attrs={'class':'form-control'}),
             'patient_discription':forms.Textarea(attrs={'class':'form-control'}),
-            'check_in_date':forms.SplitDateTimeWidget(),
+            'check_in_date':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
             'diseases':forms.TextInput(attrs={'class':'form-control'}),
             'patient_room':forms.Select(attrs={'class':'form-control'}),
-           
-
-
         }
 class DoctorCreateForm(forms.ModelForm):
     class Meta:
         model = DoctorCreate
         fields = '__all__'
+        widgets = {
+            'doctor_fullname': forms.TextInput(attrs={'class':'form-control'}),
+            'doctor_phone': forms.NumberInput(attrs={'class':'form-control'}),
+            'doctor_address':forms.TextInput(attrs={'class':'form-control'}),
+            'doctor_age':forms.NumberInput(attrs={'class':'form-control'}),
+            'doctor_birth':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
+            'doctor_blood':forms.Select(attrs={'class':'form-control'}),
+            'doctor_status':forms.Select(attrs={'class':'form-control'}),
+            'doctor_university':forms.Textarea(attrs={'class':'form-control'}),
+            'doctor_discription':forms.Textarea(attrs={'class':'form-control'}),
+            'doctor_skills':forms.Select(attrs={'class':'form-control'}),
+            'work_time':forms.TimeInput(attrs={'type': 'time', 'class':'form-control'}),
+            'email_address' : forms.EmailInput(attrs={'class':'form-control'}),
+            "profile_image": forms.FileInput(attrs={"rows": "", "class": "form-file"}),
+            "muqova_image": forms.FileInput(attrs={"rows": "", "class": "form-file"})
+        }
+
+class OperationForm(forms.ModelForm):
+    class Meta:
+        model = Operation
+        fields = '__all__'
+        widgets = {
+            'patient_fullname': forms.Select(attrs={'class':'form-control' }),
+            'operatsion_date':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
+            'operatsion_time':forms.TimeInput(attrs={'type': 'time', 'class':'form-control'}),
+            'select_operatsion_type':forms.Select(attrs={'class':'form-control wide'}),
+            'select_operatsion_serves':forms.Select(attrs={'class':'form-control wide'}),
+            'operatsion_price':forms.NumberInput(attrs={'class':'form-control'}),
+            'operatsion_discount':forms.NumberInput(attrs={'class':'form-control'}),
+            'total_grand':forms.NumberInput(attrs={'class':'form-control'}),
+            'paid_amount':forms.NumberInput(attrs={'class':'form-control'}),
+            'comment':forms.Textarea(attrs={'class':'form-control  message'}),
+        }

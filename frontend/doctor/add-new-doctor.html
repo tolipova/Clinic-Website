@@ -40,9 +40,8 @@
                             </div>
                         </div>
                         <div class="primary-form">
-                            <form action="#" method="post">
+                            <form action="#" method="post"  enctype="multipart/form-data">
                                 {% csrf_token %}
-                                {% load widget_tweaks %}
                                 <div class="row">
                                     <div class="col-lg-4 col-md-5 col-sm-6">
                                         <div class="form-group">
@@ -52,7 +51,8 @@
                                                 <span class="drop-text">Suratingizni shu yerda qoldiring</span>
                                                 <span class="file-size">Maksimal surat hajmi 2 MB</span>
                                             </label>
-                                            {% render_field form.profile_image|add_class:"form-file" %}
+                                            {{form.profile_image}}
+
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-md-7 col-sm-6">
@@ -63,93 +63,91 @@
                                                 <span class="drop-text">Suratingizni shu yerda qoldiring</span>
                                                 <span class="file-size">Maksimal surat hajmi 2 MB</span>
                                             </label>
-                                            {% render_field form.muqova_image|add_class:"form-file" %}
+                                            {{form.profile_image}}
 
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="danme">Doktorning ismi</label>
-                                            {{form.doctor_fullname|add_class:"form-control"}}
+                                            {{form.doctor_fullname}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="dbarth">Tug'ilgan yili</label>
-                                            {{form.doctor_birth|add_class:"form-control"}}
+                                            {{form.doctor_birth}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="paddress">Manzil</label>
-                                            {{form.doctor_address|add_class:"form-control"}}
+                                            {{form.doctor_address}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="page">Yoshi</label>
-                                            {{form.doctor_age|add_class:"form-control"}}
+                                            {{form.doctor_age}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
-                                            <label for="page">Doktorning bitirgan Universitetlari</label>
-                                            {{form.doctor_university|add_class:"form-control"}}
+                                            <label for="pphonne">Telifon raqami</label>
+                                            {{form.doctor_phone}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="page">Ish vaqti</label>
-                                            {{form.work_time|add_class:"form-control"}}
+                                            {{form.work_time}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="pbloggroup">Qon guruhi</label>
-                                            {% render_field form.doctor_blood|add_class:"form-control" %}
+                                            {{form.doctor_blood}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="Department">Shifokorning Lavozimi</label>
-                                            {% render_field form.doctor_status|add_class:"form-control" %}
+                                            {{form.doctor_status}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="demail">Email Address</label>
-                                            {{form.email_address|add_class:"form-control"}}
+                                            {{form.email_address}}
                                         </div>
                                     </div>
                                     
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
-                                            <label for="pphonne">Telifon raqami</label>
-                                            {{form.doctor_phone|add_class:"form-control"}}
+                                            <label for="Skills">Qobiliyatlari</label>
+                                            {{form.doctor_skills}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
-                                            <label for="Skills">Qobiliyatlari</label>
-                                            {% render_field form.doctor_skills|add_class:"form-control" %}
+                                            <label for="page">Doktorning bitirgan Universitetlari</label>
+                                            {{form.doctor_university}}
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="Biography">Biografiya</label>
-                                            {{form.doctor_discription|add_class:"form-control"}}
+                                            {{form.doctor_discription}}
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <button type="submit" class="form-btn">Doktor qo'shish</button>
+                                        <input type="submit" value="Yuborish" class="form-btn">
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
         <div class="body-overlay"></div>
         
         

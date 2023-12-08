@@ -54,19 +54,30 @@ def doctor_profile(request):
     return render(request,'doctor/doctor-Profile.html', context )
 
 def add_doctor(request):
-    form = DoctorCreateForm(request.POST)
+    form = DoctorCreateForm(request.POST ,request.FILES)
     if request.method == 'POST':
         if form.is_valid():
             form.save()
             return redirect('home')
     else:
-        form = print("Error") 
+        form = DoctorCreateForm() 
     return render(request,'doctor/add-new-doctor.html',{'form':form} )
 
 def appointment(request):
     return render(request,'doctor/appointment.html' )
+
 def operation(request):
-    return render(request,'operation.html' )
+    form = OperationForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            print('xato')
+    else:
+        form = OperationForm() 
+    return render(request,'operation.html',{'form':form})
+
 def emergency_form(request):
     return render(request,'emergency/emergency-form.html' )
 def emergency_list(request):

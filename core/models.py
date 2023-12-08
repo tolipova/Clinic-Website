@@ -66,11 +66,11 @@ class DoctorCreate(models.Model):
     doctor_blood = models.CharField(verbose_name='Qon gruxi',choices=qon_guruxlari, max_length=255)
     doctor_status = models.CharField(verbose_name='Shifokorning lavozimi', choices=doctor_lavozimi, max_length=255)
     email_address = models.EmailField(max_length=70,blank=True,unique=True)
-    doctor_birth = models.CharField(max_length=255, verbose_name="Tug'ilgan kun/oy/yil")
+    doctor_birth = models.DateField(auto_now=False)
     doctor_skills = models.CharField(choices=doctor_skills, verbose_name="Doktor qobiliyati",max_length=255)
     doctor_discription = models.TextField(verbose_name="Qo'shimcha ma'lumot")
     doctor_university = models.TextField(verbose_name="doctor tamomlagan university")
-    work_time = models.DateTimeField(default=timezone.now)
+    work_time = models.TimeField(auto_now=False)
     
     def __str__(self):
         return self.doctor_fullname
@@ -87,6 +87,7 @@ class PatientCreate(models.Model):
     patient_fullname = models.CharField(verbose_name='Bemorning ism familiyasi', max_length=255,null=True)
     patient_phone = models.IntegerField(verbose_name='Bemorning telefon raqami')
     patient_address = models.CharField(verbose_name='Bemorning manzili', max_length=255,null=True)
+    patient_birth = models.DateField(auto_now=False)
     patient_age = models.IntegerField(verbose_name='Bemorning yoshi',null=True)
     patient_blood = models.CharField(verbose_name='Qon gruxi',choices=qon_guruxlari, max_length=255,null=True)
     patient_status = models.CharField(choices=qabul_holati, verbose_name='Qabul holati', max_length=255,null=True)
@@ -94,7 +95,7 @@ class PatientCreate(models.Model):
     patient_gender = models.CharField(verbose_name='Jinsi', choices=jinsi, max_length=255,null=True)
     patient_acceptance = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE, null=True)
     patient_discription = models.TextField(verbose_name="Qo'shimcha ma'lumot", null=True)
-    check_in_date = models.DateTimeField(auto_now = True)
+    check_in_date = models.DateField(auto_now =False )
     diseases = models.CharField(max_length=255, verbose_name="kasallik nommi", null=True)
     patient_room = models.ForeignKey(Rooms, on_delete=models.CASCADE,null=True )
     
@@ -103,8 +104,8 @@ class PatientCreate(models.Model):
     
 class Operation(models.Model):
     patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi',on_delete=models.CASCADE )
-    operatsion_date = models.DateField(auto_now=False)
-    operatsion_time = models.TimeField(auto_now=False)
+    operatsion_date = models.DateField(auto_now=False )
+    operatsion_time = models.TimeField(auto_now=False )
     select_operatsion_type = models.CharField(choices=operatsion_type, verbose_name="operatsiya turini tanlang",max_length=255)
     select_operatsion_serves =  models.CharField(choices=operatsion_serves, verbose_name="operatsiya xizmat turini tanlang",max_length=255)
     operatsion_price = models.IntegerField(verbose_name="operatsiya narxi")
@@ -117,7 +118,7 @@ class AddExpense(models.Model):
     expense_head = models.CharField(max_length=255, verbose_name="harajat nomi")
     select_category = models.CharField(choices=select_category, max_length=255)
     amount = models.IntegerField(verbose_name="miqdori")
-    expense_date = models.DateTimeField(auto_now=False)
+    expense_date = models.DateTimeField(auto_now=False )
     discreption = models.TextField(verbose_name="tavsilot kiriting")
     card_number = models.IntegerField(verbose_name="**** **** **** 5648")
     select_bank = models.CharField(max_length=255, verbose_name="kerakli bankni tanlang",choices=bank)

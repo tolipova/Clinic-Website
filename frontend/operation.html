@@ -40,78 +40,73 @@
                             </div>
                         </div>
                         <div class="primary-form">
-                            <form action="#">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="PatientID">Bemor ismi</label>
-                                            <input type="text" class="form-control" id="PatientID" name="PatientID" placeholder="#A-122014" />
+                                            {{form.patient_fullname}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="OperationDate">Operatsiya kuni</label>
-                                            <input type="text" class="form-control" id="OperationDate" name="OperationDate" placeholder="31 Jan 2021" />
+                                            {{form.operatsion_date}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="OperationTime">Operatsiya soati</label>
-                                            <input type="text" class="form-control" id="OperationTime" name="OperationTime" placeholder="12.00 AM" />
+                                            {{form.operatsion_time}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="OperationType">Operatsiya turini tanlang</label>
-                                            <select class="form-control wide" id="OperationType">
-                                              <option>Ko'krak jarrohligi</option>
-                                              <option>Ko'z jarrohligi</option>
-                                            </select>
+                                            {{form.select_operatsion_type}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="OperationService">Operatsion xizmatini tanlang</label>
-                                            <select class="form-control wide" id="OperationService">
-                                                <option>Ko'krak jarrohligi</option>
-                                                <option>Ko'z jarrohligi</option>
-                                            </select>
+                                            {{form.select_operatsion_serves}}
                                         </div>
                                     </div>
                                     
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="Price">Narxi</label>
-                                            <input type="text" class="form-control" id="Price" name="Price" placeholder="$5600" />
+                                            {{form.operatsion_price}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="Discount">Chegirma</label>
-                                            <input type="text" class="form-control" id="Discount" name="Discount" placeholder="0%" />
+                                            {{form.operatsion_discount}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-group">
                                             <label for="GrandTotal">Umumiy Grand</label>
-                                            <input type="text" class="form-control" id="GrandTotal" name="GrandTotal" placeholder="$5600" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <label for="Remark">Izoh</label>
-                                            <textarea class="form-control message" id="Remark" rows="3" placeholder="Write a Short Description"></textarea>
+                                            {{form.total_grand}}
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="PaidAmount">To'langan miqdor</label>
-                                            <input type="text" class="form-control" id="PaidAmount" name="PaidAmount" placeholder="$5600" />
+                                            {{form.paid_amount}}
                                         </div>
                                     </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label for="Remark">Izoh</label>
+                                            {{form.comment}}
+                                        </div>
+                                    </div>
+                                    
                                     <div class="col-lg-12">
-                                        <button type="submit" class="form-btn">Yuborish</button>
+                                        <input type="submit" value="Yuborish" class="form-btn">
                                     </div>
                                 </div>
                             </form>

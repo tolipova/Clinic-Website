@@ -44,10 +44,10 @@
                                                 <img src="{% static 'assets/images/profile.png' %}" alt="Patient-profile.png" />
                                             </div>
                                             <div class="media-body">
-                                              <h4 class="Patient-name">Eddy Cusuma</h4>
+                                              <h4 class="Patient-name">{{patient.patient_fullname}}</h4>
                                               <div class="Patient-des">
-                                                <span>#A-122014</span>
-                                                <span>Cold & Flu</span>
+                                                <span>Bemor shifokori: {{patient.patient_acceptance}}</span>
+                                                <span>{{patient.diseases}}</span>
                                               </div>
                                             </div>
                                         </div>
@@ -56,12 +56,6 @@
                                         <ul class="nav nav-tabs" id="PatientProfile" role="tablist">
                                             <li class="nav-item" role="presentation">
                                               <a class="nav-link active" id="patient-information-tab" data-toggle="tab" href="#patient-information" role="tab" aria-controls="patient-information" aria-selected="true">Bemor malumoti</a>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                              <a class="nav-link" id="visits-tab" data-toggle="tab" href="#visits" role="tab" aria-controls="visits" aria-selected="false">Tashriflar</a>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <a class="nav-link" id="lab-tab" data-toggle="tab" href="#lab" role="tab" aria-controls="lab" aria-selected="false">Lab</a>
                                             </li>
                                             <li class="nav-item" role="presentation">
                                                 <a class="nav-link" id="Prescriptions-tab" data-toggle="tab" href="#Prescriptions" role="tab" aria-controls="Prescriptions" aria-selected="false">Retseptlar</a>
@@ -99,134 +93,6 @@
                                                           <tr>
                                                             <td>Telifon raqam</td>
                                                             <td>1234 5874 25</td>
-                                                          </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="visits" role="tabpanel" aria-labelledby="visits-tab">
-                                                <div class="table-responsive">
-                                                    <table class="table table-borderless">
-                                                        <tbody>
-                                                          <tr>
-                                                            <td>Date of Birth</td>
-                                                            <td>30 Nov 1995</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Age</td>
-                                                            <td>25 years old</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Gender</td>
-                                                            <td>Male</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Religion</td>
-                                                            <td>Islam</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Occupation</td>
-                                                            <td>Business</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Marital Status</td>
-                                                            <td>Married</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Address</td>
-                                                            <td>San Joss, California, USA</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Phone Number</td>
-                                                            <td>1234 5874 25</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Name</td>
-                                                            <td>Robert Person</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Relationship</td>
-                                                            <td>Father</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Phone Number</td>
-                                                            <td>4569 245 36</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Name</td>
-                                                            <td>Robert Person</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Relationship</td>
-                                                            <td>Father</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Phone Number</td>
-                                                            <td>4569 245 36</td>
-                                                          </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="lab" role="tabpanel" aria-labelledby="lab-tab">
-                                                <div class="table-responsive">
-                                                    <table class="table table-borderless">
-                                                        <tbody>
-                                                          <tr>
-                                                            <td>Date of Birth</td>
-                                                            <td>30 Nov 1995</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Age</td>
-                                                            <td>25 years old</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Gender</td>
-                                                            <td>Male</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Religion</td>
-                                                            <td>Islam</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Occupation</td>
-                                                            <td>Business</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Marital Status</td>
-                                                            <td>Married</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Address</td>
-                                                            <td>San Joss, California, USA</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Phone Number</td>
-                                                            <td>1234 5874 25</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Name</td>
-                                                            <td>Robert Person</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Relationship</td>
-                                                            <td>Father</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Phone Number</td>
-                                                            <td>4569 245 36</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Name</td>
-                                                            <td>Robert Person</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Relationship</td>
-                                                            <td>Father</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Phone Number</td>
-                                                            <td>4569 245 36</td>
                                                           </tr>
                                                         </tbody>
                                                     </table>
@@ -298,7 +164,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                  </div>
                             </div>
                         </div>
                         <div class="col-lg-5">

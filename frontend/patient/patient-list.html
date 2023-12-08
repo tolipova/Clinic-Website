@@ -89,17 +89,17 @@
                                         <ul class="pagination-list">
                                             {% if page_obj.has_previous %}
                                                 
-                                                <li class="page"><a href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+                                                <li class="page"><a href="?page={{ page_obj.previous_page_number }}">Oldingi</a></li>
                                             {% endif %}
-                                            <li class="page"> <a href="?page=1">&laquo; first</a></li>
-                                            <!-- <li class="page active"><a href="#">1</a></li>
-                                            <li class="page"><a href="#">2</a></li>
-                                            <li class="page"><a href="#">3</a></li>
-                                            <li class="page"><a href="#">4</a></li> -->
+                                            <!-- <li class="page"> <a href="?page=1">&laquo; first</a></li> -->
+                                            <li class="page active"><a href="?page={{ page_obj.1_page_number }}">1</a></li>
+                                            <li class="page"><a href="?page={{ page_obj.2_page_number }}">2</a></li>
+                                            <li class="page"><a href="?page={{ page_obj.3_page_number }}">3</a></li>
+                                            <li class="page"><a href="?page={{ page_obj.4_page_number }}">4</a></li>
                                             
                                             {% if page_obj.has_next %}
-                                                <li class="page"><a href="?page={{ page_obj.next_page_number }}">next</a></li>
-                                                <li class="page"><a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+                                                <!-- <li class="page"><a href="?page={{ page_obj.next_page_number }}">next</a></li> -->
+                                                <li class="page"><a href="?page={{ page_obj.paginator.num_pages }}">Oxirgi &raquo;</a></li>
                                             {% endif %}
                                         </ul>
                                         
