@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+import random
 from django.utils import timezone
 # Create your models here.
 qon_guruxlari =(
@@ -98,7 +99,19 @@ class PatientCreate(models.Model):
     check_in_date = models.DateField(auto_now =False )
     diseases = models.CharField(max_length=255, verbose_name="kasallik nommi", null=True)
     patient_room = models.ForeignKey(Rooms, on_delete=models.CASCADE,null=True )
-    
+    patient_key = models.CharField(verbose_name='Patient Key', max_length=9, unique=True, editable=False)
+
+    def save(self, *args, **kwargs):
+        if not self.patient_key:
+            self.patient_key = self.generate_unique_key()
+        super().save(*args, **kwargs)
+
+    def generate_unique_key(self):
+        key = ''.join(str(random.randint(0, 9)) for _ in range(9))
+        while PatientCreate.objects.filter(patient_key=key).exists():
+            key = ''.join(str(random.randint(0, 9)) for _ in range(9))
+        return key
+
     def __str__(self):
         return self.patient_fullname
     
@@ -126,3 +139,4 @@ class AddExpense(models.Model):
     def __str__(self):
         return self.expense_head
     
+
