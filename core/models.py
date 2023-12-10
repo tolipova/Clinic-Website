@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 import random
+from django.urls import reverse
 from django.utils import timezone
 # Create your models here.
 qon_guruxlari =(
@@ -111,7 +112,11 @@ class PatientCreate(models.Model):
         while PatientCreate.objects.filter(patient_key=key).exists():
             key = ''.join(str(random.randint(0, 9)) for _ in range(9))
         return key
+    def get_absolute_url(self):
+            return reverse('patient_profile', kwargs={'pk': self.pk})
 
+    def get_edit_url(self):
+            return reverse('patient_edit', kwargs={'pk': self.pk})
     def __str__(self):
         return self.patient_fullname
     

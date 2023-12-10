@@ -54,6 +54,7 @@
                                                 <th scope="col">Kasallik</th>
                                                 <th scope="col">Xolati</th>
                                                 <th scope="col">Xona raqami</th>
+                                                <th>Taxrirlash</th>
                                               </tr>
                                           </thead>
                                           <tbody>
@@ -66,7 +67,7 @@
                                                           <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
                                                       </div> -->
                                                       <div class="media-body">
-                                                        <p class="m-0">{{patient.patient_fullname}}</p>
+                                                        <p class="m-0"><a href="{{ patient.get_absolute_url }}">{{patient.patient_fullname}}</a></p>
                                                       </div>
                                                   </div>
                                                 </td>
@@ -75,6 +76,9 @@
                                                 <td>{{patient.diseases}}</td>
                                                 <td><span class="patient-status new-patient">{{patient.patient_status}}</span></td>
                                                 <td>{{patient.patient_room}}</td>
+                                                <td>
+                                                    <a href="{{ patient.get_edit_url }}"><i class="flaticon-pencil-1"></i></a>
+                                                </td>
                                               </tr>
                                             {% endfor %}
                                           </tbody>
@@ -85,23 +89,25 @@
                                 <div class="row">
                                     
                                     <div class="col-sm-6 text-left text-sm-right">
-                                        
-                                        <ul class="pagination-list">
-                                            {% if page_obj.has_previous %}
+                                            <ul class="pagination-list">
+                                                {% if page_obj.has_previous %}
+                                                    <li class="page"><a href="?page=1">&laquo; First</a></li>
+                                                    <li class="page"><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                                                {% endif %}
                                                 
-                                                <li class="page"><a href="?page={{ page_obj.previous_page_number }}">Oldingi</a></li>
-                                            {% endif %}
-                                            <!-- <li class="page"> <a href="?page=1">&laquo; first</a></li> -->
-                                            <li class="page active"><a href="?page={{ page_obj.1_page_number }}">1</a></li>
-                                            <li class="page"><a href="?page={{ page_obj.2_page_number }}">2</a></li>
-                                            <li class="page"><a href="?page={{ page_obj.3_page_number }}">3</a></li>
-                                            <li class="page"><a href="?page={{ page_obj.4_page_number }}">4</a></li>
-                                            
-                                            {% if page_obj.has_next %}
-                                                <!-- <li class="page"><a href="?page={{ page_obj.next_page_number }}">next</a></li> -->
-                                                <li class="page"><a href="?page={{ page_obj.paginator.num_pages }}">Oxirgi &raquo;</a></li>
-                                            {% endif %}
-                                        </ul>
+                                                {% for num in page_obj.paginator.page_range %}
+                                                    {% if num == page_obj.number %}
+                                                        <li class="page active"><span>{{ num }}</span></li>
+                                                    {% else %}
+                                                        <li class="page"><a href="?page={{ num }}">{{ num }}</a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                
+                                                {% if page_obj.has_next %}
+                                                    <li class="page"><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                                                    <li class="page"><a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a></li>
+                                                {% endif %}
+                                            </ul>
                                         
                                     </div>
                                 </div>

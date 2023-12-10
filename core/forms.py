@@ -58,3 +58,8 @@ class OperationForm(forms.ModelForm):
             'paid_amount':forms.NumberInput(attrs={'class':'form-control'}),
             'comment':forms.Textarea(attrs={'class':'form-control  message'}),
         }
+
+class PatientForm(forms.ModelForm):
+    class Meta:
+        model = PatientCreate
+        fields = ['patient_fullname', 'patient_phone', 'patient_address', 'patient_birth', 'patient_age', 'patient_blood', 'patient_status', 'patient_married', 'patient_gender', 'patient_acceptance', 'patient_discription', 'check_in_date', 'diseases', 'patient_room']

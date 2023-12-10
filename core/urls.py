@@ -17,7 +17,9 @@ urlpatterns = [
     path('reports/', reports, name="reports"),
     path('accounts/', accounts, name="accounts"),
     path('expense-list/', expense_list, name="expense_list"),
-    path('add-expense/', add_expense, name="add_expense")
+    path('add-expense/', add_expense, name="add_expense"),
+    path('patient/<uuid:pk>/', patient_profile, name='patient_profile'),
+    path('patient/<uuid:pk>/edit/', patient_edit, name='patient_edit'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

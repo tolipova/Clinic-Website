@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 from .forms import *
 from django.core.paginator import Paginator
@@ -16,7 +16,7 @@ def home(request):
 
 def patient_list(request):
     patient = PatientCreate.objects.all()
-    paginator = Paginator(patient, 2)  
+    paginator = Paginator(patient, 1)  
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -26,8 +26,23 @@ def patient_list(request):
     }
     return render(request,'patient/patient-list.html',context)
 
-def patient_profile(request):
-    return render(request,'patient/Patient-Profile.html' )
+def patient_profile(request, pk):
+    patient = get_object_or_404(PatientCreate, pk=pk)
+    return render(request, 'patient/Patient-Profile.html', {'patient': patient})
+    #return render(request,'patient/Patient-Profile.html' )
+
+def patient_edit(request, pk):
+    patient = get_object_or_404(PatientCreate, pk=pk)
+    
+    if request.method == 'POST':
+        form = PatientForm(request.POST, instance=patient)
+        if form.is_valid():
+            form.save()
+            return redirect('patient_profile', pk=pk)  # Redirect to patient detail page after successful update
+    else:
+        form = PatientForm(instance=patient)
+    
+    return render(request, 'patient/patient_edit.html', {'form': form, 'patient': patient})
 
 def add_patient(request):
     form = PatientCreateForm(request.POST)
