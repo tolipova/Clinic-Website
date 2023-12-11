@@ -21,8 +21,8 @@ jinsi = (
     ('Erkak', 'Erkak')
 )
 turmush_holati = (
-    ('Married','Married'),
-    ('Unmarried','Unmarried')
+    ('Turmush qurgan','Turmush qurgan'),
+    ('Turmush qurmagan','Turmush qurmagan')
 )
 doctor_lavozimi = (
     ('Tibbiyot mutaxassisi', 'Tibbiyot mutaxassisi'),
@@ -56,6 +56,11 @@ bank = (
     ("NBU Bank","NBU Bank"),
     ("Hamkor Bank","Hamkor Bank"),
     ("Humo Xalq Banki","Humo Xalq Banki")
+)
+payment = (
+     ("to'lov qilinmagan", "to'lov qilinmagan"),
+     ("to'lov qilingan","to'lov qilingan")
+
 )
 class DoctorCreate(models.Model):
     doctor_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -145,3 +150,18 @@ class AddExpense(models.Model):
         return self.expense_head
     
 
+class PatientHistory(models.Model):
+    patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi',on_delete=models.CASCADE)
+    check_in_date = models.ForeignKey(PatientCreate, on_delete=models.CASCADE, verbose_name="ruyxatdan o'tgan sanasi")
+    patient_acceptance = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE)
+    disease = models.ForeignKey(PatientCreate, on_delete=models.CASCADE, verbose_name="kasallik turi")
+    retsept = models.TextField(verbose_name="kerakli dorilar")
+    payment = models.CharField(choices=payment, max_length=255, verbose_name="to'lov tarixi")
+    # patient_key =models.ForeignKey(PatientCreate, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+            return reverse('patient_profile', kwargs={'pk': self.pk})
+
+    def get_view_url(self):
+            return reverse('patient_history_view', kwargs={'pk': self.pk})
+    

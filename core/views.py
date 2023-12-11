@@ -106,6 +106,23 @@ def expense_list(request):
 def add_expense(request):
     return render(request, 'expense/add-expense.html')
 
+def patient_profile(request, pk):
+    patient = get_object_or_404(PatientCreate, pk=pk)
+    return render(request, 'patient/Patient-Profile.html', {'patient': patient})
+    #return render(request,'patient/Patient-Profile.html' )
+
+def patient_history_view(request, pk):
+    patient = get_object_or_404(PatientCreate, pk=pk)
+    
+    if request.method == 'POST':
+        form = PatientViewForm(request.POST, instance=patient)
+        if form.is_valid():
+            form.save()
+            return redirect('patient_profile', pk=pk)  # Redirect to patient detail page after successful update
+    else:
+        form = PatientForm(instance=patient)
+    
+    return render(request, 'patient/history_view.html', {'form': form, 'patient': patient})
 
 
 

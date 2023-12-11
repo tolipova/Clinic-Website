@@ -63,41 +63,42 @@
                                         </ul>
                                         <div class="tab-content" id="PatientProfileContent">
                                             <div class="tab-pane fade show active" id="patient-information" role="tabpanel" aria-labelledby="patient-information-tab">
-                                                <div class="table-responsive">
+                                              <div class="table-responsive">
                                                     <table class="table table-borderless">
                                                         <tbody>
                                                           <tr>
                                                             <td>Tug'ilgan yili</td>
-                                                            <td>30 Nov 1995</td>
+                                                            <td>{{patient.patient_birth}}</td>
                                                           </tr>
                                                           <tr>
                                                             <td>Yoshi</td>
-                                                            <td>25 years old</td>
+                                                            <td>{{patient.patient_age}}</td>
                                                           </tr>
                                                           <tr>
                                                             <td>Jinsi</td>
-                                                            <td>Male</td>
+                                                            <td>{{patient.patient_gender}}</td>
                                                           </tr>
                                                           <tr>
-                                                            <td>Kasb-hunar</td>
-                                                            <td>Business</td>
+                                                            <td>Bemor turi</td>
+                                                            <td>{{patient.patient_status}}</td>
                                                           </tr>
                                                           <tr>
-                                                            <td>Oilaviy ahvol</td>
-                                                            <td>Turmush qurgan</td>
+                                                            <td>Oilaviy holati</td>
+                                                            <td>{{patient.patient_married}}</td>
                                                           </tr>
                                                           <tr>
                                                             <td>Manzil</td>
-                                                            <td>San Joss, California, USA</td>
+                                                            <td>{{patient.patient_address}}</td>
                                                           </tr>
                                                           <tr>
                                                             <td>Telifon raqam</td>
-                                                            <td>1234 5874 25</td>
+                                                            <td>{{patient.patient_phone}}</td>
                                                           </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
+                                              </div>
                                             </div>
+
                                             <div class="tab-pane fade" id="Prescriptions" role="tabpanel" aria-labelledby="Prescriptions-tab">
                                                 <div class="table-responsive">
                                                     <table class="table table-borderless">

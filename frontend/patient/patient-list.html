@@ -63,9 +63,9 @@
                                                 <td><input type="checkbox" />{{patient.patient_key}}</td>
                                                 <td>
                                                   <div class="media align-items-center">
-                                                      <!-- <div class="patient-imge">
-                                                          <img src="{% static 'assets/images/patient/1.png' %}" alt="patient" />
-                                                      </div> -->
+                                                      <div class="patient-imge">
+                                                          <img src="{% static 'assets/images/patient/icon.png' %}" alt="patient" />
+                                                      </div>
                                                       <div class="media-body">
                                                         <p class="m-0"><a href="{{ patient.get_absolute_url }}">{{patient.patient_fullname}}</a></p>
                                                       </div>
@@ -78,6 +78,9 @@
                                                 <td>{{patient.patient_room}}</td>
                                                 <td>
                                                     <a href="{{ patient.get_edit_url }}"><i class="flaticon-pencil-1"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{patient.get_view_url}}"><i class="fa fa-history"></i></a>
                                                 </td>
                                               </tr>
                                             {% endfor %}
