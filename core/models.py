@@ -150,18 +150,24 @@ class AddExpense(models.Model):
         return self.expense_head
     
 
+
 class PatientHistory(models.Model):
-    patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi',on_delete=models.CASCADE)
-    check_in_date = models.ForeignKey(PatientCreate, on_delete=models.CASCADE, verbose_name="ruyxatdan o'tgan sanasi")
-    patient_acceptance = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE)
-    disease = models.ForeignKey(PatientCreate, on_delete=models.CASCADE, verbose_name="kasallik turi")
+    patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi', on_delete=models.CASCADE, related_name='patient_fullnames')
+    check_in_date = models.DateField(verbose_name="ruyxatdan o'tgan sanasi")
+    patient_acceptance = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE, related_name='patient_acceptances')
+    disease = models.CharField(max_length=255, verbose_name="kasallik turi")
     retsept = models.TextField(verbose_name="kerakli dorilar")
-    payment = models.CharField(choices=payment, max_length=255, verbose_name="to'lov tarixi")
-    # patient_key =models.ForeignKey(PatientCreate, on_delete=models.CASCADE)
+    
+    PAYMENT_CHOICES = [
+        ('cash', 'Naqd pul'),
+        ('card', 'Plastik karta'),
+        ('insurance', 'Sug\'urta'),
+     
+    ]
+    payment = models.CharField(choices=PAYMENT_CHOICES, max_length=20, verbose_name="to'lov tarixi")
 
     def get_absolute_url(self):
-            return reverse('patient_profile', kwargs={'pk': self.pk})
+        return reverse('patient_profile', kwargs={'pk': self.pk})
 
     def get_view_url(self):
-            return reverse('patient_history_view', kwargs={'pk': self.pk})
-    
+        return reverse('patient_history_view', kwargs={'pk': self.pk})    
