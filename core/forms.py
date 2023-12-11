@@ -64,7 +64,18 @@ class PatientForm(forms.ModelForm):
         model = PatientCreate
         fields = ['patient_fullname', 'patient_phone', 'patient_address', 'patient_birth', 'patient_age', 'patient_blood', 'patient_status', 'patient_married', 'patient_gender', 'patient_acceptance', 'patient_discription', 'check_in_date', 'diseases', 'patient_room']
 
-class PatientViewForm(forms.ModelForm):
+class DiseasesForm(forms.ModelForm):
     class Meta:
         model = PatientHistory
         fields = '__all__'
+        widgets = {
+            'patient_fullname': forms.Select(attrs={'class':'form-control' }),
+            'patient_acceptance':forms.Select(attrs={'class':'form-control'}),
+            'check_in_date':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
+            'disease': forms.TextInput(attrs={'class':'form-control'}),
+            'retsept': forms.TextInput(attrs={'class':'form-control'}),
+            'patient_status':forms.Select(attrs={'class':'form-control'}),
+            'payments':forms.Select(attrs={'class':'form-control'}),
+            'total_status':forms.Select(attrs={'class':'form-control'}),
+            'payment_price': forms.NumberInput(attrs={'class':'form-control'}),
+        }

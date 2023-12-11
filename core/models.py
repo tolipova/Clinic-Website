@@ -57,11 +57,7 @@ bank = (
     ("Hamkor Bank","Hamkor Bank"),
     ("Humo Xalq Banki","Humo Xalq Banki")
 )
-payment = (
-     ("to'lov qilinmagan", "to'lov qilinmagan"),
-     ("to'lov qilingan","to'lov qilingan")
 
-)
 class DoctorCreate(models.Model):
     doctor_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     doctor_fullname = models.CharField(verbose_name='Doctorning ism familiyasi', max_length=255)
@@ -157,6 +153,7 @@ class PatientHistory(models.Model):
     patient_acceptance = models.ForeignKey(DoctorCreate, on_delete=models.CASCADE, related_name='patient_acceptances')
     disease = models.CharField(max_length=255, verbose_name="kasallik turi")
     retsept = models.TextField(verbose_name="kerakli dorilar")
+    patient_status = models.CharField(choices=qabul_holati, max_length=255)
     
     PAYMENT_CHOICES = [
         ('cash', 'Naqd pul'),
@@ -164,10 +161,15 @@ class PatientHistory(models.Model):
         ('insurance', 'Sug\'urta'),
      
     ]
-    payment = models.CharField(choices=PAYMENT_CHOICES, max_length=20, verbose_name="to'lov tarixi")
-
+    payments = models.CharField(choices=PAYMENT_CHOICES, max_length=20, verbose_name="to'lov turi")
+    payment_price = models.IntegerField(verbose_name="to'lov narxi")
+    payment = [
+     ("to'lov qilinmagan", "to'lov qilinmagan"),
+     ("to'lov qilingan","to'lov qilingan")
+    ]
+    total_status = models.CharField(choices=payment, max_length=255, verbose_name="to'lov holati")
     def get_absolute_url(self):
         return reverse('patient_profile', kwargs={'pk': self.pk})
 
-    def get_view_url(self):
-        return reverse('patient_history_view', kwargs={'pk': self.pk})    
+    def  get_edit_url(self):
+        return reverse('patient_edit', kwargs={'pk': self.pk})    

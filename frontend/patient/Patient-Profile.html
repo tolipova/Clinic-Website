@@ -55,10 +55,7 @@
                                     <div class="primary-tab">
                                         <ul class="nav nav-tabs" id="PatientProfile" role="tablist">
                                             <li class="nav-item" role="presentation">
-                                              <a class="nav-link active" id="patient-information-tab" data-toggle="tab" href="#patient-information" role="tab" aria-controls="patient-information" aria-selected="true">Bemor malumoti</a>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <a class="nav-link" id="Prescriptions-tab" data-toggle="tab" href="#Prescriptions" role="tab" aria-controls="Prescriptions" aria-selected="false">Retseptlar</a>
+                                              <a class="nav-link active" id="patient-information-tab" data-toggle="tab" href="#patient-information" role="tab" aria-controls="patient-information" aria-selected="true">Bemor tarixi</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content" id="PatientProfileContent">
@@ -98,74 +95,77 @@
                                                     </table>
                                               </div>
                                             </div>
-
-                                            <div class="tab-pane fade" id="Prescriptions" role="tabpanel" aria-labelledby="Prescriptions-tab">
-                                                <div class="table-responsive">
-                                                    <table class="table table-borderless">
-                                                        <tbody>
-                                                          <tr>
-                                                            <td>Bemor ismi</td>
-                                                            <td>{{patient.patient_fullname}}</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Kirish sanasi</td>
-                                                            <td>{{patient.check_in_date}}</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Gender</td>
-                                                            <td>Male</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Religion</td>
-                                                            <td>Islam</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Occupation</td>
-                                                            <td>Business</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Marital Status</td>
-                                                            <td>Married</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Address</td>
-                                                            <td>San Joss, California, USA</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Phone Number</td>
-                                                            <td>1234 5874 25</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Name</td>
-                                                            <td>Robert Person</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Relationship</td>
-                                                            <td>Father</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Phone Number</td>
-                                                            <td>4569 245 36</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Name</td>
-                                                            <td>Robert Person</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Relationship</td>
-                                                            <td>Father</td>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>Guardian Phone Number</td>
-                                                            <td>4569 245 36</td>
-                                                          </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>  
-                                            </div>
                                         </div>
                                     </div>
                                   </div>
+                            </div>
+                        </div>    
+                        <div class="col-lg-7">
+                            <div class="section-header">
+                            </div>
+                            <div class="section-wrapper">
+                                <div class="Patient-Profile">
+                                    <div class="Profile-top">
+                                        <div class="media align-items-center">
+                                            <div class="Patient-image mr-3">
+                                                <img src="{% static 'assets/images/patient/medical.jpg' %}" alt="Patient-profile.png" />
+                                            </div>
+                                            <div class="media-body">
+                                              <h4 class="Patient-name">{{patient.patient_fullname}}</h4>
+                                              <div class="Patient-des">
+                                                <span>Bemor shifokori: {{patient.patient_acceptance}}</span>
+                                                <span>Kasallik: {{patient.diseases}}</span>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="primary-tab">
+                                        <ul class="nav nav-tabs" id="PatientProfile" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                              <a class="nav-link active" id="patient-information-tab" data-toggle="tab" href="#patient-information" role="tab" aria-controls="patient-information" aria-selected="true">Bemor malumoti</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="PatientProfileContent">
+                                            <div class="tab-pane fade show active" id="patient-information" role="tabpanel" aria-labelledby="patient-information-tab">
+                                              <div class="table-responsive">
+                                                    <table class="table table-borderless">
+                                                        <tbody>
+                                                          <tr>
+                                                            <td>Registratsiya qilingan sana</td>
+                                                            <td>{{patient_view.check_in_date}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td>Kasallik turi</td>
+                                                            <td>{{patient_view.disease}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td>Berilgan Retsept</td>
+                                                            <td>{{patient_view.retsept}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td>Bemor turi</td>
+                                                            <td>{{patient_view.patient_status}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td>To'lov turi</td>
+                                                            <td>{{patient_view.payments}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td>To'lov miqdori</td>
+                                                            <td>{{patient_view.payment_price}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td>To'lov Holati</td>
+                                                            <td>{{patient_view.payment_status}}</td>
+                                                          </tr>
+                                                          
+                                                        </tbody>
+                                                    </table>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-5">
@@ -245,8 +245,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
     
     <div class="body-overlay"></div>
     

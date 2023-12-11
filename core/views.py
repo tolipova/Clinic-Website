@@ -8,9 +8,11 @@ from django.http import HttpResponse, Http404
 def home(request):
     patient_add = PatientCreate.objects.all()
     doctors = DoctorCreate.objects.all()
+    patient = PatientHistory.objects.all()
     context = {
         'patient_add':patient_add,
-        'doctors':doctors
+        'doctors':doctors,
+        'patient':patient
     }
     return render(request,'index.html', context )
 
@@ -28,7 +30,8 @@ def patient_list(request):
 
 def patient_profile(request, pk):
     patient = get_object_or_404(PatientCreate, pk=pk)
-    return render(request, 'patient/Patient-Profile.html', {'patient': patient})
+    patient_view = get_object_or_404(PatientHistory, pk=pk)
+    return render(request, 'patient/Patient-Profile.html', {'patient': patient, 'patient_view':patient_view})
     #return render(request,'patient/Patient-Profile.html' )
 
 def patient_edit(request, pk):
@@ -106,28 +109,17 @@ def expense_list(request):
 def add_expense(request):
     return render(request, 'expense/add-expense.html')
 
-def patient_profile(request, pk):
-    patient = get_object_or_404(PatientCreate, pk=pk)
-    return render(request, 'patient/Patient-Profile.html', {'patient': patient})
-    #return render(request,'patient/Patient-Profile.html' )
-
-def patient_history_view(request, pk):
-    patient = get_object_or_404(PatientCreate, pk=pk)
-    
+def diseases(request):
+    form = DiseasesForm(request.POST)
     if request.method == 'POST':
-        form = PatientViewForm(request.POST, instance=patient)
         if form.is_valid():
             form.save()
-            return redirect('patient_profile', pk=pk)  # Redirect to patient detail page after successful update
+            return redirect('home')
+        else:
+            print('xato')
     else:
-        form = PatientForm(instance=patient)
-    
-    return render(request, 'patient/history_view.html', {'form': form, 'patient': patient})
-
-
-
-
-
+        form = DiseasesForm() 
+    return render(request, 'patient/diseases.html',{'form':form} )
 
 
     
