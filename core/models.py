@@ -75,6 +75,11 @@ class DoctorCreate(models.Model):
     doctor_university = models.TextField(verbose_name="doctor tamomlagan university")
     work_time = models.TimeField(auto_now=False)
     
+    def get_absolute_url(self):
+            return reverse('doctor_profile', kwargs={'pk': self.pk})
+
+    def get_edit_url(self):
+            return reverse('doctor_edit', kwargs={'pk': self.pk})
     def __str__(self):
         return self.doctor_fullname
      
@@ -136,7 +141,7 @@ class Operation(models.Model):
 class AddExpense(models.Model):
     expense_head = models.CharField(max_length=255, verbose_name="harajat nomi")
     select_category = models.CharField(choices=select_category, max_length=255)
-    amount = models.IntegerField(verbose_name="miqdori")
+    amount = models.CharField(verbose_name="miqdori", max_length=25)
     expense_date = models.DateTimeField(auto_now=False )
     discreption = models.TextField(verbose_name="tavsilot kiriting")
     card_number = models.IntegerField(verbose_name="**** **** **** 5648")
@@ -171,5 +176,4 @@ class PatientHistory(models.Model):
     def get_absolute_url(self):
         return reverse('patient_profile', kwargs={'pk': self.pk})
 
-    def  get_edit_url(self):
-        return reverse('patient_edit', kwargs={'pk': self.pk})    
+    

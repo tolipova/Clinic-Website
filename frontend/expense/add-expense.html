@@ -36,58 +36,53 @@
                             </div>
                         </div>
                         <div class="primary-form">
-                            <form action="#">
+                            <form action="#" method="post">
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="ExpenseHead">Xarajatlar boshlig'i</label>
-                                            <input type="text" class="form-control" id="ExpenseHead" name="ExpenseHead" placeholder="Ta'mirlash uskunalari" />
+                                            <label for="ExpenseHead">Xarajatlar</label>
+                                            {{form.expense_head}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="pbloggroup">Kategoriyani tanlang</label>
-                                            <select class="form-control wide" id="pbloggroup">
-                                              <option>Kommunal xizmatlar uchun to'lov</option>
-                                            </select>
+                                            {{form.select_category}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="Amount">Miqdori</label>
-                                            <input type="text" class="form-control" id="Amount" name="Amount" placeholder="$5,600" />
+                                            {{form.amount}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="date">Sanasi</label>
-                                            <input type="text" class="form-control" id="date" name="date" placeholder="31 January, 2021" />
+                                            {{form.expense_date}}
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="Description">Tavsilot</label>
-                                            <textarea class="form-control message" id="Description" rows="3" placeholder="Qisqa tavsif yozing"></textarea>
+                                            {{form.discreption}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="CheckNumber">Karta raqami</label>
-                                            <input type="text" class="form-control" id="CheckNumber" name="CheckNumber" placeholder="**** **** **** 5648" />
+                                            {{form.card_number}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label for="BankAccount">Bank hisob raqami</label>
-                                            <select class="form-control wide" id="BankAccount">
-                                              <option>NBU Bank</option>
-                                              <option>Hamkor Bank </option>
-                                              <option>Humo Xalq Bank</option>
-                                            </select>
+                                            {{form.select_bank}}
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <button type="submit" class="form-btn">Yuborish</button>
+                                        <input type="submit" value="Yuborish" class="form-btn">
                                     </div>
                                 </div>
                             </form>

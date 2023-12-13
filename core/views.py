@@ -9,10 +9,12 @@ def home(request):
     patient_add = PatientCreate.objects.all()
     doctors = DoctorCreate.objects.all()
     patient = PatientHistory.objects.all()
+    expense = AddExpense.objects.all()
     context = {
         'patient_add':patient_add,
         'doctors':doctors,
-        'patient':patient
+        'patient':patient,
+        'expense':expense
     }
     return render(request,'index.html', context )
 
@@ -64,13 +66,24 @@ def all_doctors(request):
     }
     return render(request,'doctor/all-doctors.html',context )
 
-def doctor_profile(request):
-    doctors = DoctorCreate.objects.all()
+def doctor_profile(request, pk):
+    doctor = get_object_or_404(DoctorCreate, pk=pk)
     context = {
-        'doctors':doctors
+        'doctor':doctor
     }
     return render(request,'doctor/doctor-Profile.html', context )
-
+def doctor_edit(request, pk):
+    doctor = get_object_or_404(DoctorCreate, pk=pk)
+    
+    if request.method == 'POST':
+        form = DoctorForm(request.POST, instance=doctor)
+        if form.is_valid():
+            form.save()
+            return redirect('doctor_profile', pk=pk)  # Redirect to patient detail page after successful update
+    else:
+        form = DoctorForm(instance=doctor)
+    
+    return render(request, 'doctor/doctor_edit.html', {'form': form, 'doctor': doctor})
 def add_doctor(request):
     form = DoctorCreateForm(request.POST ,request.FILES)
     if request.method == 'POST':
@@ -105,9 +118,25 @@ def reports(request):
 def accounts(request):
     return render(request, 'accounts.html')
 def expense_list(request):
-    return render(request, 'expense/expense-list.html')
+    expense = AddExpense.objects.all()
+    paginator = Paginator(expense, 1)  
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'page_obj': page_obj
+    }
+    return render(request, 'expense/expense-list.html', context)
 def add_expense(request):
-    return render(request, 'expense/add-expense.html')
+    form = AddExpenseForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = AddExpenseForm()    
+    return render(request, 'expense/add-expense.html',{'form':form})
 
 def diseases(request):
     form = DiseasesForm(request.POST)

@@ -41,7 +41,7 @@
                                     <table class="table table-borderless">
                                         <thead>
                                             <tr>
-                                              <th scope="col"><input type="checkbox" /> Xarajatlar boshlig'i</th>
+                                              <th scope="col"><input type="checkbox" /> Xarajatlar</th>
                                               <th scope="col">Kategoriya</th>
                                               <th scope="col">Miqdor</th>
                                               <th scope="col">Sanasi</th>
@@ -51,113 +51,43 @@
                                             </tr>
                                           </thead>
                                           <tbody>
+                                            {% for expense in page_obj %}
                                             <tr>
-                                              <td><input type="checkbox" /> Xizmat ko'rsatish</td>
-                                              <td>Kommunal xizmatlar uchun to'lov</td>
-                                              <td>$5,400</td>
-                                              <td>21 Yan, 2021</td>
-                                              <td>Sovuq ~ gripp</td>
-                                              <td>0564 *** ***</td>
-                                              <td><a class="view-btn" href="#">Tafsilotlarni ko'rish</a></td>
+                                              <td><input type="checkbox" />{{expense.expense_head}}</td>
+                                              <td>{{expense.select_category}}</td>
+                                              <td>{{expense.amount}}</td>
+                                              <td>{{expense.expense_date}}</td>
+                                              <td>{{expense.select_bank}}</td>
+                                              <td>{{expense.card_number}}</td>
+                                              <td><a class="view-btn" href="{% url 'accounts' %}">Tafsilotlarni ko'rish</a></td>
                                             </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> Servicing</td>
-                                              <td>Utilities Bill</td>
-                                              <td>$5,400</td>
-                                              <td>21 Jan, 2021</td>
-                                              <td>Cold & Flu</td>
-                                              <td>0564 *** ***</td>
-                                              <td><a class="view-btn" href="#">View Details</a></td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> Servicing</td>
-                                              <td>Utilities Bill</td>
-                                              <td>$5,400</td>
-                                              <td>21 Jan, 2021</td>
-                                              <td>Cold & Flu</td>
-                                              <td>0564 *** ***</td>
-                                              <td><a class="view-btn" href="#">View Details</a></td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> Servicing</td>
-                                              <td>Utilities Bill</td>
-                                              <td>$5,400</td>
-                                              <td>21 Jan, 2021</td>
-                                              <td>Cold & Flu</td>
-                                              <td>0564 *** ***</td>
-                                              <td><a class="view-btn" href="#">View Details</a></td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> Servicing</td>
-                                              <td>Utilities Bill</td>
-                                              <td>$5,400</td>
-                                              <td>21 Jan, 2021</td>
-                                              <td>Cold & Flu</td>
-                                              <td>0564 *** ***</td>
-                                              <td><a class="view-btn" href="#">View Details</a></td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> Servicing</td>
-                                              <td>Utilities Bill</td>
-                                              <td>$5,400</td>
-                                              <td>21 Jan, 2021</td>
-                                              <td>Cold & Flu</td>
-                                              <td>0564 *** ***</td>
-                                              <td><a class="view-btn" href="#">View Details</a></td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> Servicing</td>
-                                              <td>Utilities Bill</td>
-                                              <td>$5,400</td>
-                                              <td>21 Jan, 2021</td>
-                                              <td>Cold & Flu</td>
-                                              <td>0564 *** ***</td>
-                                              <td><a class="view-btn" href="#">View Details</a></td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> Servicing</td>
-                                              <td>Utilities Bill</td>
-                                              <td>$5,400</td>
-                                              <td>21 Jan, 2021</td>
-                                              <td>Cold & Flu</td>
-                                              <td>0564 *** ***</td>
-                                              <td><a class="view-btn" href="#">View Details</a></td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> Servicing</td>
-                                              <td>Utilities Bill</td>
-                                              <td>$5,400</td>
-                                              <td>21 Jan, 2021</td>
-                                              <td>Cold & Flu</td>
-                                              <td>0564 *** ***</td>
-                                              <td><a class="view-btn" href="#">View Details</a></td>
-                                            </tr>
-                                            <tr>
-                                              <td><input type="checkbox" /> Servicing</td>
-                                              <td>Utilities Bill</td>
-                                              <td>$5,400</td>
-                                              <td>21 Jan, 2021</td>
-                                              <td>Cold & Flu</td>
-                                              <td>0564 *** ***</td>
-                                              <td><a class="view-btn" href="#">View Details</a></td>
-                                            </tr>
+                                            {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                             <div class="pagination-area mt-10">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <p class="shoing-reselt m-0">256 ta maʼlumotlardan 10 tasi koʻrsatilmoqda</p>
-                                    </div>
+                                   
                                     <div class="col-sm-6 text-left text-sm-right">
                                         <ul class="pagination-list">
-                                            <li class="Previous"><a href="#"><i class="flaticon-left-arrow"></i> Oldingi</a></li>
-                                            <li class="page active"><a href="#">1</a></li>
-                                            <li class="page"><a href="#">2</a></li>
-                                            <li class="page"><a href="#">3</a></li>
-                                            <li class="page"><a href="#">4</a></li>
-                                            <li class="next"><a href="#">Keyingi <i class="flaticon-next"></i></a></li>
+                                          {% if page_obj.has_previous %}
+                                          <li class="page"><a href="?page=1">&laquo; First</a></li>
+                                          <li class="page"><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                                          {% endif %}
+                                          
+                                          {% for num in page_obj.paginator.page_range %}
+                                              {% if num == page_obj.number %}
+                                                  <li class="page active"><span>{{ num }}</span></li>
+                                              {% else %}
+                                                  <li class="page"><a href="?page={{ num }}">{{ num }}</a></li>
+                                              {% endif %}
+                                          {% endfor %}
+                                          
+                                          {% if page_obj.has_next %}
+                                              <li class="page"><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                                              <li class="page"><a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a></li>
+                                          {% endif %}
                                         </ul>
                                     </div>
                                 </div>

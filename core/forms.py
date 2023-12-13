@@ -79,3 +79,22 @@ class DiseasesForm(forms.ModelForm):
             'total_status':forms.Select(attrs={'class':'form-control'}),
             'payment_price': forms.NumberInput(attrs={'class':'form-control'}),
         }
+class DoctorForm(forms.ModelForm):
+    class Meta:
+        model = DoctorCreate
+        fields = '__all__'  
+
+class AddExpenseForm(forms.ModelForm):
+    class Meta:
+        model = AddExpense
+        fields = '__all__'   
+        widgets = {
+            'expense_head':forms.TextInput(attrs={'class':'form-control','placeholder':'Ta\'mirlash uskunalari'}),
+            'select_category':forms.Select(attrs={'class':'form-control wide'}),
+            'amount':forms.TextInput(attrs={'class':'form-control', 'placeholder':'$5,600'}),
+            'expense_date':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
+            'discreption':forms.Textarea(attrs={'class':'form-control  message','placeholder':'Qisqa tavsif yozing'}),
+            'card_number': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'**** **** **** 5648'}),
+            'select_bank':forms.Select(attrs={'class':'form-control'}),
+            }
+        

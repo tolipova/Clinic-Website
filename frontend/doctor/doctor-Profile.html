@@ -37,7 +37,6 @@
                                         <h2 class="title">Doctor Profile</h2>
                                     </div>
                                 </div>
-                                {% for post in doctors %}
                                 <div class="Profile-area">
                                     <div class="profile-cover">
                                         <img src="{% static 'assets/images/profile-cover.jpg' %}" alt="profile-cover" />
@@ -45,12 +44,12 @@
                                     <div class="profile-top">
                                         <div class="profile-info d-flex ">
                                             <div class="profile-image mr-5">
-                                                <img src="{{post.profile_image.url}}" alt="profile" />
+                                                <img src="{{doctor.profile_image.url}}" alt="profile" />
                                             </div>
                                             <div class="profile-content">
-                                                <h3>{{post.doctor_fullname}}</h3>
-                                                <p>{{post.doctor_status}}</p>
-                                                <p><i class="flaticon-clock"></i>{{post.work_time}}</p>
+                                                <h3>{{doctor.doctor_fullname}}</h3>
+                                                <p>{{doctor.doctor_status}}</p>
+                                                <p><i class="flaticon-clock"></i>{{doctor.work_time}}</p>
                                             </div>
                                         </div>
                                         <div class="rating-area">
@@ -74,16 +73,15 @@
                                             <div class="tab-content" id="PatientContent">
                                                 <div class="tab-pane fade show active" id="biography" role="tabpanel" aria-labelledby="biography-tab">
                                                     <div class="profile-bottom-info">
-                                                        <p>{{post.doctor_discription}}
+                                                        <p>{{doctor.doctor_discription}}
                                                         </p>
-                                                        <p>Sample has been practicing since 1976, the last 12 years in Washington, D.C., at the Washington Hospital Center, selected as one of the top 100 hospitals in the United States. Sample's practice specializes in the care of critically.</p>
+                                                        <p>{{doctor.doctor_university}}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                {% endfor %}
                             </div>
                             <div class="col-lg-4">
                                 <div class="appointment-area md-mt-30">

@@ -20,7 +20,9 @@ urlpatterns = [
     path('add-expense/', add_expense, name="add_expense"),
     path('patient/<uuid:pk>/', patient_profile, name='patient_profile'),
     path('patient/<uuid:pk>/edit/', patient_edit, name='patient_edit'),
-    path('diseases/', diseases, name="diseases")
+    path('diseases/', diseases, name="diseases"),
+    path('doctor/<uuid:pk>/', doctor_profile, name='doctor_profile'),
+    path('doctor/<uuid:pk>/edit/', doctor_edit, name='doctor_edit'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
