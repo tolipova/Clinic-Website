@@ -20,7 +20,7 @@ def home(request):
 
 def patient_list(request):
     patient = PatientCreate.objects.all()
-    paginator = Paginator(patient, 1)  
+    paginator = Paginator(patient, 25)  
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -32,9 +32,13 @@ def patient_list(request):
 
 def patient_profile(request, pk):
     patient = get_object_or_404(PatientCreate, pk=pk)
-    patient_view = get_object_or_404(PatientHistory, pk=pk)
-    return render(request, 'patient/Patient-Profile.html', {'patient': patient, 'patient_view':patient_view})
-    #return render(request,'patient/Patient-Profile.html' )
+    patient_history = PatientHistory.objects.filter(patient_fullname=patient)
+    context = {
+        'patient':patient,
+        'patient_history':patient_history
+    }
+    return render(request, 'patient/Patient-Profile.html', context=context)
+
 
 def patient_edit(request, pk):
     patient = get_object_or_404(PatientCreate, pk=pk)

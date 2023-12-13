@@ -120,51 +120,54 @@
                                         </div>
                                     </div>
                                     <div class="primary-tab">
-                                        <ul class="nav nav-tabs" id="PatientProfile" role="tablist">
-                                            <li class="nav-item" role="presentation">
+                                      <ul class="nav nav-tabs" id="PatientProfile" role="tablist">
+                                          <li class="nav-item" role="presentation">
                                               <a class="nav-link active" id="patient-information-tab" data-toggle="tab" href="#patient-information" role="tab" aria-controls="patient-information" aria-selected="true">Bemor malumoti</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content" id="PatientProfileContent">
-                                            <div class="tab-pane fade show active" id="patient-information" role="tabpanel" aria-labelledby="patient-information-tab">
-                                              <div class="table-responsive">
-                                                    <table class="table table-borderless">
-                                                        <tbody>
-                                                          <tr>
-                                                            <td>Registratsiya qilingan sana</td>
-                                                            <td>{{patient_view.check_in_date}}</td>
-                                                          </tr>
-                                                          <tr>
+                                          </li>
+                                      </ul>
+                                      <div class="tab-content" id="PatientProfileContent">
+                                        <div class="tab-pane fade show active" id="patient-information" role="tabpanel" aria-labelledby="patient-information-tab">
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless">
+                                                    <tbody>
+                                                        {% for history in patient_history %}
+                                                        <tr>
+                                                            <td style="color: red;">Registratsiya qilingan sana</td>
+                                                            <td>{{ history.check_in_date }}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Kasallik turi</td>
-                                                            <td>{{patient_view.disease}}</td>
-                                                          </tr>
-                                                          <tr>
+                                                            <td>{{ history.disease }}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Berilgan Retsept</td>
-                                                            <td>{{patient_view.retsept}}</td>
-                                                          </tr>
-                                                          <tr>
+                                                            <td>{{ history.retsept }}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Bemor turi</td>
-                                                            <td>{{patient_view.patient_status}}</td>
-                                                          </tr>
-                                                          <tr>
+                                                            <td>{{ history.patient_status }}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>To'lov turi</td>
-                                                            <td>{{patient_view.payments}}</td>
-                                                          </tr>
-                                                          <tr>
+                                                            <td>{{ history.payments }}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>To'lov miqdori</td>
-                                                            <td>{{patient_view.payment_price}}</td>
-                                                          </tr>
-                                                          <tr>
+                                                            <td>{{ history.payment_price }}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>To'lov Holati</td>
-                                                            <td>{{patient_view.payment_status}}</td>
-                                                          </tr>
-                                                          
-                                                        </tbody>
-                                                    </table>
-                                              </div>
+                                                            <td>{{ history.payment_status }}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                  </div>
+                                  
                                 </div>
                             </div>
                         </div>

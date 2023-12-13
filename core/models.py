@@ -93,10 +93,12 @@ class PatientCreate(models.Model):
     
     patient_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, )
     patient_fullname = models.CharField(verbose_name='Bemorning ism familiyasi', max_length=255,null=True)
-    patient_phone = models.IntegerField(verbose_name='Bemorning telefon raqami')
+    #patient_phone = models.IntegerField(verbose_name='Bemorning telefon raqami')
     patient_address = models.CharField(verbose_name='Bemorning manzili', max_length=255,null=True)
     patient_birth = models.DateField(auto_now=False)
-    patient_age = models.IntegerField(verbose_name='Bemorning yoshi',null=True)
+    patient_phone = models.BigIntegerField(verbose_name='Bemorning telefon raqami')
+    patient_age = models.BigIntegerField(verbose_name='Bemorning yoshi', null=True)
+
     patient_blood = models.CharField(verbose_name='Qon gruxi',choices=qon_guruxlari, max_length=255,null=True)
     patient_status = models.CharField(choices=qabul_holati, verbose_name='Qabul holati', max_length=255,null=True)
     patient_married = models.CharField(choices=turmush_holati, verbose_name='Turmush holati', max_length=255,null=True)
@@ -107,7 +109,6 @@ class PatientCreate(models.Model):
     diseases = models.CharField(max_length=255, verbose_name="kasallik nommi", null=True)
     patient_room = models.ForeignKey(Rooms, on_delete=models.CASCADE,null=True )
     patient_key = models.CharField(verbose_name='Patient Key', max_length=9, unique=True, editable=False)
-
     def save(self, *args, **kwargs):
         if not self.patient_key:
             self.patient_key = self.generate_unique_key()
@@ -118,6 +119,7 @@ class PatientCreate(models.Model):
         while PatientCreate.objects.filter(patient_key=key).exists():
             key = ''.join(str(random.randint(0, 9)) for _ in range(9))
         return key
+
     def get_absolute_url(self):
             return reverse('patient_profile', kwargs={'pk': self.pk})
 
@@ -161,9 +163,9 @@ class PatientHistory(models.Model):
     patient_status = models.CharField(choices=qabul_holati, max_length=255)
     
     PAYMENT_CHOICES = [
-        ('cash', 'Naqd pul'),
-        ('card', 'Plastik karta'),
-        ('insurance', 'Sug\'urta'),
+        ('Naqd pul', 'Naqd pul'),
+        ('Plastik karta', 'Plastik karta'),
+        ('Sug\'urta', 'Sug\'urta'),
      
     ]
     payments = models.CharField(choices=PAYMENT_CHOICES, max_length=20, verbose_name="to'lov turi")
