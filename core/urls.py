@@ -23,6 +23,7 @@ urlpatterns = [
     path('diseases/<uuid:pk>/', diseases, name='diseases'),
     path('doctor/<uuid:pk>/', doctor_profile, name='doctor_profile'),
     path('doctor/<uuid:pk>/edit/', doctor_edit, name='doctor_edit'),
+    path('tulov/', tulov, name="tulov")
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Hospital Management Responsive  HTML5 Template</title>
+        <meta name="description" content="Hospital Management Responsive  HTML5 Template " />
+        <meta name="keywords" content="business,corporate, creative, woocommerach, design, gallery, minimal, modern, landing page, cv, designer, freelancer, html, one page, personal, portfolio, programmer, responsive, vcard, one page" />
+        <meta name="author" content="Hospital Management" />
+
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}">
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+        <!-- fonts file -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <!-- css file  -->
+        <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+        <script src="{% static 'assets/js/modernizr-3.11.2.min.js' %}"></script>
+    </head>
+
+    <body>
+        {% include 'base/navbar.html' %}
+
+                <div class="page-wrape">
+                    <div class="container-fluid">
+                        <div class="section-header">
+                            <div class="section-title">
+                                <h2 class="title">To'lov</h2>
+                            </div>
+                        </div>
+                        <div class="primary-tab">
+                            <ul class="nav nav-tabs" id="Patient" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="Payment-tab" data-toggle="tab" href="#Payment" role="tab" aria-controls="Payment" aria-selected="false">To'lov</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="PatientContent">
+                                <div class="tab-pane fade" id="Payment" role="tabpanel" aria-labelledby="Payment-tab">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-6">
+                                            <div class="primary-form">
+                                                <form action="#">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group">
+                                                                <label for="subtotal">Umumiy</label>
+                                                                <input type="text" class="form-control" id="subtotal" name="subtotal" placeholder="Charlene Reed" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label for="discount">Chegirma</label>
+                                                                <input type="text" class="form-control" id="discount" name="discount" placeholder="10%" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label for="less">Ozroq</label>
+                                                                <input type="text" class="form-control" id="less" name="less" placeholder="$340" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group">
+                                                                <label for="grandtotal">Umumiy Grand</label>
+                                                                <input type="text" class="form-control" id="grandtotal" name="grandtotal" placeholder="$3060" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group">
+                                                                <label for="paidamount">To'langan miqdor</label>
+                                                                <input type="text" class="form-control" id="paidamount" name="paidamount" placeholder="$3060" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group">
+                                                                <label for="Due">Muddati</label>
+                                                                <input type="text" class="form-control" id="Due" name="Due" placeholder="0" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <button type="submit" class="form-btn">Yuborish</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 text-center">
+                                            <img src="{% static 'assets/images/emergency-from-img.png' %}" alt="emergency-from-img" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+        <div class="body-overlay"></div>
+        
+        <script src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script>
+        <script src="{% static 'assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/js/plugins.js' %}"></script>
+        <script src="{% static 'assets/js/main.js' %}"></script>
+        
+    </body>
+</html>

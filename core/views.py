@@ -182,7 +182,8 @@ def diseases(request):
         form = DiseasesForm() 
     return render(request, 'patient/diseases.html',{'form':form} )
 
-
+def tulov(request):
+    return render(request, 'tulov.html')
     
 
 

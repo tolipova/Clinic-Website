@@ -37,7 +37,7 @@ class DoctorCreateForm(forms.ModelForm):
             'doctor_discription':forms.Textarea(attrs={'class':'form-control'}),
             'doctor_skills':forms.Select(attrs={'class':'form-control'}),
             'work_time':forms.TimeInput(attrs={'type': 'time', 'class':'form-control'}),
-            'email_address' : forms.EmailInput(attrs={'class':'form-control'}),
+            'email_address' : forms.EmailInput(attrs={'class':'form-control', 'placeholder':"saragraham101@gmail.com" }),
             "profile_image": forms.FileInput(attrs={"rows": "", "class": "form-file"}),
             "muqova_image": forms.FileInput(attrs={"rows": "", "class": "form-file"})
         }
