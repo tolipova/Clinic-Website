@@ -3,42 +3,70 @@ from .models import *
 from .forms import *
 from django.core.paginator import Paginator
 from django.http import HttpResponse, Http404
-
+from django.db.models import Q
+from datetime import date, timedelta
 # Create your views here.
 def home(request):
-    patient_add = PatientCreate.objects.all()
+    today = date.today()
+    patients_today = PatientCreate.objects.filter(check_in_date=today).count()
+    patients_previous_days = PatientCreate.objects.filter(check_in_date__lt=today).exclude(check_in_date=today).count()
+    total_patients = PatientCreate.objects.count()
+    total_doctor = DoctorCreate.objects.count()  # bemorlarning sonini hisoblash uchun funksiya
+    total_rooms = Rooms.objects.count()
+    total_operations = Operation.objects.count()
     doctors = DoctorCreate.objects.all()
     patient = PatientHistory.objects.all()
     expense = AddExpense.objects.all()
+    
     context = {
-        'patient_add':patient_add,
-        'doctors':doctors,
-        'patient':patient,
-        'expense':expense
+        'total_patients': total_patients,
+        'doctors': doctors,
+        'patient': patient,
+        'expense': expense,
+        'total_doctor':total_doctor,
+        'total_rooms':total_rooms,
+        'total_operations':total_operations,
+        'patients_today':patients_today,
+        'patients_previous_days':patients_previous_days
     }
-    return render(request,'index.html', context )
+    return render(request, 'index.html', context)
 
 def patient_list(request):
+    search_query = request.GET.get('q')
     patient = PatientCreate.objects.all()
-    paginator = Paginator(patient, 25)  
 
+    if search_query:
+        patient = patient.filter(
+            Q(patient_fullname__icontains=search_query) |
+            Q(patient_key__icontains=search_query) |
+            Q(patient_phone__icontains=search_query) |
+            Q(patient_id__icontains=search_query)  
+        )
+    paginator = Paginator(patient, 25)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     context = {
-        'page_obj': page_obj
+        'page_obj': page_obj,
+        'search_query': search_query 
     }
-    return render(request,'patient/patient-list.html',context)
+    return render(request, 'patient/patient-list.html', context)
+
+    paginator = Paginator(patient, 1)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'page_obj': page_obj,
+        'search_query': search_query  # Passing the search query back to the template
+    }
+    return render(request, 'patient/patient-list.html', context)
 
 def patient_profile(request, pk):
     patient = get_object_or_404(PatientCreate, pk=pk)
-    patient_history = PatientHistory.objects.filter(patient_fullname=patient)
-    context = {
-        'patient':patient,
-        'patient_history':patient_history
-    }
-    return render(request, 'patient/Patient-Profile.html', context=context)
-
+    patient_view = get_object_or_404(PatientHistory, pk=pk)
+    return render(request, 'patient/Patient-Profile.html', {'patient': patient, 'patient_view':patient_view})
+    #return render(request,'patient/Patient-Profile.html' )
 
 def patient_edit(request, pk):
     patient = get_object_or_404(PatientCreate, pk=pk)

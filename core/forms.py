@@ -69,7 +69,7 @@ class DiseasesForm(forms.ModelForm):
         model = PatientHistory
         fields = '__all__'
         widgets = {
-            'patient_fullname': forms.Select(attrs={'class':'form-control' }),
+            'patient': forms.Select(attrs={'class':'form-control' }),
             'patient_acceptance':forms.Select(attrs={'class':'form-control'}),
             'check_in_date':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
             'disease': forms.TextInput(attrs={'class':'form-control'}),

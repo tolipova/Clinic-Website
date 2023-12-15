@@ -38,7 +38,10 @@
                                         </div>
                                     </div>
                                     <div class="col-6 text-right">
-                                        <a href="#" class="filter-btn"><i class="flaticon-filter"></i> Filter </a>
+                                        <form method="GET" action="{% url 'patient_list' %}">
+                                            <input type="text" name="q" placeholder="Search patients" value="{{ search_query }}">
+                                            <button type="submit">Search</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +84,7 @@
                                                     <a href="{{ patient.get_edit_url }}"><i class="flaticon-pencil-1"></i></a>
                                                 </td>
                                                 <td>
-                                                    <a href="{% url 'diseases' %}"><i class="fa fa-history"></i></a>
+                                                    <a href="{% url 'diseases' pk=patient.pk %}"><i class="fa fa-history"></i></a>
                                                 </td>
                                               </tr>
                                             {% endfor %}

@@ -10,7 +10,7 @@
     <div class="main-sidebar ">
         <div class="sidebar-wrap scrollbar-inner">
             <div class="brand-area">
-                <a href="index.html"><img src="{% static 'assets/images/medico.png' %}" alt="medico" /></a>
+                <a href="{% url 'home' %}"><img src="{% static 'assets/images/medico.png' %}" alt="medico" /></a>
             </div>
             <nav class="menu-area ">
                 <ul id="metismenu">
@@ -78,7 +78,7 @@
                 </div>
                 <div class="col-lg-6">
                     <ul class="header-right d-flex align-items-center justify-content-end">
-                        <li><a class="Patient-btn" href="#">+  Add Patient</a></li>
+                        <li><a class="Patient-btn" href="{% url 'add_patient' %}">+  Yangi bemor yaratish</a></li>
                         <li class="notification"><a href="#"><span class="flaticon-bell"></span></a></li>
                         <li class="user-area"><a href="#"><img src="{% static 'assets/images/user-image.png' %}" alt="user-image" /></a></li>
                     </ul>

@@ -45,8 +45,8 @@
                                                     <img src="{% static 'assets/images/icons/Patient.svg' %}" alt="Patient" />
                                                 </div>
                                                 <div class="media-body">
-                                                  <p class="m-0">Bugungi bemorlar</p>
-                                                  <h3 class="counter">159</h3>
+                                                  <p class="m-0">Bemorlarning umumiy soni</p>
+                                                  <h3 class="counter"> {{ total_patients }}</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,7 +57,7 @@
                                                 </div>
                                                 <div class="media-body">
                                                   <p class="m-0">Doktorlar soni</p>
-                                                  <h3 class="counter">18</h3>
+                                                  <h3 class="counter">{{total_doctor}}</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -68,7 +68,7 @@
                                                 </div>
                                                 <div class="media-body">
                                                   <p class="m-0">Yotoqlar soni</p>
-                                                  <h3 class="counter">18</h3>
+                                                  <h3 class="counter">{{total_rooms}}</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -79,7 +79,7 @@
                                                 </div>
                                                 <div class="media-body">
                                                   <p class="m-0">Operatsiyalar soni</p>
-                                                  <h3 class="counter">10</h3>
+                                                  <h3 class="counter">{{total_operations}}</h3>
                                                 </div>
                                             </div>
                                         </div>
