@@ -97,4 +97,16 @@ class AddExpenseForm(forms.ModelForm):
             'card_number': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'**** **** **** 5648'}),
             'select_bank':forms.Select(attrs={'class':'form-control'}),
             }
-        
+
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = '__all__'
+        widgets = {
+            'patient_fullname': forms.Select(attrs={'class':'form-control' }),
+            'payment_price':forms.NumberInput(attrs={'class':'form-control', 'placeholder':'5,600,000'}),
+            'discount':forms.TextInput(attrs={'class':'form-control', 'placeholder':'10%'}),
+            'payments':forms.Select(attrs={'class':'form-control','placeholder':'Naqd pul'}),
+            'amount_paid':forms.NumberInput(attrs={'class':'form-control', 'placeholder':'1,000,000'}),
+            'payment_term':forms.TextInput(attrs={'class':'form-control', 'placeholder':'3kun'}),
+        }

@@ -137,7 +137,10 @@ class Operation(models.Model):
     total_grand = models.IntegerField(verbose_name="umumiy grand narxi")
     paid_amount = models.IntegerField(verbose_name="to'langan miqdor")
     comment = models.TextField(verbose_name="Izoh qoldiring")
-
+    
+    def __str__(self):
+        return self.patient_fullname
+    
 class AddExpense(models.Model):
     expense_head = models.CharField(max_length=255, verbose_name="harajat nomi")
     select_category = models.CharField(choices=select_category, max_length=255)
@@ -161,9 +164,9 @@ class PatientHistory(models.Model):
     patient_status = models.CharField(choices=qabul_holati, max_length=255)
     
     PAYMENT_CHOICES = [
-        ('cash', 'Naqd pul'),
-        ('card', 'Plastik karta'),
-        ('insurance', 'Sug\'urta'),
+        ('Naqd pul', 'Naqd pul'),
+        ('Plastik karta', 'Plastik karta'),
+        ('Sug\'urta', 'Sug\'urta'),
      
     ]
     payments = models.CharField(choices=PAYMENT_CHOICES, max_length=20, verbose_name="to'lov turi")
@@ -175,5 +178,17 @@ class PatientHistory(models.Model):
     total_status = models.CharField(choices=payment, max_length=255, verbose_name="to'lov holati")
     def get_absolute_url(self):
         return reverse('patient_profile', kwargs={'pk': self.pk})
-
+    def __str__(self):
+        return self.patient_fullname
     
+class Payment(models.Model):
+    patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi', on_delete=models.CASCADE, related_name='patient_fullnamee')
+    payment_price = models.IntegerField(verbose_name="to'lov narxi")
+    discount = models.CharField(max_length=10, verbose_name="chegirma")
+    payments = models.ForeignKey(PatientHistory, on_delete=models.CASCADE)
+    amount_paid = models.IntegerField(verbose_name="to'langan summa")
+    payment_term = models.CharField(max_length=255, verbose_name="to'lov muddati")
+
+    def __str__(self):
+        return self.patient_fullname
+         

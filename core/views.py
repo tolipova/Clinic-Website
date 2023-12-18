@@ -64,7 +64,7 @@ def patient_list(request):
 
 def patient_profile(request, pk):
     patient = get_object_or_404(PatientCreate, pk=pk)
-    patient_view = get_object_or_404(PatientHistory, pk=pk)
+    patient_view = PatientHistory.objects.filter(patient_fullname=patient)
     return render(request, 'patient/Patient-Profile.html', {'patient': patient, 'patient_view':patient_view})
     #return render(request,'patient/Patient-Profile.html' )
 
@@ -183,7 +183,14 @@ def diseases(request):
     return render(request, 'patient/diseases.html',{'form':form} )
 
 def tulov(request):
-    return render(request, 'tulov.html')
+    form = PaymentForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = PaymentForm()    
+    return render(request, 'tulov.html',{'form':form})
     
 
 
