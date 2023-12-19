@@ -192,7 +192,12 @@ def tulov(request):
         form = PaymentForm()    
     return render(request, 'tulov.html',{'form':form})
     
-
+def discount_calculation(request):
+    model_name = Payment.objects.all()
+    for payment_price, discount in model_name:
+        discount_amount = payment_price*(discount/100)
+        discount_price = payment_price - discount_amount 
+    return render (request, 'tulov.html', {'discount_price':discount_price})
 
 
 

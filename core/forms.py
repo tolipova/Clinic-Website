@@ -22,6 +22,8 @@ class PatientCreateForm(forms.ModelForm):
             'patient_room':forms.Select(attrs={'class':'form-control'}),
         }
 class DoctorCreateForm(forms.ModelForm):
+    profile_image = forms.ImageField(widget = forms.FileInput(attrs={"rows": "", "class": "form-file"}))
+    muqova_image = forms.ImageField(widget = forms.FileInput(attrs={"rows": "", "class": "form-file"}))
     class Meta:
         model = DoctorCreate
         fields = '__all__'

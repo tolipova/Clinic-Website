@@ -184,8 +184,14 @@ class PatientHistory(models.Model):
 class Payment(models.Model):
     patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi', on_delete=models.CASCADE, related_name='patient_fullnamee')
     payment_price = models.IntegerField(verbose_name="to'lov narxi")
-    discount = models.CharField(max_length=10, verbose_name="chegirma")
-    payments = models.ForeignKey(PatientHistory, on_delete=models.CASCADE)
+    discount = models.IntegerField(verbose_name="chegirma")
+    PAYMENT_CHOICES = [
+        ('Naqd pul', 'Naqd pul'),
+        ('Plastik karta', 'Plastik karta'),
+        ('Sug\'urta', 'Sug\'urta'),
+     
+    ]
+    payment_choice =  models.CharField(choices=PAYMENT_CHOICES, max_length=20, verbose_name="to'lov turi")
     amount_paid = models.IntegerField(verbose_name="to'langan summa")
     payment_term = models.CharField(max_length=255, verbose_name="to'lov muddati")
 
