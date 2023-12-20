@@ -26,7 +26,7 @@ class DoctorCreateForm(forms.ModelForm):
     muqova_image = forms.ImageField(widget = forms.FileInput(attrs={"rows": "", "class": "form-file"}))
     class Meta:
         model = DoctorCreate
-        fields = '__all__'
+        fields = ['profile_image','muqova_image','doctor_fullname','doctor_phone','doctor_address','doctor_age','doctor_birth','doctor_blood','doctor_status','doctor_university','doctor_discription','doctor_skills','work_time','email_address']
         widgets = {
             'doctor_fullname': forms.TextInput(attrs={'class':'form-control'}),
             'doctor_phone': forms.NumberInput(attrs={'class':'form-control'}),
@@ -65,12 +65,28 @@ class PatientForm(forms.ModelForm):
     class Meta:
         model = PatientCreate
         fields = ['patient_fullname', 'patient_phone', 'patient_address', 'patient_birth', 'patient_age', 'patient_blood', 'patient_status', 'patient_married', 'patient_gender', 'patient_acceptance', 'patient_discription', 'check_in_date', 'diseases', 'patient_room']
-
+        widgets = {
+            'patient_fullname': forms.TextInput(attrs={'class':'form-control'}),
+            'patient_phone': forms.NumberInput(attrs={'class':'form-control'}),
+            'patient_address':forms.TextInput(attrs={'class':'form-control'}),
+            'patient_age':forms.NumberInput(attrs={'class':'form-control'}),
+            'patient_birth':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
+            'patient_blood':forms.Select(attrs={'class':'form-control'}),
+            'patient_status':forms.Select(attrs={'class':'form-control'}),
+            'patient_married':forms.Select(attrs={'class':'form-control'}),
+            'patient_gender':forms.Select(attrs={'class':'form-control'}),
+            'patient_acceptance':forms.Select(attrs={'class':'form-control'}),
+            'patient_discription':forms.Textarea(attrs={'class':'form-control'}),
+            'check_in_date':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
+            'diseases':forms.TextInput(attrs={'class':'form-control'}),
+            'patient_room':forms.Select(attrs={'class':'form-control'}),
+        }
 class DiseasesForm(forms.ModelForm):
     class Meta:
         model = PatientHistory
         fields = '__all__'
         widgets = {
+            'patient_fullname':forms.Select(attrs={'class':'form-control'}),
             'patient': forms.Select(attrs={'class':'form-control' }),
             'patient_acceptance':forms.Select(attrs={'class':'form-control'}),
             'check_in_date':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),

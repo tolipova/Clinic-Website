@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,23 +76,23 @@ WSGI_APPLICATION = 'Clinic.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'medico', 
-#         'USER': 'postgres', 
-#         'PASSWORD': 'postgres',
-#         'HOST': 'localhost', 
-#         'PORT': '5432',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'medico', 
+        'USER': 'postgres', 
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost', 
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/r
@@ -139,5 +140,9 @@ MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
+JAZZMIN_UI_TWEAKS = {
+  
+    "theme": "flatly",
+    "dark_mode_theme": "darkly",
+}
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

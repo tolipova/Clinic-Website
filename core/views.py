@@ -52,15 +52,15 @@ def patient_list(request):
     }
     return render(request, 'patient/patient-list.html', context)
 
-    paginator = Paginator(patient, 1)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    # paginator = Paginator(patient, 1)
+    # page_number = request.GET.get('page')
+    # page_obj = paginator.get_page(page_number)
 
-    context = {
-        'page_obj': page_obj,
-        'search_query': search_query  # Passing the search query back to the template
-    }
-    return render(request, 'patient/patient-list.html', context)
+    # context = {
+    #     'page_obj': page_obj,
+    #     'search_query': search_query  # Passing the search query back to the template
+    # }
+    # return render(request, 'patient/patient-list.html', context)
 
 def patient_profile(request, pk):
     patient = get_object_or_404(PatientCreate, pk=pk)
@@ -170,7 +170,7 @@ def add_expense(request):
         form = AddExpenseForm()    
     return render(request, 'expense/add-expense.html',{'form':form})
 
-def diseases(request):
+def diseases(request, pk):
     form = DiseasesForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
@@ -198,7 +198,8 @@ def discount_calculation(request):
         discount_amount = payment_price*(discount/100)
         discount_price = payment_price - discount_amount 
     return render (request, 'tulov.html', {'discount_price':discount_price})
-
+def rooms(request):
+    return render(request, 'rooms.html')
 
 
 

@@ -118,6 +118,7 @@ class PatientCreate(models.Model):
         while PatientCreate.objects.filter(patient_key=key).exists():
             key = ''.join(str(random.randint(0, 9)) for _ in range(9))
         return key
+    
     def get_absolute_url(self):
             return reverse('patient_profile', kwargs={'pk': self.pk})
 
