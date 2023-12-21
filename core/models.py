@@ -85,6 +85,7 @@ class DoctorCreate(models.Model):
      
 class Rooms(models.Model):
     room_number = models.IntegerField(verbose_name="xona raqami", null=True, blank=True) 
+    room_status = models.CharField(max_length=255, choices=qabul_holati, verbose_name="xona turi")
 
     def __str__(self):
         return str(self.room_number) 
@@ -124,6 +125,8 @@ class PatientCreate(models.Model):
 
     def get_edit_url(self):
             return reverse('patient_edit', kwargs={'pk': self.pk})
+    def get_delete_url(self):
+            return reverse('patient_delete', kwargs={'pk': self.pk})
     def __str__(self):
         return self.patient_fullname
     

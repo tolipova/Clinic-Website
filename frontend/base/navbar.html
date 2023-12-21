@@ -60,8 +60,13 @@
                     <li>
                         <a  href="{% url 'tulov' %}"><i class="flaticon-medical"></i>To'lov</a>
                     </li>
-                    <li>
-                        <a href="{% url 'rooms' %}"><i class="flaticon-user"></i>Xonalar</a>
+                    <li class="">
+                        <a class="has-arrow" href="#" ><i class="flaticon-user"></i> Xonalar</a>
+                        <ul>
+                            <li><a href="{% url 'add_room' %}">Yangi Xona qo'shish</a></li>
+                            <!-- <li><a href="{% url 'patient_profile' %}">Mijozlar profili</a></li> -->
+                            <li><a href="{% url 'rooms_list' %}">Xonalar ro'yxati</a></li>
+                        </ul>
                     </li>
                 </ul>
             </nav>

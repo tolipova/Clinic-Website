@@ -128,3 +128,12 @@ class PaymentForm(forms.ModelForm):
             'amount_paid':forms.NumberInput(attrs={'class':'form-control', 'placeholder':'1,000,000'}),
             'payment_term':forms.TextInput(attrs={'class':'form-control', 'placeholder':'3kun'}),
         }
+
+class RoomsForm(forms.ModelForm):
+    class Meta:
+        model = Rooms
+        fields = '__all__'
+        widgets = {
+            'room_number':forms.NumberInput(attrs={'class':'form-control', 'placeholder':'101'}),
+            'room_status':forms.Select(attrs={'class':'form-control','placeholder':'Comfort xona(vip)'}),
+        }

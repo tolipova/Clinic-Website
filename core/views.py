@@ -68,6 +68,11 @@ def patient_profile(request, pk):
     return render(request, 'patient/Patient-Profile.html', {'patient': patient, 'patient_view':patient_view})
     #return render(request,'patient/Patient-Profile.html' )
 
+def patient_delete(request, pk):
+    patient = PatientCreate.objects.get(pk=pk)
+    patient.delete()
+    return redirect('patient_list')
+
 def patient_edit(request, pk):
     patient = get_object_or_404(PatientCreate, pk=pk)
     
@@ -104,6 +109,7 @@ def doctor_profile(request, pk):
         'doctor':doctor
     }
     return render(request,'doctor/doctor-Profile.html', context )
+
 def doctor_edit(request, pk):
     doctor = get_object_or_404(DoctorCreate, pk=pk)
     
@@ -198,8 +204,20 @@ def discount_calculation(request):
         discount_amount = payment_price*(discount/100)
         discount_price = payment_price - discount_amount 
     return render (request, 'tulov.html', {'discount_price':discount_price})
-def rooms(request):
-    return render(request, 'rooms.html')
+def add_room(request):
+    form = RoomsForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            print('xato')
+    else:
+        form = RoomsForm() 
+    return render(request, 'rooms/add_new_room.html', {'form':form})
+
+def rooms_list(request):
+    return render(request, 'rooms/rooms_list.html')
 
 
 
