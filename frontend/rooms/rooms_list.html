@@ -34,13 +34,13 @@
                                 <div class="row align-items-center">
                                     <div class="col-6">
                                         <div class="section-title">
-                                            <h2 class="title">Bemorlar ruyxati</h2>
+                                            <h2 class="title">Xonalar ruyxati</h2>
                                         </div>
                                     </div>
-                                    <div class="col-6 text-right">
-                                        <form method="GET" action="{% url 'patient_list' %}">
+                                    <div class="col-6 text-right" class="form-control">
+                                        <form method="GET" action="{% url 'rooms_list' %}">
                                             <input type="text"  name="q" placeholder="Search patients" value="{{ search_query }}">
-                                            <button type="submit">Search</button>
+                                            <button type="submit" >Search</button>
                                         </form>
                                     </div>
                                 </div>
@@ -50,48 +50,30 @@
                                     <table class="table table-borderless">
                                           <thead>
                                               <tr>
-                                                <th scope="col"><input type="checkbox" /> Bemor ID</th>
-                                                <th scope="col">Bemor ismi</th>
-                                                <th scope="col">Kirish sanasi</th>
-                                                <th scope="col">tayinlangan Doktor</th>
-                                                <th scope="col">Kasallik</th>
-                                                <th scope="col">Xolati</th>
                                                 <th scope="col">Xona raqami</th>
-                                                <th>Taxrirlash</th>
-                                                <th>O'chirish</th>
-                                                <th>Bemorga tarix yaratish</th>
+                                                <th scope="col">Xona turi</th>
+                                                <th scope="col">Bo'sh yoki Band qilingan</th>
+                                                <th scope="col">Taxrirlash</th>
                                               </tr>
                                           </thead>
                                           <tbody>
                                               {% for patient in page_obj %}
                                               <tr>
-                                                <td><input type="checkbox" />{{patient.patient_key}}</td>
                                                 <td>
-                                                  <div class="media align-items-center">
-                                                      <div class="patient-imge">
-                                                          <img src="{% static 'assets/images/patient/icon.png' %}" alt="patient" />
-                                                      </div>
-                                                      <div class="media-body">
-                                                        <p class="m-0"><a href="{{ patient.get_absolute_url }}">{{patient.patient_fullname}}</a></p>
+                                                    <div class="media align-items-center">
+                                                        <div class="patient-imge">
+                                                            <img src="{% static 'assets/images/room.png' %}" alt="patient" />
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <p class="m-0">{{patient.room_number}}</p>
                                                       </div>
                                                   </div>
                                                 </td>
-                                                <td>{{patient.check_in_date}}</td>
-                                                <th>{{patient.patient_acceptance}}</th>
-                                                <td>{{patient.diseases}}</td>
-                                                <td><span class="patient-status new-patient">{{patient.patient_status}}</span></td>
-                                                <td>{{patient.patient_room}}</td>
+                                                <th>{{patient.room_status}}</th>
+                                                <th>{{patient.booked}}</th>
                                                 <td>
-                                                    <a href="{{ patient.get_edit_url }}"><i class="flaticon-pencil-1"></i></a>
+                                                    <a href="{% url 'room_edit' %}"><i class="flaticon-pencil-1"></i></a>
                                                 </td>
-                                                <td>
-                                                    <a href="{{ patient.get_delete_url }}"><i class="fa fa-trash-o" style="font-size:18px;color:red"></i></a>
-                                                </td>
-
-                                                <td>
-                                                    <a href="{% url 'diseases' pk=patient.pk %}"><i class="fa fa-history"></i></a>
-                                                </td>
-                                               
                                               </tr>
                                             {% endfor %}
                                           </tbody>

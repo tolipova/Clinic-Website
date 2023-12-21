@@ -57,7 +57,10 @@ bank = (
     ("Hamkor Bank","Hamkor Bank"),
     ("Humo Xalq Banki","Humo Xalq Banki")
 )
-
+booked_room = (
+     ("Bo'sh xona","Bo'sh xona"),
+     ("Band qilingan","Band qilingan")
+)
 class DoctorCreate(models.Model):
     doctor_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     doctor_fullname = models.CharField(verbose_name='Doctorning ism familiyasi', max_length=255)
@@ -86,7 +89,8 @@ class DoctorCreate(models.Model):
 class Rooms(models.Model):
     room_number = models.IntegerField(verbose_name="xona raqami", null=True, blank=True) 
     room_status = models.CharField(max_length=255, choices=qabul_holati, verbose_name="xona turi")
-
+    booked = models.CharField(max_length=255, choices=booked_room, verbose_name="xona holati" )
+    
     def __str__(self):
         return str(self.room_number) 
       

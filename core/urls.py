@@ -27,6 +27,7 @@ urlpatterns = [
     path('tulov/', tulov, name="tulov"),
     path('rooms/', rooms_list, name="rooms_list"),
     path('add_room/',add_room, name="add_room"),
+    path('room_edit/', room_edit, name='room_edit'),
     path('discount_calculation/', discount_calculation, name="discount_calculation")
 
 ]

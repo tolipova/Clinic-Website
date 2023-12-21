@@ -217,8 +217,35 @@ def add_room(request):
     return render(request, 'rooms/add_new_room.html', {'form':form})
 
 def rooms_list(request):
-    return render(request, 'rooms/rooms_list.html')
+    search_query = request.GET.get('q')
+    patient = Rooms.objects.all()
 
+    if search_query:
+        patient = patient.filter(
+            Q(room_number__icontains=search_query) 
+        )
+    paginator = Paginator(patient, 25)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
+    context = {
+        'page_obj': page_obj,
+        'search_query': search_query 
+    }
+    return render(request, 'rooms/rooms_list.html',context)
+
+def room_edit(request ):
+    patient = get_object_or_404(Rooms)
+    
+    if request.method == 'POST':
+        form = RoomsForm(request.POST, instance=patient)
+        if form.is_valid():
+            form.save()
+            return redirect('room_list')  # Redirect to patient detail page after successful update
+    else:
+        form = RoomsForm(instance=patient)
+    return render(request, 'rooms/room_edit.html', {'form': form, 'patient': patient})
+
+    
 
 
