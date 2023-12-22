@@ -5,6 +5,9 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse, Http404
 from django.db.models import Q
 from datetime import date, timedelta
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+
 # Create your views here.
 def home(request):
     today = date.today()
@@ -218,34 +221,36 @@ def add_room(request):
 
 def rooms_list(request):
     search_query = request.GET.get('q')
-    patient = Rooms.objects.all()
+    rooms = Rooms.objects.all()
 
     if search_query:
-        patient = patient.filter(
-            Q(room_number__icontains=search_query) 
+        rooms = rooms.filter(
+            Q(room_number__icontains=search_query)
         )
-    paginator = Paginator(patient, 25)
+    
+    paginator = Paginator(rooms, 25)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     context = {
         'page_obj': page_obj,
-        'search_query': search_query 
+        'search_query': search_query,
+        'rooms': rooms
     }
-    return render(request, 'rooms/rooms_list.html',context)
+    return render(request, 'rooms/rooms_list.html', context)
 
-def room_edit(request ):
-    patient = get_object_or_404(Rooms)
+def room_edit(request, room_id):
+    room = get_object_or_404(Rooms, id=room_id)
     
     if request.method == 'POST':
-        form = RoomsForm(request.POST, instance=patient)
+        form = RoomsForm(request.POST, instance=room)
         if form.is_valid():
             form.save()
-            return redirect('room_list')  # Redirect to patient detail page after successful update
+            return redirect('room_detail', room_id=room.id)
     else:
-        form = RoomsForm(instance=patient)
-    return render(request, 'rooms/room_edit.html', {'form': form, 'patient': patient})
-
+        form = RoomsForm(instance=room)
+    
+    return render(request, 'rooms/room_edit.html', {'form': form, 'room': room})
     
 
 

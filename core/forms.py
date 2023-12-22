@@ -137,4 +137,5 @@ class RoomsForm(forms.ModelForm):
             'room_number':forms.NumberInput(attrs={'class':'form-control', 'placeholder':'101'}),
             'room_status':forms.Select(attrs={'class':'form-control','placeholder':'Comfort xona(vip)'}),
             'booked':forms.Select(attrs={'class':'form-control','placeholder':'Comfort xona(vip)'}),
+            'yotoq_soni':forms.NumberInput(attrs={'class':'form-control', 'placeholder':'101'}),
         }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room Detail</title>
+</head>
+<body>
+    <h1>Room Detail - {{ room.room_number }}</h1>
+    
+    <p>Room Number: {{ room.room_number }}</p>
+    <p>Room Status: {{ room.room_status }}</p>
+    <p>Yotoqlar Soni: {{ room.yotoq_soni }}</p>
+    <p>Booked Status: {{ room.booked }}</p>
+    
+    <!-- Link to edit room -->
+    {% if room.id %}
+        <a href="{% url 'room_edit' room.id %}"><i class="flaticon-pencil-1"></i> Edit Room</a>
+    {% else %}
+        <p>No valid room ID found.</p>
+    {% endif %}
+</body>
+</html>

@@ -48,36 +48,41 @@
                             <div class="patient-list">
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
-                                          <thead>
-                                              <tr>
+                                        <thead>
+                                            <tr>
                                                 <th scope="col">Xona raqami</th>
                                                 <th scope="col">Xona turi</th>
                                                 <th scope="col">Bo'sh yoki Band qilingan</th>
                                                 <th scope="col">Taxrirlash</th>
-                                              </tr>
-                                          </thead>
-                                          <tbody>
-                                              {% for patient in page_obj %}
-                                              <tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for room in page_obj %}
+                                            <tr>
                                                 <td>
                                                     <div class="media align-items-center">
                                                         <div class="patient-imge">
                                                             <img src="{% static 'assets/images/room.png' %}" alt="patient" />
                                                         </div>
                                                         <div class="media-body">
-                                                            <p class="m-0">{{patient.room_number}}</p>
-                                                      </div>
-                                                  </div>
+                                                            <p class="m-0">{{ room.room_number }}</p>
+                                                        </div>
+                                                    </div>
                                                 </td>
-                                                <th>{{patient.room_status}}</th>
-                                                <th>{{patient.booked}}</th>
+                                                <td>{{ room.room_status }}</td>
+                                                <td>{{ room.booked }}</td>
                                                 <td>
-                                                    <a href="{% url 'room_edit' %}"><i class="flaticon-pencil-1"></i></a>
+                                                    {% if room.id %}
+                                                        <a href="{% url 'room_edit' room_id=room.id %}"><i class="flaticon-pencil-1"></i></a>
+                                                    {% else %}
+                                                        <p>Id topilmadi</p>
+                                                    {% endif %}
                                                 </td>
-                                              </tr>
+                                            </tr>
                                             {% endfor %}
-                                          </tbody>
+                                        </tbody>
                                     </table>
+                                    
                                 </div>
                             </div>
                             <div class="pagination-area mt-10">

@@ -89,6 +89,7 @@ class DoctorCreate(models.Model):
 class Rooms(models.Model):
     room_number = models.IntegerField(verbose_name="xona raqami", null=True, blank=True) 
     room_status = models.CharField(max_length=255, choices=qabul_holati, verbose_name="xona turi")
+    yotoq_soni = models.IntegerField(verbose_name='Yotoqlar soni')
     booked = models.CharField(max_length=255, choices=booked_room, verbose_name="xona holati" )
     
     def __str__(self):
