@@ -64,9 +64,11 @@
                         <a class="has-arrow" href="#" ><i class="flaticon-user"></i> Xonalar</a>
                         <ul>
                             <li><a href="{% url 'add_room' %}">Yangi Xona qo'shish</a></li>
-                            <!-- <li><a href="{% url 'patient_profile' %}">Mijozlar profili</a></li> -->
                             <li><a href="{% url 'rooms_list' %}">Xonalar ro'yxati</a></li>
                         </ul>
+                    </li>
+                    <li>
+                        <a  href="{% url 'logout' %}"><i class="flaticon-logout"></i>Logout</a>
                     </li>
                 </ul>
             </nav>

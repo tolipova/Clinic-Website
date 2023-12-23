@@ -7,8 +7,13 @@ from django.db.models import Q
 from datetime import date, timedelta
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def home(request):
     today = date.today()
     patients_today = PatientCreate.objects.filter(check_in_date=today).count()
