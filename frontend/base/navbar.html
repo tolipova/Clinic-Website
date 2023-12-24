@@ -67,8 +67,16 @@
                             <li><a href="{% url 'rooms_list' %}">Xonalar ro'yxati</a></li>
                         </ul>
                     </li>
+                    {% if user.is_authenticated %}
+                        <p>Xushkelibsiz {{ request.user.username}} !!!</p>
+                        
+                    {% else %}
                     <li>
-                        <a  href="{% url 'logout' %}"><i class="flaticon-logout"></i>Logout</a>
+                        <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i>krish</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a  href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
                     </li>
                 </ul>
             </nav>

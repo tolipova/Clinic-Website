@@ -40,8 +40,8 @@ class DoctorCreateForm(forms.ModelForm):
             'doctor_skills':forms.Select(attrs={'class':'form-control'}),
             'work_time':forms.TimeInput(attrs={'type': 'time', 'class':'form-control'}),
             'email_address' : forms.EmailInput(attrs={'class':'form-control', 'placeholder':"saragraham101@gmail.com" }),
-            "profile_image": forms.FileInput(attrs={"rows": "", "class": "form-file"}),
-            "muqova_image": forms.FileInput(attrs={"rows": "", "class": "form-file"})
+            "profile_image": forms.ImageField(),
+            "muqova_image": forms.ImageField(),
         }
 
 class OperationForm(forms.ModelForm):
