@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+from django.views import View
 # Create your views here.
 @login_required
 def home(request):
@@ -257,5 +257,71 @@ def room_edit(request, room_id):
     
     return render(request, 'rooms/room_edit.html', {'form': form, 'room': room})
     
+#calendarrr
 
+# def event_list(request):
+#     events = Event.objects.all()
+#     return render(request, 'event/event_list.html', {'events': events})
 
+# def create_event(request):
+#     if request.method == 'POST':
+#         form = EventForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return JsonResponse({'success': True})
+#     else:
+#         form = EventForm()
+#     return render(request, 'event/create_event.html', {'form': form})
+
+# def edit_event(request, event_id):
+#     event = get_object_or_404(Event, pk=event_id)
+#     if request.method == 'POST':
+#         form = EventForm(request.POST, instance=event)
+#         if form.is_valid():
+#             form.save()
+#             return JsonResponse({'success': True})
+#     else:
+#         form = EventForm(instance=event)
+#     return render(request, 'event/edit_event.html', {'form': form})
+
+# def delete_event(request, event_id):
+#     event = get_object_or_404(Event, pk=event_id)
+#     if request.method == 'POST':
+#         event.delete()
+#         return JsonResponse({'success': True, 'message': 'Event deleted successfully'})
+#     return render(request, 'event/delete_event.html', {'event': event})
+
+class EventView(View):
+    def get(self, request):
+        events = Event.objects.all()
+        form = EventForm()
+        return render(request, 'event/event_list.html', {'events': events, 'form': form})
+
+    def post(self, request):
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('event')
+        events = Event.objects.all()
+        return render(request, 'event/event_list.html', {'events': events, 'form': form})
+
+    def put(self, request, event_id):
+        event = get_object_or_404(Event, pk=event_id)
+        form = EventForm(request.POST, instance=event)
+        if form.is_valid():
+            form.save()
+            return redirect('event')
+        events = Event.objects.all()
+        return render(request, 'event/event_list.html', {'events': events, 'form': form})
+
+    def delete(self, request, event_id):
+
+        event = get_object_or_404(Event, pk=event_id)
+        if request.method == 'POST':
+            try:
+                event.delete()
+                return JsonResponse({'success': True, 'message': 'Event deleted successfully'})
+            except Exception as e:
+                return JsonResponse({'success': False, 'message': str(e)})
+        events = Event.objects.all()
+        return render(request, 'event/event_list.html', {'events': events})

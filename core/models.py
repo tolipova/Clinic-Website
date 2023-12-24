@@ -206,4 +206,17 @@ class Payment(models.Model):
 
     def __str__(self):
         return self.patient_fullname
-         
+
+
+# calendar
+    
+class Event(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    start_date = models.DateField(auto_now=False)
+    start_time = models.TimeField(auto_now=False)
+    end_date = models.DateField(auto_now=False)
+    end_time = models.TimeField(auto_now=False)
+
+    def __str__(self):
+        return self.title
