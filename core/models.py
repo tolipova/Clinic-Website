@@ -205,7 +205,7 @@ class Payment(models.Model):
     payment_term = models.CharField(max_length=255, verbose_name="to'lov muddati")
 
     def __str__(self):
-        return self.patient_fullname
+        return self.payment_choice
 
 
 # calendar

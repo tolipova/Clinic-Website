@@ -196,6 +196,11 @@ def diseases(request, pk):
         form = DiseasesForm() 
     return render(request, 'patient/diseases.html',{'form':form} )
 
+
+def tulov_list(request):
+    tulov = Payment.objects.all()
+    return render(request, 'tulov.html', {'tulov':tulov})
+
 def tulov(request):
     form = PaymentForm(request.POST)
     if request.method == 'POST':
@@ -205,7 +210,9 @@ def tulov(request):
     else:
         form = PaymentForm()    
     return render(request, 'tulov.html',{'form':form})
-    
+
+
+
 def discount_calculation(request):
     model_name = Payment.objects.all()
     for payment_price, discount in model_name:
@@ -290,7 +297,20 @@ def room_edit(request, room_id):
 #         event.delete()
 #         return JsonResponse({'success': True, 'message': 'Event deleted successfully'})
 #     return render(request, 'event/delete_event.html', {'event': event})
+class TulovView(View):
+    def get(self,request):
+        tulov = Payment.objects.all()
+        return render(request, 'tulov.html', {'tulov':tulov})
 
+    def post(self, request):
+        form = PaymentForm(request.POST)
+        if request.method == 'POST':
+            if form.is_valid():
+                form.save()
+                return redirect('home')
+        else:
+            form = PaymentForm()    
+        return render(request, 'tulov.html',{'form':form})
 class EventView(View):
     def get(self, request):
         events = Event.objects.all()
