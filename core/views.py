@@ -316,7 +316,7 @@ class EventView(View):
     def get(self, request):
         events = Event.objects.all()
         form = EventForm()
-        return render(request, 'event/event_list.html', {'events': events, 'form': form})
+        return render(request, 'doctor/event_list.html', {'events': events, 'form': form})
 
     def post(self, request):
         form = EventForm(request.POST)
@@ -324,7 +324,7 @@ class EventView(View):
             form.save()
             return redirect('event')
         events = Event.objects.all()
-        return render(request, 'event/event_list.html', {'events': events, 'form': form})
+        return render(request, 'doctor/event_list.html', {'events': events, 'form': form})
 
     def put(self, request, event_id):
         event = get_object_or_404(Event, pk=event_id)
@@ -333,7 +333,7 @@ class EventView(View):
             form.save()
             return redirect('event')
         events = Event.objects.all()
-        return render(request, 'event/event_list.html', {'events': events, 'form': form})
+        return render(request, 'doctor/event_list.html', {'events': events, 'form': form})
 
     def delete(self, request, event_id):
 
@@ -345,4 +345,4 @@ class EventView(View):
             except Exception as e:
                 return JsonResponse({'success': False, 'message': str(e)})
         events = Event.objects.all()
-        return render(request, 'event/event_list.html', {'events': events})
+        return render(request, 'doctor/event_list.html', {'events': events})
