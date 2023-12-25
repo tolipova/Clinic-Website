@@ -58,21 +58,21 @@
                         </ul>
                     </li>
                     <li>
-                        <a  href="{% url 'tulov' %}"><i class="flaticon-medical"></i>To'lov</a>
+                        <a  href="{% url 'tulov' %}"><i class="fas fa-money-check-alt"></i>To'lov</a>
                     </li>
                     <li class="">
-                        <a class="has-arrow" href="#" ><i class="flaticon-user"></i> Xonalar</a>
+                        <a class="has-arrow" href="#" ><i class="fas fa-door-closed"></i> Xonalar</a>
                         <ul>
                             <li><a href="{% url 'add_room' %}">Yangi Xona qo'shish</a></li>
                             <li><a href="{% url 'rooms_list' %}">Xonalar ro'yxati</a></li>
                         </ul>
                     </li>
                     {% if user.is_authenticated %}
-                        <p>Xushkelibsiz {{ request.user.username}} !!!</p>
+                        <h4>Xush kelibsiz {{ request.user.username}} !!!</h4>
                         
                     {% else %}
                     <li>
-                        <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i>krish</a>
+                        <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i><h4>Kirish</h4></a>
                     </li>
                     {% endif %}
                     <li>

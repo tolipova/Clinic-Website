@@ -69,8 +69,25 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>{{ room.room_status }}</td>
-                                                <td>{{ room.booked }}</td>
+                                                <td>
+                                                    {% if room.room_status == 'Vip' %}
+                                                        <p style="color: gold;">Vip</p>
+                                                        <br>
+                                                    {% elif room.room_status == 'Oddiy' %}
+                                                        <p style="color: green;">Oddiy</p>
+                                                        <br>
+                                                    {% else %}
+                                                    <p style="color: blueviolet;">Budjet</p>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if room.booked == "Bo'sh xona" %}
+                                                        <p style="color: blue;">Bo'sh xona</p>
+                                                        <br>
+                                                    {% else %}
+                                                    <p style="color: red;">Band qilingan</p> 
+                                                    {% endif %}   
+                                                </td>
                                                 <td>
                                                     {% if room.id %}
                                                         <a href="{% url 'room_edit' room_id=room.id %}"><i class="flaticon-pencil-1"></i></a>

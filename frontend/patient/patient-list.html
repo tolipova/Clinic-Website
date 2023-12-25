@@ -53,7 +53,7 @@
                                                 <th scope="col"><input type="checkbox" /> Bemor ID</th>
                                                 <th scope="col">Bemor ismi</th>
                                                 <th scope="col">Kirish sanasi</th>
-                                                <th scope="col">tayinlangan Doktor</th>
+                                                <th scope="col">Tayinlangan Doktor</th>
                                                 <th scope="col">Kasallik</th>
                                                 <th scope="col">Xolati</th>
                                                 <th scope="col">Xona raqami</th>
@@ -79,13 +79,24 @@
                                                 <td>{{patient.check_in_date}}</td>
                                                 <th>{{patient.patient_acceptance}}</th>
                                                 <td>{{patient.diseases}}</td>
-                                                <td><span class="patient-status new-patient">{{patient.patient_status}}</span></td>
+                                                <td><span class="patient-status new-patient">
+                                                    {% if patient.patient_status == 'Vip' %}
+                                                        <p style="color: gold;">Vip</p>
+                                                        <br>
+                                                    {% elif patient.patient_status == 'Oddiy' %}
+                                                        <p style="color: green;">Oddiy</p>
+                                                        <br>
+                                                    {% else %}
+                                                    <p style="color: blueviolet;">Budjet</p>
+                                                    {% endif %}
+                                                </span>
+                                                </td>
                                                 <td>{{patient.patient_room}}</td>
                                                 <td>
                                                     <a href="{{ patient.get_edit_url }}"><i class="flaticon-pencil-1"></i></a>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ patient.get_delete_url }}"><i class="fa fa-trash-o" style="font-size:18px;color:red"></i></a>
+                                                    <a href="{% url  'patient_delete' patient.pk %}"><i class="fas fa-trash-alt" style="font-size:18px;color:red"></i></a>
                                                 </td>
 
                                                 <td>

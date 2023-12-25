@@ -32,153 +32,169 @@
         {% include 'base/navbar.html' %}
 
                 <div class="page-wrape">
-                    <div class="container-fluid">
-                        <div class="section-header">
-                            <div class="section-title">
-                                <h2 class="title">To'lov</h2>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createPaymentModal">
-                            Create Event
-                        </button>
-                        <div class="modal fade" id="createPaymentModal" tabindex="-1" role="dialog" aria-labelledby="createPaymentModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="createPaymentModalLabel">Create Event</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                    <div class="patient-list-area">
+                        <div class="container-fluid">
+                            <div class="section-header">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <div class="section-title">
+                                            <h2 class="title">To'lov</h2>
+                                        </div>
                                     </div>
-                                    <div class="modal-body">
-                                        <form id="createPaymentModalForm" method="post">
-                                            {% csrf_token %}
-                                            <div class="form-group">
-                                                {{form}}
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="primary-tab">
-                            <div class="tab-content" id="PatientContent">
-                                
-                                <div class="tab-pane fade show active" id="Payment" role="tabpanel" aria-labelledby="Payment-tab">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-12">
-                                            <table class="table table-borderless">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            name
-                                                        </th>
-                                                        <th>
-                                                            tulov
-                                                        </th>
-                                                        <th>
-                                                            chegirma %
-                                                        </th>
-                                                        <th>
-                                                            to'lov turi
-                                                        </th>
-                                                        <th>
-                                                            tulov miqdori
-                                                        </th>
-                                                        <td>
-                                                            tulov muddati
-                                                        </td>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% for tulovs in tulov %}
-                                                        <tr>
-                                                            
-                                                            <td>
-                                                                {{tulovs.patient_fullname}}
-            
-                                                            </td>
-                                                            <td>
-                                                                {{tulovs.payment_price}}
-                                                            </td>
-                                                            <td>
-                                                                {{tulovs.discount}}%
-                                                            </td>
-                                                            <td>
-                                                                {{tulovs.payment_choice}}
-                                                            </td>
-                                                            <td>
-                                                                {{tulovs.amount_paid}}
-                                                            </td>
-                                                            <td>
-                                                                {{tulovs.payment_term}}
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
-                                            <div class="primary-form">
-                                                
-                                                <!-- <form action="#" method="post">
-                                                    {% csrf_token %}
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group">
-                                                                <label for="subtotal">Bemor ismi</label>
-                                                                {{form.patient_fullname}}
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createPaymentModal">
+                                        To'lov qo'shish
+                                    </button>
+                                    <div class="modal fade" id="createPaymentModal" tabindex="-1" role="dialog" aria-labelledby="createPaymentModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="createPaymentModalLabel">To'lov qo'shish</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="createPaymentModalForm" method="post">
+                                                        {% csrf_token %}
+                                                        <div class="form-group">
+                                                            <div class="primary-form">
+                                                                <form action="#" method="post">
+                                                                    {% csrf_token %}
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-group">
+                                                                                <label for="subtotal">Bemor ismi</label>
+                                                                                {{form.patient_fullname}}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label for="discount">To'lov summasi</label>
+                                                                                {{form.payment_price}}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label for="less">Chegirma miqdori</label>
+                                                                                {{form.discount}}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-group">
+                                                                                <label for="grandtotal">To'lov turi</label>
+                                                                                {{form.payment_choice}}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-group">
+                                                                                <label for="paidamount">To'langan miqdor</label>
+                                                                                {{form.amount_paid}}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-group">
+                                                                                <label for="Due">Muddati</label>
+                                                                                {{form.payment_term}}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-12">
+                                                                            <input type="submit" class="form-btn" value="Yuborish">
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-lg-6 text-center">
+                                                                <img src="{% static 'assets/images/emergency-from-img.png' %}" alt="emergency-from-img" />
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="form-group">
-                                                                <label for="discount">To'lov summasi</label>
-                                                                {{form.payment_price}}
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="form-group">
-                                                                <label for="less">Chegirma miqdori</label>
-                                                                {{form.discount}}
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group">
-                                                                <label for="grandtotal">To'lov turi</label>
-                                                                {{form.payment_choice}}
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group">
-                                                                <label for="paidamount">To'langan miqdor</label>
-                                                                {{form.amount_paid}}
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group">
-                                                                <label for="Due">Muddati</label>
-                                                                {{form.payment_term}}
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <input type="submit" class="form-btn" value="Yuborish">
-                                                        </div>
-                                                    </div>
-                                                </form> -->
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-lg-6 text-center">
-                                            <img src="{% static 'assets/images/emergency-from-img.png' %}" alt="emergency-from-img" />
-                                        </div> -->
                                     </div>
-                                   
+                            <div class="patient-list">
+                                <div class="table-responsive">
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    name
+                                                </th>
+                                                <th>
+                                                    tulov
+                                                </th>
+                                                <th>
+                                                    chegirma %
+                                                </th>
+                                                <th>
+                                                    to'lov turi
+                                                </th>
+                                                <th>
+                                                    tulov miqdori
+                                                </th>
+                                                <th>
+                                                    tulov muddati
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for tulovs in tulov %}
+                                                <tr>
+                                                    <td>
+                                                        {{tulovs.patient_fullname}}
+                                                    </td>
+                                                    <td>
+                                                        {{tulovs.payment_price}}
+                                                    </td>
+                                                    <td>
+                                                        {{tulovs.discount}}%
+                                                    </td>
+                                                    <td>
+                                                        {{tulovs.payment_choice}}
+                                                    </td>
+                                                    <td>
+                                                        {{tulovs.amount_paid}}
+                                                    </td>
+                                                    <td>
+                                                        {{tulovs.payment_term}}
+                                                    </td>
+                                                    
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="pagination-area mt-10">
+                                <div class="row">
+                                    <div class="col-sm-6 text-left text-sm-right">
+                                            <ul class="pagination-list">
+                                                {% if page_obj.has_previous %}
+                                                    <li class="page"><a href="?page=1">&laquo; First</a></li>
+                                                    <li class="page"><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                                                {% endif %}
+                                                
+                                                {% for num in page_obj.paginator.page_range %}
+                                                    {% if num == page_obj.number %}
+                                                        <li class="page active"><span>{{ num }}</span></li>
+                                                    {% else %}
+                                                        <li class="page"><a href="?page={{ num }}">{{ num }}</a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                
+                                                {% if page_obj.has_next %}
+                                                    <li class="page"><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                                                    <li class="page"><a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a></li>
+                                                {% endif %}
+                                            </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-        
+            </div>
+        </div>
         <div class="body-overlay"></div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>

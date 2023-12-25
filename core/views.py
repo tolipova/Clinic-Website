@@ -300,7 +300,8 @@ def room_edit(request, room_id):
 class TulovView(View):
     def get(self,request):
         tulov = Payment.objects.all()
-        return render(request, 'tulov.html', {'tulov':tulov})
+        form = PaymentForm()
+        return render(request, 'tulov.html', {'tulov':tulov, 'form':form})
 
     def post(self, request):
         form = PaymentForm(request.POST)
