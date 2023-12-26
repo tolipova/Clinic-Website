@@ -151,4 +151,6 @@ class EventForm(forms.ModelForm):
             'start_time':forms.TimeInput(attrs={'type': 'time', 'class':'form-control '}),
             'end_date':forms.DateInput(attrs={'type': 'date', 'class':'form-control '}),
             'end_time':forms.TimeInput(attrs={'type': 'time', 'class':'form-control '}),
+            'doctor':forms.Select(attrs={'class':'form-control'}),
+
         }

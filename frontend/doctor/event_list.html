@@ -37,15 +37,13 @@
                             <ul>
                                 <div id='calendar'></div>
                                 {% for event in events %}
-                                    <li>{{ event.title }} - start {{ event.start_date}} time {{ event.start_time }}  {{ event.end_date }} time {{event.end_time}}</li>
+                                    <li>{{ event.doctor }}ning qabuli {{ event.title }} - boshlangan {{ event.start_date}} vaqti {{ event.start_time }}  {{ event.end_date }} vaqti {{event.end_time}}</li>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editEventModal{{ event.id }}" onclick="editEvent({{event.id}})">
                                         Edit Event
                                     </button>
                                     <button type="button" class="btn btn-danger" data-target="#deleteEventModal{{ event.id }}">
                                         Delete Event
-                                    </button>
-
-                                    <!-- Edit Event Modal -->
+                                    </button><!-- Edit Event Modal -->
                                     <div class="modal fade" id="editEventModal{{ event.id }}" tabindex="-1" role="dialog" aria-labelledby="editEventModalLabel{{ event.id }}" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -92,9 +90,7 @@
 
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createEventModal">
                                 Create Event
-                            </button>
-
-                            <div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="createEventModalLabel" aria-hidden="true">
+                            </button><div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="createEventModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -107,9 +103,60 @@
                                             <form id="createEventForm" method="post">
                                                 {% csrf_token %}
                                                 <div class="form-group">
-                                                    {{form.as_p}}
+                                                    <div class="form-group">
+                                                        <div class="primary-form">
+                                                            <form action="#" method="post">
+                                                                {% csrf_token %}
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="form-group">
+                                                                            <label for="subtotal">Doktor ismi</label>
+                                                                            {{form.doctor}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label for="discount">Uchrashuv mavzusi</label>
+                                                                            {{form.title}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label for="less">Tafsilot</label>
+                                                                            {{form.description}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <div class="form-group">
+                                                                            <label for="grandtotal">Qabul kuni</label>
+                                                                            {{form.start_date}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <div class="form-group">
+                                                                            <label for="paidamount">Boshlanadigan vaqti</label>{{form.start_time}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <div class="form-group">
+                                                                            <label for="Due">Tugagan kuni</label>
+                                                                            {{form.end_date}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <div class="form-group">
+                                                                            <label for="Due">Tugash vaqti</label>
+                                                                            {{form.end_time}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <input type="submit" class="form-btn" value="Yuborish">
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Save</button>
                                             </form>
                                         </div>
                                     </div>

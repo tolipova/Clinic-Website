@@ -216,6 +216,6 @@ class Event(models.Model):
     start_time = models.TimeField(auto_now=False)
     end_date = models.DateField(auto_now=False)
     end_time = models.TimeField(auto_now=False)
-
+    doctor =  models.ForeignKey(DoctorCreate, on_delete=models.CASCADE, verbose_name="doctorlar")
     def __str__(self):
         return self.title
