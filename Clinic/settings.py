@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
+    # 'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -143,11 +143,11 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/login'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-JAZZMIN_UI_TWEAKS = {
+# JAZZMIN_UI_TWEAKS = {
   
-    "theme": "flatly",
-    "dark_mode_theme": "darkly",
-}
+#     "theme": "flatly",
+#     "dark_mode_theme": "darkly",
+# }
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

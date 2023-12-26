@@ -38,7 +38,7 @@ urlpatterns = [
     path('rooms/', rooms_list, name="rooms_list"),
     path('add_room/',add_room, name="add_room"),
     path('room/<int:room_id>/edit/', room_edit, name='room_edit'),
-    path('discount_calculation/', discount_calculation, name="discount_calculation"),
+    # path('discount_calculation/', discount_calculation, name="discount_calculation"),
     #calendarr
     path('events/', EventView.as_view(), name='event'),
     path('delete_event/<int:event_id>/', EventView.as_view(), name='delete_event'),

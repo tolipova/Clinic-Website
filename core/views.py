@@ -213,12 +213,12 @@ def tulov(request):
 
 
 
-def discount_calculation(request):
-    model_name = Payment.objects.all()
-    for payment_price, discount in model_name:
-        discount_amount = payment_price*(discount/100)
-        discount_price = payment_price - discount_amount 
-    return render (request, 'tulov.html', {'discount_price':discount_price})
+# def discount_calculation(request):
+#     model_name = Payment.objects.all()
+#     for payment_price, discount in model_name:
+#         discount_amount = payment_price*(discount/100)
+#         discount_price = payment_price - discount_amount 
+#     return render (request, 'tulov.html', {'discount_price':discount_price})
 def add_room(request):
     form = RoomsForm(request.POST)
     if request.method == 'POST':
@@ -263,7 +263,6 @@ def room_edit(request, room_id):
         form = RoomsForm(instance=room)
     
     return render(request, 'rooms/room_edit.html', {'form': form, 'room': room})
-    
 #calendarrr
 
 # def event_list(request):
