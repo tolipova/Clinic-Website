@@ -92,7 +92,7 @@
                                                     {% else %}
                                                     <td style="color: blueviolet;">Budjet</td>
                                                     {% endif %}
-                                                </span>
+                                                    </span>
                                                 </td>
                                                 <td>{{patient.patient_room}}</td>
                                                 <td>
@@ -161,8 +161,107 @@
                 <!-- Your form -->
                 <form id="patientForm" method="post" action="{% url 'patient_list' %}">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="primary-form">
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="user-image">
+                                        <img src="{% static 'assets/images/profile.png' %}" alt="profile" />
+                                        <a class="edit-btn" href="#"><span class="flaticon-pencil-1"></span></a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="panme">Bemorning ismi</label>
+                                        {{form.patient_fullname}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="pphonne">Telefon raqam</label>
+                                        {{form.patient_phone}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="paddress">Manzil</label>
+                                        {{form.patient_address}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="page">Tug'ilgan yili</label>
+                                        {{form.patient_birth}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="page">Yoshi</label>
+                                        {{form.patient_age}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="page">Ro'yxatdan o'tgan vaqti</label>
+                                        {{form.check_in_date}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="page">Kasallik turi</label>
+                                        {{form.diseases}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="pbloggroup">Qon gruxi</label>
+                                        {{form.patient_blood}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="Occupation">Qabul holati</label>
+                                        {{form.patient_status}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="gender">Jinsi</label>
+                                        {{form.patient_gender}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="marital">Oilaviy holati</label>
+                                        {{form.patient_married}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="marital">Qabul qiluvchi shifokor</label>
+                                        {{form.patient_acceptance}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="page">Xona raqami</label>
+                                        {{form.patient_room}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="description">Qo'shimcha</label>
+                                        {{form.patient_discription}}
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="submit" value="Yuborish" class="form-btn">
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </form>
             </div>
         </div>
