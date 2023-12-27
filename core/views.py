@@ -16,6 +16,8 @@ from django.views import View
 @login_required
 def home(request):
     today = date.today()
+    #yangi uzgaruvchi kunlik bemorlarni sanash
+    daily_added = PatientCreate.kunlik_bemor_count()
     patients_today = PatientCreate.objects.filter(check_in_date=today).count()
     patients_previous_days = PatientCreate.objects.filter(check_in_date__lt=today).exclude(check_in_date=today).count()
     total_patients = PatientCreate.objects.count()
@@ -27,6 +29,7 @@ def home(request):
     expense = AddExpense.objects.all()
     
     context = {
+        'daily_added':daily_added,
         'total_patients': total_patients,
         'doctors': doctors,
         'patient': patient,

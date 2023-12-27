@@ -130,7 +130,12 @@ class PatientCreate(models.Model):
 
     def get_edit_url(self):
             return reverse('patient_edit', kwargs={'pk': self.pk})
-    
+    #O'RGANISHGAAAAAAAAAAAA
+    @staticmethod
+    def kunlik_bemor_count():
+        bugun = timezone.now().date()
+        count = PatientCreate.objects.filter(check_in_date=bugun).count()
+        return count
     def __str__(self):
         return self.patient_fullname
     
@@ -202,10 +207,11 @@ class Payment(models.Model):
     payment_choice =  models.CharField(choices=PAYMENT_CHOICES, max_length=20, verbose_name="to'lov turi")
     amount_paid = models.IntegerField(verbose_name="to'langan summa")
     payment_term = models.CharField(max_length=255, verbose_name="to'lov muddati")
-
+#O'RGANISHGAAAAAAAAAAAA
     @property
     def calculate_debt(self):
         return self.payment_price - self.amount_paid
+    
     def __str__(self):
         return self.payment_choice
 
