@@ -67,9 +67,7 @@
                                                                                 {{form.patient_fullname}}
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-6 text-center">
-                                                                            <img src="{% static 'assets/images/emergency-from-img.png' %}" alt="emergency-from-img" />
-                                                                        </div>
+                                                                       
                                                                         
                                                                         <div class="col-lg-6">
                                                                             <div class="form-group">
@@ -93,6 +91,12 @@
                                                                                 {{form.payment_term}}
                                                                             </div>
                                                                         </div>
+                                                                       <div class="col-lg-12">
+                                                                            
+                                                                       </div>
+                                                                        <div class="col-lg-12 text-center">
+                                                                            <img src="{% static 'assets/images/emergency-from-img.png' %}" alt="emergency-from-img" />
+                                                                        </div>
                                                                         <div class="col-lg-12">
                                                                             <input type="submit" class="form-btn" value="Yuborish">
                                                                         </div>
@@ -112,6 +116,9 @@
                                         <thead>
                                             <tr>
                                                 <th>
+                                                    tulov sanasi
+                                                </th>
+                                                <th>
                                                     name
                                                 </th>
                                                 <th>
@@ -129,32 +136,31 @@
                                                 <th>
                                                     tulov muddati
                                                 </th>
+                                                <th>
+                                                    qarzdorlik
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for tulovs in tulov %}
-                                                <tr>
-                                                    <td>
-                                                        {{tulovs.patient_fullname}}
-                                                    </td>
-                                                    <td>
-                                                        {{tulovs.payment_price}}
-                                                    </td>
-                                                    <td>
-                                                        {{tulovs.discount}}%
-                                                    </td>
-                                                    <td>
-                                                        {{tulovs.payment_choice}}
-                                                    </td>
-                                                    <td>
-                                                        {{tulovs.amount_paid}}
-                                                    </td>
-                                                    <td>
-                                                        {{tulovs.payment_term}}
-                                                    </td>
-                                                    
-                                                </tr>
-                                            {% endfor %}
+                                        <tr>
+                                            <td>{{ tulovs.created_at }}</td>
+                                            <td>{{ tulovs.patient_fullname }}</td>
+                                            <td>{{ tulovs.payment_price }}</td>
+                                            <td>{{ tulovs.discount }}%</td>
+                                            <td>{{ tulovs.payment_choice }}</td>
+                                            <td>{{ tulovs.amount_paid }}</td>
+                                            <td>{{ tulovs.payment_term }}</td>
+                                            <td>
+                                                {% if tulovs.calculate_debt > 0 %}
+                                                    {{ tulovs.calculate_debt }}
+                                                {% else %}
+                                                    No Debt
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        
                                         </tbody>
                                     </table>
                                 </div>

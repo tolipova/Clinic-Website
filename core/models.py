@@ -190,6 +190,7 @@ class PatientHistory(models.Model):
         return self.patient_fullname
     
 class Payment(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="To'lov sanasi")
     patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi', on_delete=models.CASCADE, related_name='patient_fullnamee')
     payment_price = models.IntegerField(verbose_name="to'lov narxi")
     PAYMENT_CHOICES = [
@@ -202,6 +203,9 @@ class Payment(models.Model):
     amount_paid = models.IntegerField(verbose_name="to'langan summa")
     payment_term = models.CharField(max_length=255, verbose_name="to'lov muddati")
 
+    @property
+    def calculate_debt(self):
+        return self.payment_price - self.amount_paid
     def __str__(self):
         return self.payment_choice
 

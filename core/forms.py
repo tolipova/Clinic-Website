@@ -119,7 +119,7 @@ class AddExpenseForm(forms.ModelForm):
 class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
-        fields = '__all__'
+        fields = ['patient_fullname', 'payment_price', 'payment_choice', 'amount_paid', 'payment_term']
         widgets = {
             'patient_fullname': forms.Select(attrs={'class':'form-control' }),
             'payment_price':forms.NumberInput(attrs={'class':'form-control', 'placeholder':'5,600,000'}),

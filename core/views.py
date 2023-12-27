@@ -38,37 +38,91 @@ def home(request):
         'patients_previous_days':patients_previous_days
     }
     return render(request, 'index.html', context)
+class PatientView(View):
+    def get(self, request):
+        search_query = request.GET.get('q')
+        patients = PatientCreate.objects.all()
 
-def patient_list(request):
-    search_query = request.GET.get('q')
-    patient = PatientCreate.objects.all()
+        if search_query:
+            patients = patients.filter(
+                Q(patient_fullname__icontains=search_query) |
+                Q(patient_key__icontains=search_query) |
+                Q(patient_phone__icontains=search_query) |
+                Q(patient_id__icontains=search_query)
+            )
 
-    if search_query:
-        patient = patient.filter(
-            Q(patient_fullname__icontains=search_query) |
-            Q(patient_key__icontains=search_query) |
-            Q(patient_phone__icontains=search_query) |
-            Q(patient_id__icontains=search_query)  
-        )
-    paginator = Paginator(patient, 25)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+        paginator = Paginator(patients, 25)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        
+        context = {
+            'page_obj': page_obj,
+            'search_query': search_query,
+            'form': PatientCreateForm(),  # Include an instance of the patient form for the template
+        }
+        return render(request, 'patient/patient-list.html', context)
 
-    context = {
-        'page_obj': page_obj,
-        'search_query': search_query 
-    }
-    return render(request, 'patient/patient-list.html', context)
+    def post(self, request):
+        form = PatientCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Change 'home' to your desired redirect path
 
-    # paginator = Paginator(patient, 1)
-    # page_number = request.GET.get('page')
-    # page_obj = paginator.get_page(page_number)
+        search_query = request.GET.get('q')
+        patients = PatientCreate.objects.all()
 
-    # context = {
-    #     'page_obj': page_obj,
-    #     'search_query': search_query  # Passing the search query back to the template
-    # }
-    # return render(request, 'patient/patient-list.html', context)
+        if search_query:
+            patients = patients.filter(
+                Q(patient_fullname__icontains=search_query) |
+                Q(patient_key__icontains=search_query) |
+                Q(patient_phone__icontains=search_query) |
+                Q(patient_id__icontains=search_query)
+            )
+        paginator = Paginator(patients, 25)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        context = {
+            'page_obj': page_obj,
+            'search_query': search_query,
+            'form': form,  # Pass the form with errors back to the template
+        }
+        return render(request, 'patient/patient-list.html', context)
+
+    def diseases(self, request, pk):
+        form = DiseasesForm(request.POST or None)
+        if request.method == 'POST':
+            if form.is_valid():
+                form.save()
+                return redirect('home')
+            else:
+                print('Error: Form is invalid')
+        else:
+            form = DiseasesForm()
+
+        return render(request, 'patient/diseases.html', {'form': form})
+
+# def patient_list(request):
+#     search_query = request.GET.get('q')
+#     patient = PatientCreate.objects.all()
+
+#     if search_query:
+#         patient = patient.filter(
+#             Q(patient_fullname__icontains=search_query) |
+#             Q(patient_key__icontains=search_query) |
+#             Q(patient_phone__icontains=search_query) |
+#             Q(patient_id__icontains=search_query)  
+#         )
+#     paginator = Paginator(patient, 25)
+#     page_number = request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
+
+#     context = {
+#         'page_obj': page_obj,
+#         'search_query': search_query 
+#     }
+#     return render(request, 'patient/patient-list.html', context)
+
 
 def patient_profile(request, pk):
     patient = get_object_or_404(PatientCreate, pk=pk)
@@ -202,14 +256,18 @@ def tulov_list(request):
     return render(request, 'tulov.html', {'tulov':tulov})
 
 def tulov(request):
-    form = PaymentForm(request.POST)
+    form = PaymentForm(request.POST or None)
+    
     if request.method == 'POST':
         if form.is_valid():
             form.save()
             return redirect('home')
-    else:
-        form = PaymentForm()    
-    return render(request, 'tulov.html',{'form':form})
+
+    context = {
+        'form': form,
+        'payments': Payment.objects.all(),  # You may need to filter this queryset based on your requirement
+    }
+    return render(request, 'tulov.html', context)
 
 
 
