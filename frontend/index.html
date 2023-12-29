@@ -86,256 +86,165 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="patient-history ">
-                        <div class="container-fluid">
                             <div class="row">
-                                <div class="col-lg-8 mb-30">
-                                    <div class="section-header">
-                                        <div class="section-title">
-                                            <h2 class="title">Bemor Tarixi</h2>
-                                        </div>
-                                    </div>
-                                    <div class="section-wrapper">
-                                        <div class="patient-history-chart">
-                                            <div class="patienthistory-top">
-                                                <p class="Patient-status"><span class="bulet new"></span>Yangi Bemor</p>
-                                                <p class="Patient-status"><span class="bulet old"></span>Eski Bemor</p>
-                                                <select class="time-status" >
-                                                    <option>Kunlik</option>
-                                                    <option>Oylik</option>
-                                                    <option>Yillik</option>
-                                                </select>
-                                            </div>
-                                            <canvas id="PatientHistoryChart" style="width: 100%; height: 265px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 mb-30">
-                                    <div class="section-header">
-                                        <div class="section-title">
-                                            <h2 class="title">Yuqori kasalliklar</h2>
-                                        </div>
-                                    </div>
-                                    <div class="section-wrapper">
-                                        <div class="diseases-chart">
-                                            <canvas id="DiseasesChart" style="width: 69%; height: 69%;"></canvas>
-                                            <div class="stats">
-                                                <ul>
-                                                    <li data-name="Stroke"><span class="bulet stroke"></span> Qon tomir</li>
-                                                    <li data-name="Diabetes"><span class="bulet diabetes"></span> Qandli diabet</li>
-                                                    <li data-name="Cirrhosis"><span class="bulet cirrhosis"></span> Siroz</li>
-                                                    <li data-name="Tuberculosis"><span class="bulet tuberculosis"></span> Tuberculosis</li>
-                                                    <li data-name="lungcancers"><span class="bulet cancers"></span> O'pka saratoni</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="doctors-patient-area">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-7 mb-30">
-                                    <div class="section-header">
-                                        <div class="section-title">
-                                            <h2 class="title">Kunilik jami bemorlar</h2>
-                                        </div>
-                                    </div>
-                                    <div class="section-wrapper">
-                                        <div class="total-patient-chart">
-                                            <div class="stats">
-                                                <ul>
-                                                    <li data-name="Admitted"><span class="bulet admitted"></span> Qabul qilingan</li>
-                                                    <li data-name="Discharged"><span class="bulet discharged"></span> Bo'shatilgan</li>
-                                                </ul>
-                                            </div>
-                                            <canvas id="TotalPatient" style="width: 100%; height: 228px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5 mb-30">
-                                    <div class="section-header">
-                                        <div class="section-title">
-                                            <h2 class="title">Top Doktorlar</h2>
-                                        </div>
-                                    </div>
-                                    <div class="section-wrapper">
-                                        <div class="top-doctors">
-                                            <div class="doctor-list">
-                                                <div class="single-doctor d-flex align-items-center justify-content-between">
-                                                    <div class="doctor-info">
-                                                        <div class="media align-items-center">
-                                                            <div class="doctor-images mr-3">
-                                                                <a href="#"><img src="{% static 'assets/images/doctors/doctor1.png' %}" alt="doctor1" /></a>
-                                                            </div>
-                                                            <div class="media-body">
-                                                              <h3 class="doctor-name mt-0"><a href="#">Sharlotta</a></h3>
-                                                              <p class="doctor-catagory m-0">Ginekolog</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="doctor-review text-right">
-                                                        <ul class="review">
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                        </ul>
-                                                        <span class="review-count">315 sharhlar</span>
-                                                    </div>
+                                <div class="col-lg-12">
+                                    <div class="welcome-slide">
+                                        <div class="single-welcome">
+                                            <div class="media align-items-center">
+                                                <div class="welcome-icon bg-one">
+                                                    <img src="{% static 'assets/images/day.png' %}" alt="Patient" />
                                                 </div>
-                                                <div class="single-doctor d-flex align-items-center justify-content-between">
-                                                    <div class="doctor-info">
-                                                        <div class="media align-items-center">
-                                                            <div class="doctor-images mr-3">
-                                                                <a href="#"><img src="{% static 'assets/images/doctors/doctor2.png' %}" alt="doctor1" /></a>
-                                                            </div>
-                                                            <div class="media-body">
-                                                              <h3 class="doctor-name mt-0"><a href="#">Isabella Ava</a></h3>
-                                                              <p class="doctor-catagory m-0">Tibbiyot mutaxassisi</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="doctor-review text-right">
-                                                        <ul class="review">
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                        </ul>
-                                                        <span class="review-count">290 sharhlar</span>
-                                                    </div>
+                                                <div class="media-body">
+                                                <p class="m-0">Bugungi bemorlar soni</p>
+                                                <h3 class="counter">{{daily_added}}</h3>
                                                 </div>
-                                                <div class="single-doctor d-flex align-items-center justify-content-between">
-                                                    <div class="doctor-info">
-                                                        <div class="media align-items-center">
-                                                            <div class="doctor-images mr-3">
-                                                                <a href="#"><img src="{% static 'assets/images/doctors/doctor3.png' %}" alt="doctor1" /></a>
-                                                            </div>
-                                                            <div class="media-body">
-                                                              <h3 class="doctor-name mt-0"><a href="#">Olivia Amma</a></h3>
-                                                              <p class="doctor-catagory m-0">Ginekolog</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="doctor-review text-right">
-                                                        <ul class="review">
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                            <li><i class="flaticon-star"></i></li>
-                                                        </ul>
-                                                        <span class="review-count">290 sharhlar</span>
-                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="single-welcome">
+                                            <div class="media align-items-center">
+                                                <div class="welcome-icon bg-four">
+                                                    <img src="{% static 'assets/images/icons/week.png' %}" alt="Patient" />
+                                                </div>
+                                                <div class="media-body">
+                                                <p class="m-0">Haftalik bemorlar soni</p>
+                                                <h3 class="counter">{{weekly_added}}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="single-welcome">
+                                            <div class="media align-items-center">
+                                                <div class="welcome-icon bg-four">
+                                                    <img src="{% static 'assets/images/icons/monyh.png' %}" alt="Patient" />
+                                                </div>
+                                                <div class="media-body">
+                                                <p class="m-0">Oylik bemorlar soni</p>
+                                                <h3 class="counter">{{monthly_added}}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="single-welcome">
+                                            <div class="media align-items-center">
+                                                <div class="welcome-icon bg-four">
+                                                    <img src="{% static 'assets/images/icons/year.png' %}" alt="Patient" />
+                                                </div>
+                                                <div class="media-body">
+                                                <p class="m-0">Yillik bemorlar soni</p>
+                                                <h3 class="counter">{{year_added}}</h3>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="activity-area">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-6 ">
-                                    <div class="Patient-activity-area">
-                                        <div class="section-header">
-                                            <div class="section-title">
-                                                <h2 class="title">Bemorning oxirgi faoliyati</h2>
-                                            </div>
-                                        </div>
-                                        <div class="section-wrapper">
-                                            <div class="Patient-activity-list">
-                                                <div class="single-Patient-activity d-flex align-items-center justify-content-between">
-                                                    <div class="single-Patient-left">
-                                                        <div class="Patient-info">
+                                    <div class="accounts-area mb-30">
+                                            <div class="container-fluid">
+                                                <div class="section-header">
+                                                    <div class="section-title">
+                                                        <h2 class="title">Hisoblar</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="account-slide">
+                                                        <div class="single-accounts">
                                                             <div class="media align-items-center">
-                                                                <div class="doctor-images mr-3">
-                                                                    <a href="#"><img src="{% static 'assets/images/patient1.png' %}" alt="Patient" /></a>
+                                                                <div class="accounts-icon bg-one">
+                                                                    <img src="{% static 'assets/images/icons/profit.svg' %}" alt="Patient" />
                                                                 </div>
                                                                 <div class="media-body">
-                                                                  <h3 class="Patient-name mt-0"><a href="#">Roby Romio</a></h3>
-                                                                  <p class="mb-0">Los Angeles, USA</p>
+                                                                <p class="m-0">Ushbu haftadagi foyda</p>
+                                                                <h3><span>$</span><span class="counter">25600</span></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="single-Patient-center">
-                                                        <span>Uyqusizlik</span>
-                                                    </div>
-                                                    <div class="single-Patient-rihgt">
-                                                        <span>Davolashda</span>
-                                                    </div>
-                                                </div>
-                                                <div class="single-Patient-activity d-flex align-items-center justify-content-between">
-                                                    <div class="single-Patient-left">
-                                                        <div class="Patient-info">
+                                                        <div class="single-accounts">
                                                             <div class="media align-items-center">
-                                                                <div class="doctor-images mr-3">
-                                                                    <a href="#"><img src="{% static 'assets/images/patient2.png' %}" alt="Patient" /></a>
+                                                                <div class="accounts-icon bg-two">
+                                                                    <img src="{% static 'assets/images/icons/expense.svg' %}" alt="Patient" />
                                                                 </div>
                                                                 <div class="media-body">
-                                                                  <h3 class="Patient-name mt-0"><a href="#">Roby Romio</a></h3>
-                                                                  <p class="mb-0">Los Angeles, USA</p>
+                                                                <p class="m-0">Ushbu haftadagi xarajatlar</p>
+                                                                <h3><span>$</span><span class="counter">15800</span></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="single-Patient-center">
-                                                        <span>Qandli diabet</span>
-                                                    </div>
-                                                    <div class="single-Patient-rihgt">
-                                                        <span>Yangi Bemor</span>
-                                                    </div>
-                                                </div>
-                                                <div class="single-Patient-activity d-flex align-items-center justify-content-between">
-                                                    <div class="single-Patient-left">
-                                                        <div class="Patient-info">
+                                                        <div class="single-accounts">
                                                             <div class="media align-items-center">
-                                                                <div class="Patient-images mr-3">
-                                                                    <a href="#"><img src="{% static 'assets/images/patient3.png' %}" alt="Patient" /></a>
+                                                                <div class="accounts-icon bg-three">
+                                                                    <img src="{% static 'assets/images/icons/income.svg' %}" alt="Patient" />
                                                                 </div>
                                                                 <div class="media-body">
-                                                                  <h3 class="Patient-name mt-0"><a href="#">Roby Romio</a></h3>
-                                                                  <p class="mb-0">Los Angeles, USA</p>
+                                                                <p class="m-0">Ushbu haftadagi daromad</p>
+                                                                <h3><span>$</span><span class="counter">10200</span></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="single-Patient-center">
-                                                        <span>Covid-19</span>
-                                                    </div>
-                                                    <div class="single-Patient-rihgt">
-                                                        <span>Qayta tiklandi</span>
-                                                    </div>
-                                                </div>
+                                                </div> 
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 md-mt-30">
-                                    <div class="section-header">
-                                        <div class="section-title">
-                                            <h2 class="title">Daromad</h2>
-                                        </div>
-                                    </div>
-                                    <div class="section-wrapper">
-                                        <div class="revenue-chart">
-                                            <div class="stats">
-                                                <ul>
-                                                    <li data-name="Income"><img src="{% static 'assets/images/income.png' %}" alt="income" /> Daromad</li>
-                                                    <li data-name="Diabetes"><img src="{% static 'assets/images/expense.png' %}" alt="income" /> Xarajat</li>
-                                                </ul>
+                                    <div class="patient-history ">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-lg-4 mb-30">
+                                                    <div class="section-header">
+                                                        <div class="section-title">
+                                                            <h2 class="title">Yuqori kasalliklar</h2>
+                                                        </div>
+                                                    </div>
+                                                    <div class="section-wrapper">
+                                                        <div class="diseases-chart">
+                                                            <img src="{% static 'assets/images/pie_chart.png' %}" alt=""  style="width: 69%; height: 69%;">
+                                                            <div class="stats">
+                                                                <ul>
+                                                                    <li data-name="Stroke"><span class="bulet stroke"></span> Qon tomir</li>
+                                                                    <li data-name="Diabetes"><span class="bulet diabetes"></span> Qandli diabet</li>
+                                                                    <li data-name="Cirrhosis"><span class="bulet cirrhosis"></span> Siroz</li>
+                                                                    <li data-name="Tuberculosis"><span class="bulet tuberculosis"></span> Tuberculosis</li>
+                                                                    <li data-name="lungcancers"><span class="bulet cancers"></span> O'pka saratoni</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-5 mb-30">
+                                                    <div class="section-header">
+                                                        <div class="section-title">
+                                                            <h2 class="title">Top Doktorlar</h2>
+                                                        </div>
+                                                    </div>
+                                                    <div class="section-wrapper">
+                                                        <div class="top-doctors">
+                                                            <div class="doctor-list">
+                                                                {% for doctor in doctors %}
+                                                                <div class="single-doctor d-flex align-items-center justify-content-between">
+                                                                    <div class="doctor-info">
+                                                                        <div class="media align-items-center">
+                                                                            <div class="doctor-images mr-3">
+                                                                                <a href="#"><img src="{{doctor.profile_image.url}}" alt="doctor1" /></a>
+                                                                            </div>
+                                                                            <div class="media-body">
+                                                                            <h3 class="doctor-name mt-0"><a href="#">{{doctor.doctor_fullname}}</a></h3>
+                                                                            <p class="doctor-catagory m-0">{{doctor.doctor_status}}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="doctor-review text-right">
+                                                                        <ul class="review">
+                                                                            <li><i class="flaticon-star"></i></li>
+                                                                            <li><i class="flaticon-star"></i></li>
+                                                                            <li><i class="flaticon-star"></i></li>
+                                                                            <li><i class="flaticon-star"></i></li>
+                                                                            <li><i class="flaticon-star"></i></li>
+                                                                        </ul>
+                                                                        <span class="review-count">Work time {{doctor.work_time}}</span>
+                                                                    </div>
+                                                                </div>
+                                                                {% endfor %}
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <canvas id="revenueChart" style="width: 100%; height: 226px;"></canvas>
                                         </div>
                                     </div>
                                 </div>

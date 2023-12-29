@@ -4,7 +4,7 @@ from .forms import *
 from django.core.paginator import Paginator
 from django.http import HttpResponse, Http404
 from django.db.models import Q
-from datetime import date, timedelta
+from datetime import date
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm
@@ -16,6 +16,10 @@ from django.views import View
 @login_required
 def home(request):
     today = date.today()
+    year_added =  PatientCreate.yillk_count()
+    monthly_added = PatientCreate.oylik_bemor_count()
+    weekly_added = PatientCreate.haftalik_bemor_count()
+    daily_added = PatientCreate.kunlik_bemor_count()
     patients_today = PatientCreate.objects.filter(check_in_date=today).count()
     patients_previous_days = PatientCreate.objects.filter(check_in_date__lt=today).exclude(check_in_date=today).count()
     total_patients = PatientCreate.objects.count()
@@ -27,6 +31,10 @@ def home(request):
     expense = AddExpense.objects.all()
     
     context = {
+        'year_added':year_added,
+        'monthly_added':monthly_added,
+        'weekly_added':weekly_added,
+        'daily_added':daily_added,
         'total_patients': total_patients,
         'doctors': doctors,
         'patient': patient,

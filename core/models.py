@@ -3,6 +3,7 @@ import uuid
 import random
 from django.urls import reverse
 from django.utils import timezone
+from datetime import timedelta
 # Create your models here.
 qon_guruxlari =(
     ("α va β", "birinchi (0)"),
@@ -130,10 +131,43 @@ class PatientCreate(models.Model):
 
     def get_edit_url(self):
             return reverse('patient_edit', kwargs={'pk': self.pk})
-    
+    @staticmethod
+    def kunlik_bemor_count():
+        bugun = timezone.now().date()
+        count = PatientCreate.objects.filter(check_in_date=bugun).count()
+        return count
+    @staticmethod
+    def haftalik_bemor_count():
+        bugun = timezone.now().date()
+        week_start = bugun -  timedelta(days=bugun.weekday())
+        week_end = week_start + timedelta(days=6)
+        week_count = PatientCreate.objects.filter(check_in_date__range=[week_start, week_end]).count()
+        return week_count
+    @staticmethod
+    def oylik_bemor_count():
+        bugun = timezone.now().date()
+        month_start = bugun -  timedelta(days=bugun.weekday())
+        month_end = month_start + timedelta(days=31)
+        month_count = PatientCreate.objects.filter(check_in_date__range=[month_start, month_end]).count()
+        return month_count
+    @staticmethod
+    def yillk_count():
+        bugun = timezone.now().date()
+        year_start = bugun.year
+        year_end = year_start + 1
+        year_count = PatientCreate.objects.filter(check_in_date__gte=year_start, check_in_date__lt=year_end).count()
+        return year_count
+    @staticmethod
+    def yillk_count():
+        bugun = timezone.now().date()
+        month_start = bugun -  timedelta(days=bugun.weekday())
+        month_end = month_start + timedelta(days=31)
+        month_count = PatientCreate.objects.filter(check_in_date__range=[month_start, month_end]).count()
+        return month_count
     def __str__(self):
         return self.patient_fullname
     
+         
 class Operation(models.Model):
     patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi',on_delete=models.CASCADE )
     operatsion_date = models.DateField(auto_now=False )
