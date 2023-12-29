@@ -53,10 +53,7 @@ class OperationForm(forms.ModelForm):
             'operatsion_date':forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
             'operatsion_time':forms.TimeInput(attrs={'type': 'time', 'class':'form-control'}),
             'select_operatsion_type':forms.Select(attrs={'class':'form-control wide'}),
-            'select_operatsion_serves':forms.Select(attrs={'class':'form-control wide'}),
             'operatsion_price':forms.NumberInput(attrs={'class':'form-control'}),
-            'operatsion_discount':forms.NumberInput(attrs={'class':'form-control'}),
-            'total_grand':forms.NumberInput(attrs={'class':'form-control'}),
             'paid_amount':forms.NumberInput(attrs={'class':'form-control'}),
             'comment':forms.Textarea(attrs={'class':'form-control  message'}),
         }

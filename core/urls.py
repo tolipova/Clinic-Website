@@ -22,7 +22,7 @@ urlpatterns = [
     path('doctor-profile/', doctor_profile, name="doctor_profile"),
     path('add-doctor/', add_doctor, name="add_doctor"),
     path('appointment', appointment, name="appointment"),
-    path('operation/', operation, name="operation"),
+    path('operation/', OperationView.as_view(), name="operation"),
     path('emergency-form/', emergency_form, name="emergency_form"),
     path('emergency-list/', emergency_list, name="emergency_list"),
     path('reports/', reports, name="reports"),
@@ -39,7 +39,6 @@ urlpatterns = [
     path('rooms/', rooms_list, name="rooms_list"),
     path('add_room/',add_room, name="add_room"),
     path('room/<int:room_id>/edit/', room_edit, name='room_edit'),
-    # path('discount_calculation/', discount_calculation, name="discount_calculation"),
     #calendarr
     path('events/', EventView.as_view(), name='event'),
     path('delete_event/<int:event_id>/', EventView.as_view(), name='delete_event'),

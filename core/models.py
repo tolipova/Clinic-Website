@@ -153,13 +153,6 @@ class PatientCreate(models.Model):
     @staticmethod
     def yillk_count():
         bugun = timezone.now().date()
-        year_start = bugun.year
-        year_end = year_start + 1
-        year_count = PatientCreate.objects.filter(check_in_date__gte=year_start, check_in_date__lt=year_end).count()
-        return year_count
-    @staticmethod
-    def yillk_count():
-        bugun = timezone.now().date()
         month_start = bugun -  timedelta(days=bugun.weekday())
         month_end = month_start + timedelta(days=31)
         month_count = PatientCreate.objects.filter(check_in_date__range=[month_start, month_end]).count()
@@ -173,12 +166,12 @@ class Operation(models.Model):
     operatsion_date = models.DateField(auto_now=False )
     operatsion_time = models.TimeField(auto_now=False )
     select_operatsion_type = models.CharField(choices=operatsion_type, verbose_name="operatsiya turini tanlang",max_length=255)
-    select_operatsion_serves =  models.CharField(choices=operatsion_serves, verbose_name="operatsiya xizmat turini tanlang",max_length=255)
     operatsion_price = models.IntegerField(verbose_name="operatsiya narxi")
-    operatsion_discount = models.IntegerField(verbose_name="chegirma summasi")
-    total_grand = models.IntegerField(verbose_name="umumiy grand narxi")
     paid_amount = models.IntegerField(verbose_name="to'langan miqdor")
     comment = models.TextField(verbose_name="Izoh qoldiring")
+    @property
+    def calculate_debt(self):
+        return self.operatsion_price - self.paid_amount
     
     def __str__(self):
         return self.patient_fullname
@@ -192,11 +185,17 @@ class AddExpense(models.Model):
     card_number = models.IntegerField(verbose_name="**** **** **** 5648")
     select_bank = models.CharField(max_length=255, verbose_name="kerakli bankni tanlang",choices=bank)
 
+    
+    
+    # @staticmethod
+    # def calculate_weekly_expense(start_date, end_date):
+    #     weekly_expense = 0
+    #     for expense in AddExpense.objects.filter(expense_date__range=[start_date, end_date]):
+    #          weekly_expense += expense.amount
+    #     return weekly_expense    
     def __str__(self):
         return self.expense_head
-    
-
-
+     
 class PatientHistory(models.Model):
     patient_fullname = models.ForeignKey(PatientCreate, verbose_name='Bemorning ism familiyasi', on_delete=models.CASCADE, related_name='patient_fullnames')
     check_in_date = models.DateField(verbose_name="ruyxatdan o'tgan sanasi")
@@ -236,10 +235,11 @@ class Payment(models.Model):
     payment_choice =  models.CharField(choices=PAYMENT_CHOICES, max_length=20, verbose_name="to'lov turi")
     amount_paid = models.IntegerField(verbose_name="to'langan summa")
     payment_term = models.CharField(max_length=255, verbose_name="to'lov muddati")
-
+#O'RGANISHGAAAAAAAAAAAA
     @property
     def calculate_debt(self):
         return self.payment_price - self.amount_paid
+    
     def __str__(self):
         return self.payment_choice
 

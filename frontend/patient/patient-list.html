@@ -36,14 +36,15 @@
                                         <div class="section-title">
                                             <h2 class="title">Bemorlar ruyxati</h2>
                                         </div>
+                                        <br>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#patientModal">
                                            Yangi bemor qo'shish
                                         </button>
                                     </div>
                                     <div class="col-6 text-right">
                                         <form method="GET" action="{% url 'patient_list' %}">
-                                            <input type="text"  name="q" placeholder="Search patients" value="{{ search_query }}">
-                                            <button type="submit">Search</button>
+                                            <input type="text"  name="q"  placeholder="Search patients" value="{{ search_query }}">
+                                            <button type="submit" class="btn btn-primary">Search</button>
                                         </form>
                                     </div>
                                 </div>
@@ -51,65 +52,65 @@
                             <div class="patient-list">
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
-                                          <thead>
-                                              <tr>
-                                                <th scope="col"><input type="checkbox" /> Bemor ID</th>
-                                                <th scope="col">Bemor ismi</th>
-                                                <th scope="col">Kirish sanasi</th>
-                                                <th scope="col">Tayinlangan Doktor</th>
-                                                <th scope="col">Kasallik</th>
-                                                <th scope="col">Xolati</th>
-                                                <th scope="col">Xona raqami</th>
-                                                <th>Taxrirlash</th>
-                                                <th>O'chirish</th>
-                                                <th>Bemorga tarix yaratish</th>
-                                              </tr>
-                                          </thead>
-                                          <tbody>
-                                              {% for patient in page_obj %}
-                                              <tr>
-                                                <td><input type="checkbox" />{{patient.patient_key}}</td>
-                                                <td>
-                                                  <div class="media align-items-center">
-                                                      <div class="patient-imge">
-                                                          <img src="{% static 'assets/images/patient/icon.png' %}" alt="patient" />
-                                                      </div>
-                                                      <div class="media-body">
-                                                        <p class="m-0"><a href="{{ patient.get_absolute_url }}">{{patient.patient_fullname}}</a></p>
-                                                      </div>
-                                                  </div>
-                                                </td>
-                                                <td>{{patient.check_in_date}}</td>
-                                                <th>{{patient.patient_acceptance}}</th>
-                                                <td>{{patient.diseases}}</td>
-                                                <td><span class="patient-status new-patient">
-                                                    {% if patient.patient_status == 'Vip' %}
-                                                        <td style="color: gold;">Vip</td>
-                                                        <br>
-                                                    {% elif patient.patient_status == 'Oddiy' %}
-                                                        <td style="color: green;">Oddiy</td>
-                                                        <br>
-                                                    {% else %}
-                                                    <td style="color: blueviolet;">Budjet</td>
-                                                    {% endif %}
-                                                    </span>
-                                                </td>
-                                                <td>{{patient.patient_room}}</td>
-                                                <td>
-                                                    <a href="{{ patient.get_edit_url }}"><i class="flaticon-pencil-1"></i></a>
-                                                </td>
-                                                <td>
-                                                    <a href="{% url  'patient_delete' patient.pk %}"><i class="fas fa-trash-alt" style="font-size:18px;color:red"></i></a>
-                                                </td>
+                                        <thead>
+                                            <tr>
+                                              <th scope="col"><input type="checkbox" /> Bemor ID</th>
+                                              <th scope="col">Bemor ismi</th>
+                                              <th scope="col">Kirish sanasi</th>
+                                              <th scope="col">Tayinlangan Doktor</th>
+                                              <th scope="col">Kasallik</th>
+                                              <th scope="col">Xolati</th>
+                                              <th scope="col">Xona raqami</th>
+                                              <th>Taxrirlash</th>
+                                              <th>O'chirish</th>
+                                              <th>Bemorga tarix yaratish</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for patient in page_obj %}
+                                            <tr>
+                                              <td><input type="checkbox" />{{patient.patient_key}}</td>
+                                              <td>
+                                                <div class="media align-items-center">
+                                                    <div class="patient-imge">
+                                                        <img src="{% static 'assets/images/patient/icon.png' %}" alt="patient" />
+                                                    </div>
+                                                    <div class="media-body">
+                                                      <p class="m-0"><a href="{{ patient.get_absolute_url }}">{{patient.patient_fullname}}</a></p>
+                                                    </div>
+                                                </div>
+                                              </td>
+                                              <td>{{patient.check_in_date}}</td>
+                                              <th>{{patient.patient_acceptance}}</th>
+                                              <td>{{patient.diseases}}</td>
+                                              <td><span class="patient-status new-patient">
+                                                  {% if patient.patient_status == 'Vip' %}
+                                                      <p style="color: gold;">Vip</p>
+                                                      <br>
+                                                  {% elif patient.patient_status == 'Oddiy' %}
+                                                      <p style="color: green;">Oddiy</p>
+                                                      <br>
+                                                  {% else %}
+                                                  <p style="color: blueviolet;">Budjet</p>
+                                                  {% endif %}
+                                              </span>
+                                              </td>
+                                              <td>{{patient.patient_room}}</td>
+                                              <td>
+                                                  <a href="{{ patient.get_edit_url }}"><i class="flaticon-pencil-1"></i></a>
+                                              </td>
+                                              <td>
+                                                  <a href="{% url  'patient_delete' patient.pk %}"><i class="fas fa-trash-alt" style="font-size:18px;color:red"></i></a>
+                                              </td>
 
-                                                <td>
-                                                    <a href="{% url 'diseases' pk=patient.pk %}"><i class="fa fa-history"></i></a>
-                                                </td>
-                                               
-                                              </tr>
-                                            {% endfor %}
-                                          </tbody>
-                                    </table>
+                                              <td>
+                                                  <a href="{% url 'diseases' pk=patient.pk %}"><i class="fa fa-history"></i></a>
+                                              </td>
+                                             
+                                            </tr>
+                                          {% endfor %}
+                                        </tbody>
+                                  </table>
                                 </div>
                             </div>
                             <div class="pagination-area mt-10">

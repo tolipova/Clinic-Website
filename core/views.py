@@ -29,7 +29,6 @@ def home(request):
     doctors = DoctorCreate.objects.all()
     patient = PatientHistory.objects.all()
     expense = AddExpense.objects.all()
-    
     context = {
         'year_added':year_added,
         'monthly_added':monthly_added,
@@ -43,7 +42,7 @@ def home(request):
         'total_rooms':total_rooms,
         'total_operations':total_operations,
         'patients_today':patients_today,
-        'patients_previous_days':patients_previous_days
+        'patients_previous_days':patients_previous_days,
     }
     return render(request, 'index.html', context)
 class PatientView(View):
@@ -205,17 +204,21 @@ def add_doctor(request):
 def appointment(request):
     return render(request,'doctor/appointment.html' )
 
-def operation(request):
-    form = OperationForm(request.POST)
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+class OperationView(View):
+    def get(self,request):
+        operations = Operation.objects.all()
+        form = OperationForm()
+        return render(request, 'operations_list.html', {'operations':operations, 'form':form})
+
+    def post(self, request):
+        form = OperationForm(request.POST)
+        if request.method == 'POST':
+            if form.is_valid():
+                form.save()
+                return redirect('home')
         else:
-            print('xato')
-    else:
-        form = OperationForm() 
-    return render(request,'operation.html',{'form':form})
+            form = OperationForm()    
+        return render(request, 'operations_list.html',{'form':form})
 
 def emergency_form(request):
     return render(request,'emergency/emergency-form.html' )
@@ -259,32 +262,8 @@ def diseases(request, pk):
     return render(request, 'patient/diseases.html',{'form':form} )
 
 
-def tulov_list(request):
-    tulov = Payment.objects.all()
-    return render(request, 'tulov.html', {'tulov':tulov})
-
-def tulov(request):
-    form = PaymentForm(request.POST or None)
-    
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-
-    context = {
-        'form': form,
-        'payments': Payment.objects.all(),  # You may need to filter this queryset based on your requirement
-    }
-    return render(request, 'tulov.html', context)
 
 
-
-# def discount_calculation(request):
-#     model_name = Payment.objects.all()
-#     for payment_price, discount in model_name:
-#         discount_amount = payment_price*(discount/100)
-#         discount_price = payment_price - discount_amount 
-#     return render (request, 'tulov.html', {'discount_price':discount_price})
 def add_room(request):
     form = RoomsForm(request.POST)
     if request.method == 'POST':
@@ -367,7 +346,7 @@ class TulovView(View):
         tulov = Payment.objects.all()
         form = PaymentForm()
         return render(request, 'tulov.html', {'tulov':tulov, 'form':form})
-
+    
     def post(self, request):
         form = PaymentForm(request.POST)
         if request.method == 'POST':
