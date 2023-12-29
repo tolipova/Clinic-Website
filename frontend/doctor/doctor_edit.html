@@ -1,5 +1,159 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update">
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Hospital Management Responsive  HTML5 Template</title>
+        <meta name="description" content="Hospital Management Responsive  HTML5 Template " />
+        <meta name="keywords" content="business,corporate, creative, woocommerach, design, gallery, minimal, modern, landing page, cv, designer, freelancer, html, one page, personal, portfolio, programmer, responsive, vcard, one page" />
+        <meta name="author" content="Hospital Management" />
+
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}">
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+        <!-- fonts file -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <!-- css file  -->
+        <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+        <script src="{% static 'assets/js/modernizr-3.11.2.min.js' %}"></script>
+    </head>
+
+    <body>
+        {% include 'base/navbar.html' %}
+
+                <div class="page-wrape">
+                    <div class="container-fluid">
+                        <div class="section-header">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="section-title">
+                                        <h2 class="title">Yangi doktor qo'shish</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="primary-form">
+                            <form action="#" method="post"  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-5 col-sm-6">
+                                        <div class="form-group">
+                                            <p class="label-text">Profil rasmi</p>
+                                            <label class="uplode-image" for="dprofile-image">
+                                                <span class="uplode-icon flaticon-cloud-computing"></span>
+                                                <span class="drop-text">Suratingizni shu yerda qoldiring</span>
+                                                <span class="file-size">Maksimal surat hajmi 2 MB</span>
+                                            </label>
+                                            <input type="file" name="profile_image" id="profile_image" widget="django_fileupload.widgets.ClearableFileInput(attrs={'class':'form-file'})">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-7 col-sm-6">
+                                        <div class="form-group">
+                                            <p class="label-text">Muqova rasmi</p>
+                                            <label class="uplode-image" for="dcover-image">
+                                                <span class="uplode-icon flaticon-cloud-computing"></span>
+                                                <span class="drop-text">Suratingizni shu yerda qoldiring</span>
+                                                <span class="file-size">Maksimal surat hajmi 2 MB</span>
+                                            </label>
+                                            <input type="file" name="muqova_image" id="muqova_image" widget="django_fileupload.widgets.ClearableFileInput(attrs={'class':'form-file'})">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="danme">Doktorning ismi</label>
+                                            {{form.doctor_fullname}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="dbarth">Tug'ilgan yili</label>
+                                            {{form.doctor_birth}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="paddress">Manzil</label>
+                                            {{form.doctor_address}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="page">Yoshi</label>
+                                            {{form.doctor_age}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="pphonne">Telifon raqami</label>
+                                            {{form.doctor_phone}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="page">Ish vaqti</label>
+                                            {{form.work_time}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="pbloggroup">Qon guruhi</label>
+                                            {{form.doctor_blood}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="Department">Shifokorning Lavozimi</label>
+                                            {{form.doctor_status}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="demail">Email Address</label>
+                                            {{form.email_address}}
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="Skills">Qobiliyatlari</label>
+                                            {{form.doctor_skills}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-group">
+                                            <label for="page">Doktorning bitirgan Universitetlari</label>
+                                            {{form.doctor_university}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="Biography">Biografiya</label>
+                                            {{form.doctor_discription}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <input type="submit" value="Yuborish" class="form-btn">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        <div class="body-overlay"></div>
+        
+        
+        <script src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script>
+        <script src="{% static 'assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/js/plugins.js' %}"></script>
+        <script src="{% static 'assets/js/main.js' %}"></script>
+        
+    </body>
+</html>

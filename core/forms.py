@@ -22,8 +22,6 @@ class PatientCreateForm(forms.ModelForm):
             'patient_room':forms.Select(attrs={'class':'form-control'}),
         }
 class DoctorCreateForm(forms.ModelForm):
-    profile_image = forms.ImageField(widget = forms.FileInput(attrs={"rows": "", "class": "form-file"}))
-    muqova_image = forms.ImageField(widget = forms.FileInput(attrs={"rows": "", "class": "form-file"}))
     class Meta:
         model = DoctorCreate
         fields = ['profile_image','muqova_image','doctor_fullname','doctor_phone','doctor_address','doctor_age','doctor_birth','doctor_blood','doctor_status','doctor_university','doctor_discription','doctor_skills','work_time','email_address']
@@ -40,8 +38,8 @@ class DoctorCreateForm(forms.ModelForm):
             'doctor_skills':forms.Select(attrs={'class':'form-control'}),
             'work_time':forms.TimeInput(attrs={'type': 'time', 'class':'form-control'}),
             'email_address' : forms.EmailInput(attrs={'class':'form-control', 'placeholder':"saragraham101@gmail.com" }),
-            "profile_image": forms.ImageField(),
-            "muqova_image": forms.ImageField(),
+            'profile_image' : forms.ClearableFileInput( attrs={'class':'form-file'}),
+            "muqova_image": forms.ClearableFileInput(attrs={'class':'form-file'}),
         }
 
 class OperationForm(forms.ModelForm):

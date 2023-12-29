@@ -181,14 +181,13 @@ def doctor_profile(request, pk):
 
 def doctor_edit(request, pk):
     doctor = get_object_or_404(DoctorCreate, pk=pk)
-    
     if request.method == 'POST':
-        form = DoctorForm(request.POST, instance=doctor)
+        form = DoctorCreateForm(request.POST, instance=doctor)
         if form.is_valid():
             form.save()
             return redirect('doctor_profile', pk=pk)  # Redirect to patient detail page after successful update
     else:
-        form = DoctorForm(instance=doctor)
+        form = DoctorCreateForm(instance=doctor)
     
     return render(request, 'doctor/doctor_edit.html', {'form': form, 'doctor': doctor})
 def add_doctor(request):

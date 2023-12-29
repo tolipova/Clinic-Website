@@ -41,9 +41,9 @@
                         </div>
                         <div class="doctors-area">
                             <div class="row">
+                                {% for doctor in doctors %}
                                 <div class="col-lg-6 col-md-6">
                                     <div class="single-doctor">
-                                        {% for doctor in doctors %}
                                         <div class="card" >
                                             <div class="row align-items-center ">
                                               <div class="col-md-5 col-sm-6">
@@ -73,9 +73,9 @@
                                               </div>
                                             </div>
                                         </div>
-                                        {% endfor %}
                                     </div>
                                 </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
