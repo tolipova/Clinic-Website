@@ -41,10 +41,12 @@
                                            Yangi bemor qo'shish
                                         </button>
                                     </div>
-                                    <div class="col-6 text-right">
+                                    <div class="search-form">
                                         <form method="GET" action="{% url 'patient_list' %}">
-                                            <input type="text"  name="q"  placeholder="Search patients" value="{{ search_query }}">
-                                            <button type="submit" class="btn btn-primary">Search</button>
+                                            <div class="form-group mb-0">
+                                            <input type="text"  name="q" class="form-control" placeholder="Search patients" value="{{ search_query }}">
+                                            <button type="submit" class="btn btn-primary"><span class="flaticon-loupe"></span></button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

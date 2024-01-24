@@ -29,6 +29,34 @@ def home(request):
     doctors = DoctorCreate.objects.all()
     patient = PatientHistory.objects.all()
     expense = AddExpense.objects.all()
+
+    search_query = request.GET.get('q')
+    patients_search = PatientCreate.objects.all()
+    doctors_search = DoctorCreate.objects.all()
+    expense_search = AddExpense.objects.all()
+    operations_search = Operation.objects.all()
+    rooms_search = Rooms.objects.all()
+    if search_query:
+        patients_search = patients_search.filter(
+            Q(patient_fullname__icontains=search_query) |
+            Q(patient_key__icontains=search_query) |
+            Q(patient_id__icontains=search_query) )
+    elif search_query:
+        doctors_search = doctors_search.filter(
+            Q(doctor_fullname__icontains=search_query) |
+            Q(doctor_id__icontains=search_query) |
+            Q(doctor_status__icontains=search_query) )
+    elif search_query:
+        expense_search = expense_search.filter(
+            Q(expense_head__icontains=search_query) )
+    elif search_query:
+        operations_search = operations_search.filter(
+            Q(select_operatsion_type__icontains=search_query) )
+    elif search_query:
+        rooms_search = rooms_search.filter(
+            Q(room_number__icontains=search_query) 
+            )
+
     context = {
         'year_added':year_added,
         'monthly_added':monthly_added,
@@ -43,6 +71,7 @@ def home(request):
         'total_operations':total_operations,
         'patients_today':patients_today,
         'patients_previous_days':patients_previous_days,
+        'search_query':search_query
     }
     return render(request, 'index.html', context)
 class PatientView(View):
@@ -388,4 +417,5 @@ class EventView(View):
             except Exception as e:
                 return JsonResponse({'success': False, 'message': str(e)})
         events = Event.objects.all()
-        return render(request, 'doctor/event_list.html', {'events': events})
+
+        return render(request, 'doctor/event_list.html', {'event': event})
